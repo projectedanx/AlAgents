@@ -1,0 +1,49 @@
+import unittest
+import numpy as np
+from src.conceptual_synthesis.base_agent import BaseAgent
+
+class TestBaseAgent(unittest.TestCase):
+    def setUp(self):
+        self.agent = BaseAgent()
+
+    def test_run(self):
+        # Sample inputs
+        text = "This is a test sentence."
+        principal = 1000
+        rate = 0.05
+        times_compounded = 12
+        years = 10
+        nodes = 3
+        charges = [1.0, 2.0, 3.0]
+        interactions = np.array([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
+        image = np.array([[[100, 150, 200]]])
+        width = 5
+        height = 5
+        rule = 30
+
+        # Run the agent
+        result = self.agent.run(
+            text,
+            principal,
+            rate,
+            times_compounded,
+            years,
+            nodes,
+            charges,
+            interactions,
+            image,
+            width,
+            height,
+            rule,
+        )
+
+        # Assertions
+        self.assertIsInstance(result, dict)
+        self.assertEqual(result["processed_text"], ['test', 'sentenc'])
+        self.assertAlmostEqual(result["future_value"], 1647.0094976902204)
+        np.testing.assert_array_equal(result["network_state"], np.array([2., 4., 2.]))
+        np.testing.assert_array_almost_equal(result["sepia_image"], np.array([[[192.45, 171.4 , 133.5 ]]]))
+        self.assertEqual(result["generated_pattern"].shape, (5, 5))
+
+if __name__ == "__main__":
+    unittest.main()

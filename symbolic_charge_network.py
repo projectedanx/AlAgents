@@ -1,0 +1,79 @@
+import numpy as np
+
+class NeuroSymbolicParticle:
+    """
+    Represents a single neuro-symbolic particle in the Symbolic Charge Network.
+    """
+    def __init__(self, embedding, charge=0.0, activation_potential=1.0, semantic_inertia=1.0):
+        self.embedding = np.array(embedding, dtype=float)
+        self.charge = float(charge)
+        self.activation_potential = float(activation_potential)
+        self.semantic_inertia = float(semantic_inertia)
+        self.coherence = np.linalg.norm(self.embedding)
+
+    def __repr__(self):
+        return (f"NeuroSymbolicParticle(embedding={self.embedding}, charge={self.charge}, "
+                f"activation_potential={self.activation_potential})")
+
+class SymbolicChargeNetwork:
+    """
+    Manages a collection of NeuroSymbolicParticles and their interactions.
+    """
+    def __init__(self):
+        self.particles = []
+
+    def add_particle(self, particle):
+        self.particles.append(particle)
+
+    @staticmethod
+    def _cosine_similarity(vec1, vec2):
+        """Calculates the cosine similarity between two vectors."""
+        dot_product = np.dot(vec1, vec2)
+        norm_product = np.linalg.norm(vec1) * np.linalg.norm(vec2)
+        if norm_product == 0:
+            return 0.0
+        return dot_product / norm_product
+
+    def calculate_fusion_potential(self, particle1, particle2):
+        """
+        Calculates the fusion potential between two particles, here simplified
+        as their cosine similarity.
+        """
+        return self._cosine_similarity(particle1.embedding, particle2.embedding)
+
+    def fuse(self, particle1, particle2, fusion_threshold=0.5):
+        """
+        Fuses two particles if their fusion potential is above a threshold,
+        creating a new emergent concept.
+        """
+        potential = self.calculate_fusion_potential(particle1, particle2)
+        if potential > fusion_threshold:
+            # New embedding is the average of the two source embeddings
+            new_embedding = (particle1.embedding + particle2.embedding) / 2
+            # New charge is the sum of the source charges
+            new_charge = particle1.charge + particle2.charge
+            # New activation potential is the average
+            new_activation_potential = (particle1.activation_potential + particle2.activation_potential) / 2
+            # New semantic inertia is the sum
+            new_inertia = particle1.semantic_inertia + particle2.semantic_inertia
+
+            fused_particle = NeuroSymbolicParticle(
+                embedding=new_embedding,
+                charge=new_charge,
+                activation_potential=new_activation_potential,
+                semantic_inertia=new_inertia
+            )
+
+            # Inhibition: temporarily increase the activation potential of the source particles
+            self.inhibit(particle1)
+            self.inhibit(particle2)
+
+            return fused_particle
+        return None
+
+    def inhibit(self, particle, inhibition_factor=1.5):
+        """
+        Temporarily increases the activation potential of a particle, making it
+        less likely to be re-selected immediately (semantic refractoriness).
+        """
+        particle.activation_potential *= inhibition_factor

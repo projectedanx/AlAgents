@@ -1,17 +1,18 @@
 # AI Research Repository
 
+## Purpose
+
 This repository is a curated collection of research papers and documents focused on Artificial Intelligence, as well as a Python-based agentic system that implements some of the concepts from these papers. The papers cover a wide range of topics, from the technical aspects of AI development to the ethical and philosophical implications of this technology.
 
-## Quick Start
+## Setup
 
-To get started with the agentic system, follow these steps:
+To bootstrap the environment:
 
-### Prerequisites
+```bash
+./setup.sh
+```
 
-* Python 3.8 or higher
-* pip
-
-### Installation
+Alternatively, manually setup the environment:
 
 1.  Clone the repository:
     ```bash
@@ -24,9 +25,10 @@ To get started with the agentic system, follow these steps:
 3.  Install the required libraries:
     ```bash
     pip install -r requirements.txt
+    python -c "import nltk; nltk.download('all')"
     ```
 
-### Usage
+## Usage
 
 The `BaseAgent` class in `src/conceptual_synthesis/base_agent.py` provides a simple interface to the agent's functionalities. Here is a basic example of how to use it:
 

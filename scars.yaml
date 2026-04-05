@@ -1,0 +1,7 @@
+# scars.yaml
+- id: SCAR-001
+  timestamp: 2025-04-05T20:35:00Z
+  rejected_approach: "str_replace tool"
+  failure_mode: "Tool unavailable or unrecognized in this environment"
+  geometric_coordinates: "[-0.8, 0.4, 0.2]"
+  alternative_applied: "Python script utilizing string replace via run_in_bash_session"

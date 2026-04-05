@@ -5,6 +5,15 @@ class NeuroSymbolicParticle:
     Represents a single neuro-symbolic particle in the Symbolic Charge Network.
     """
     def __init__(self, embedding, charge=0.0, activation_potential=1.0, semantic_inertia=1.0):
+        """
+        Initializes a new NeuroSymbolicParticle.
+
+        Args:
+            embedding: The dense vector representation of the concept.
+            charge: The scalar charge representing the conceptual mass.
+            activation_potential: The activation potential representing the potential for fusion.
+            semantic_inertia: The semantic inertia representing resistance to change.
+        """
         self.embedding = np.array(embedding, dtype=float)
         self.charge = float(charge)
         self.activation_potential = float(activation_potential)
@@ -12,6 +21,12 @@ class NeuroSymbolicParticle:
         self.coherence = np.linalg.norm(self.embedding)
 
     def __repr__(self):
+        """
+        Returns a string representation of the NeuroSymbolicParticle.
+
+        Returns:
+            A string containing the particle's embedding, charge, and activation potential.
+        """
         return (f"NeuroSymbolicParticle(embedding={self.embedding}, charge={self.charge}, "
                 f"activation_potential={self.activation_potential})")
 
@@ -20,9 +35,18 @@ class SymbolicChargeNetwork:
     Manages a collection of NeuroSymbolicParticles and their interactions.
     """
     def __init__(self):
+        """
+        Initializes a new, empty SymbolicChargeNetwork.
+        """
         self.particles = []
 
     def add_particle(self, particle):
+        """
+        Adds a NeuroSymbolicParticle to the network.
+
+        Args:
+            particle: The NeuroSymbolicParticle to add to the network.
+        """
         self.particles.append(particle)
 
     @staticmethod

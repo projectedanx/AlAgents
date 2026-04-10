@@ -71,5 +71,11 @@ class TestHybridSystem(unittest.TestCase):
         self.assertIn("sepia_image", results)
         self.assertIn("generated_pattern", results)
 
+    def test_weaving_algorithm_bounds(self):
+        with self.assertRaises(ValueError):
+            weaving_algorithm(5, 5, -1)
+        with self.assertRaises(ValueError):
+            weaving_algorithm(5, 5, 256)
+
 if __name__ == "__main__":
     unittest.main()

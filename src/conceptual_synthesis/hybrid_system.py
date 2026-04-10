@@ -1,3 +1,4 @@
+/// file: src/conceptual_synthesis/hybrid_system.py ///
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
@@ -63,7 +64,13 @@ def neoclassical_compounding(principal: float, rate: float, times_compounded: in
 
     Returns:
         The future value of the investment.
+
+    Raises:
+        ValueError: If times_compounded is less than or equal to zero.
     """
+    if times_compounded <= 0:
+        raise ValueError("times_compounded must be greater than zero to avoid division by zero.")
+
     return principal * (1 + rate / times_compounded) ** (times_compounded * years)
 
 

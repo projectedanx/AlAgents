@@ -1,4 +1,3 @@
-/// file: src/conceptual_synthesis/hybrid_system.py ///
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
@@ -127,6 +126,9 @@ def weaving_algorithm(width: int, height: int, rule: int) -> np.ndarray:
     Returns:
         A NumPy array representing the generated pattern.
     """
+    if not 0 <= rule <= 255:
+        raise ValueError("Rule must be between 0 and 255.")
+
     # Create an initial random row
     grid = np.zeros((height, width), dtype=int)
     grid[0, :] = np.random.randint(2, size=width)

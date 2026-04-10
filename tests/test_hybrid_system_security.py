@@ -1,4 +1,3 @@
-/// file: tests/test_hybrid_system_security.py ///
 import unittest
 from unittest.mock import MagicMock
 import sys

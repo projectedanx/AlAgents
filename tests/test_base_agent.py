@@ -45,5 +45,11 @@ class TestBaseAgent(unittest.TestCase):
         np.testing.assert_array_almost_equal(result["sepia_image"], np.array([[[192.45, 171.4 , 133.5 ]]]))
         self.assertEqual(result["generated_pattern"].shape, (5, 5))
 
+    def test_weaving_algorithm_bounds(self):
+        with self.assertRaises(ValueError):
+            self.agent._weaving_algorithm(5, 5, -1)
+        with self.assertRaises(ValueError):
+            self.agent._weaving_algorithm(5, 5, 256)
+
 if __name__ == "__main__":
     unittest.main()

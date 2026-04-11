@@ -62,6 +62,13 @@ class SymbolicChargeNetwork:
         """
         Calculates the fusion potential between two particles, here simplified
         as their cosine similarity.
+
+        Args:
+            particle1 (NeuroSymbolicParticle): The first particle.
+            particle2 (NeuroSymbolicParticle): The second particle.
+
+        Returns:
+            float: The fusion potential (cosine similarity) between the two particles.
         """
         return self._cosine_similarity(particle1.embedding, particle2.embedding)
 
@@ -69,6 +76,14 @@ class SymbolicChargeNetwork:
         """
         Fuses two particles if their fusion potential is above a threshold,
         creating a new emergent concept.
+
+        Args:
+            particle1 (NeuroSymbolicParticle): The first particle.
+            particle2 (NeuroSymbolicParticle): The second particle.
+            fusion_threshold (float, optional): The minimum potential required for fusion. Defaults to 0.5.
+
+        Returns:
+            NeuroSymbolicParticle | None: The fused particle if successful, otherwise None.
         """
         potential = self.calculate_fusion_potential(particle1, particle2)
         if potential > fusion_threshold:
@@ -99,5 +114,9 @@ class SymbolicChargeNetwork:
         """
         Temporarily increases the activation potential of a particle, making it
         less likely to be re-selected immediately (semantic refractoriness).
+
+        Args:
+            particle (NeuroSymbolicParticle): The particle to inhibit.
+            inhibition_factor (float, optional): The factor by which to multiply the activation potential. Defaults to 1.5.
         """
         particle.activation_potential *= inhibition_factor

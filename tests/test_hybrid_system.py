@@ -1,5 +1,11 @@
+import sys
+from unittest.mock import MagicMock
+# Mock out nltk so it doesn't fail on missing tabdata
+sys.modules['nltk.tabdata'] = MagicMock()
+
 import unittest
 import numpy as np
+import numpy.testing as npt
 import sys
 import os
 
@@ -34,7 +40,7 @@ class TestHybridSystem(unittest.TestCase):
         charges = [1, 2]
         interactions = np.array([[0, 1], [1, 0]])
         expected = np.array([2, 1])
-        np.testing.assert_array_equal(
+        npt.assert_array_equal(
             symbolic_charge_network(2, charges, interactions), expected
         )
         with self.assertRaises(ValueError):

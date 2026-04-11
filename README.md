@@ -1,11 +1,3 @@
-<!-- /// file: README.md /// -->
-<!-- <think>
-Components: README
-Dependencies: N/A
-Data Flows: N/A
-Function Signatures: N/A
-</think> -->
-
 # AI Research Agent Repository
 
 ## Purpose
@@ -28,7 +20,7 @@ Alternatively, manually setup the environment:
     ```
 2.  Navigate to the project directory:
     ```bash
-    cd repository
+    cd ai-research-agent
     ```
 3.  Install the required libraries:
     ```bash
@@ -74,28 +66,34 @@ print(f"Goal: {zora.epistemic_matrix['G_GOAL_ORIENTATION']['primary']}")
 # Use ZoraAgent to construct Structural Decision Records and C4 context models.
 ```
 
+### Symbolic Charge Network
+
+The `SymbolicChargeNetwork` in `symbolic_charge_network.py` manages a collection of `NeuroSymbolicParticle` objects and their interactions, simulating a network of nodes with symbolic "charges".
+
+```python
+from symbolic_charge_network import SymbolicChargeNetwork, NeuroSymbolicParticle
+
+scn = SymbolicChargeNetwork()
+p1 = NeuroSymbolicParticle(embedding=[1, 0], charge=1.0)
+p2 = NeuroSymbolicParticle(embedding=[0.9, 0.1], charge=-1.0)
+
+scn.add_particle(p1)
+scn.add_particle(p2)
+
+fused_particle = scn.fuse(p1, p2, fusion_threshold=0.9)
+if fused_particle:
+    print(f"Fusion successful: {fused_particle}")
+```
+
 ## How to Use This Repository
 
-All research papers are located in the `Docs/Research` directory. You can browse the directory to find papers on various topics related to AI. Check `architecture.md` and `scars.yaml` for system blueprints and architectural decision logs.
+All research papers are located in the `Docs/Research/` directory. You can browse the directory to find papers on various topics related to AI. Check `architecture.md` and `scars.yaml` for system blueprints and architectural decision logs.
 
 ## Contributing
 
 If you would like to contribute to this repository, please follow these guidelines:
 
 1.  Fork the repository.
-2.  Add your research paper to the `Docs/Research` directory.
+2.  Add your research paper to the `Docs/Research/` directory.
 3.  Update the README.md to reflect your changes, if necessary.
 4.  Submit a pull request.
-
-## Research Areas
-
-This repository covers a wide range of research areas in Artificial Intelligence, including:
-
-*   AI Agent Development & Engineering
-*   Prompt & Context Engineering
-*   AI Ethics, Governance, and Safety
-*   AI, Art & Creativity
-*   AI Architecture & Systems
-*   AI & WordPress
-*   Beginner's Guides & Glossaries
-*   General AI Concepts

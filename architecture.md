@@ -49,3 +49,7 @@ The AI Research Agent repository integrates a layered architectural pattern for 
 
 *   **ADR 1: Incremental Isolation.** Components execute individually within the synthesis hybrid engine to prevent side-effect pollution.
 *   **ADR 2: Direct Inheritance.** Agents directly inherit from `BaseAgent` rather than using composition to maintain shared telemetry and operational signatures.
+
+### 2.4 Epistemic Cartographer Agent
+
+The `EpistemicCartographerAgent` (APP-PLURIVERSAL-ENVIRONMENT-ARCHITECT-v1.0) is a critical subsystem enforcing the Ontological Dignity of synthesized data. It prevents epistemological monopolization using the Anti-Ossification Petzold Loop (THINK -> SCAFFOLD -> VERIFY -> SYNTHESIZE) and halts executions exhibiting Semantic Drift via Epistemic Escrow triggers.

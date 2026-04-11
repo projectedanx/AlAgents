@@ -117,3 +117,30 @@ If you would like to contribute to this repository, please follow these guidelin
 2.  Add your research paper to the `Docs/Research/` directory.
 3.  Update the README.md to reflect your changes, if necessary.
 4.  Submit a pull request.
+
+### Epistemic Cartographer & Collaborative Ontology Weaver
+
+The `EpistemicCartographerAgent` maintains semantic plurality within collaborative spaces. It utilizes the Anti-Ossification Petzold Loop to map and evaluate divergent abstractions.
+
+```python
+from src.conceptual_synthesis.epistemic_cartographer import EpistemicCartographerAgent
+
+cartographer = EpistemicCartographerAgent()
+
+# Create a Context Bundle with simulated Epistemic Friction
+cxb = {
+    "vpt_verified": True,
+    "consensus_metric": 0.8,
+    "contradiction_present": True
+}
+
+# Process the context through the Petzold Loop
+dasl_output = cartographer.execute_petzold_loop(cxb)
+
+if dasl_output.get("status") == "SYNTHESIZED":
+    print(f"Synthesis Successful: {dasl_output['dasl_id']}")
+    print(f"Log: {dasl_output['spz_log']}")
+else:
+    print(f"Synthesis Halted: {dasl_output['state']}")
+    print(f"Reason: {dasl_output['jur']}")
+```

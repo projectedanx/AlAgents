@@ -6,20 +6,22 @@ from nltk.tokenize import word_tokenize
 import string
 import numpy as np
 
+
 class BaseAgent:
     """A base agent that integrates multiple functionalities to produce a complex, layered result."""
+
     def __init__(self):
         """
         Initializes the BaseAgent, ensuring required NLTK data is downloaded.
         """
         try:
-            stopwords.words('english')
+            stopwords.words("english")
         except LookupError:
-            nltk.download('stopwords', quiet=True)
+            nltk.download("stopwords", quiet=True)
         try:
-            nltk.data.find('tokenizers/punkt')
+            nltk.data.find("tokenizers/punkt")
         except LookupError:
-            nltk.download('punkt', quiet=True)
+            nltk.download("punkt", quiet=True)
 
     def _deterministic_context_engineering(self, text: str) -> list[str]:
         """
@@ -38,21 +40,23 @@ class BaseAgent:
         tokens = word_tokenize(text)
 
         # Setup translation table, stopwords, and stemmer
-        table = str.maketrans('', '', string.punctuation)
-        stop_words = set(stopwords.words('english'))
+        table = str.maketrans("", "", string.punctuation)
+        stop_words = set(stopwords.words("english"))
         porter = PorterStemmer()
 
         # Consolidate lowering, punctuation removal, filtering, and stemming
         # into a single list comprehension to avoid intermediate lists.
         stemmed = [
             porter.stem(w_clean)
-            for w in tokens
-            if (w_clean := w.lower().translate(table)).isalpha() and w_clean not in stop_words
+            for w_clean in [w.lower().translate(table) for w in tokens]
+            if w_clean.isalpha() and w_clean not in stop_words
         ]
 
         return stemmed
 
-    def _neoclassical_compounding(self, principal: float, rate: float, times_compounded: int, years: int) -> float:
+    def _neoclassical_compounding(
+        self, principal: float, rate: float, times_compounded: int, years: int
+    ) -> float:
         """
         Calculates the future value of an investment with compound interest.
 
@@ -67,7 +71,9 @@ class BaseAgent:
         """
         return principal * (1 + rate / times_compounded) ** (times_compounded * years)
 
-    def _symbolic_charge_network(self, nodes: int, charges: list[float], interactions: np.ndarray) -> np.ndarray:
+    def _symbolic_charge_network(
+        self, nodes: int, charges: list[float], interactions: np.ndarray
+    ) -> np.ndarray:
         """
         Simulates a network of nodes with symbolic "charges" and their interactions.
 
@@ -94,11 +100,9 @@ class BaseAgent:
         Returns:
             A NumPy array representing the image with the sepia filter applied.
         """
-        sepia_filter = np.array([
-            [0.393, 0.769, 0.189],
-            [0.349, 0.686, 0.168],
-            [0.272, 0.534, 0.131]
-        ])
+        sepia_filter = np.array(
+            [[0.393, 0.769, 0.189], [0.349, 0.686, 0.168], [0.272, 0.534, 0.131]]
+        )
 
         # Apply the sepia filter
         sepia_image = np.dot(image, sepia_filter.T)
@@ -126,31 +130,31 @@ class BaseAgent:
         grid[0, :] = np.random.randint(2, size=width)
 
         # Get the binary representation of the rule
-        binary_rule = format(rule, '08b')
+        binary_rule = format(rule, "08b")
 
         # Generate the pattern
         for i in range(1, height):
             for j in range(width):
-                left = grid[i-1, (j-1+width)%width]
-                center = grid[i-1, j]
-                right = grid[i-1, (j+1)%width]
+                left = grid[i - 1, (j - 1 + width) % width]
+                center = grid[i - 1, j]
+                right = grid[i - 1, (j + 1) % width]
 
                 # Apply the rule
-                if f'{left}{center}{right}' == '111':
+                if f"{left}{center}{right}" == "111":
                     grid[i, j] = int(binary_rule[0])
-                elif f'{left}{center}{right}' == '110':
+                elif f"{left}{center}{right}" == "110":
                     grid[i, j] = int(binary_rule[1])
-                elif f'{left}{center}{right}' == '101':
+                elif f"{left}{center}{right}" == "101":
                     grid[i, j] = int(binary_rule[2])
-                elif f'{left}{center}{right}' == '100':
+                elif f"{left}{center}{right}" == "100":
                     grid[i, j] = int(binary_rule[3])
-                elif f'{left}{center}{right}' == '011':
+                elif f"{left}{center}{right}" == "011":
                     grid[i, j] = int(binary_rule[4])
-                elif f'{left}{center}{right}' == '010':
+                elif f"{left}{center}{right}" == "010":
                     grid[i, j] = int(binary_rule[5])
-                elif f'{left}{center}{right}' == '001':
+                elif f"{left}{center}{right}" == "001":
                     grid[i, j] = int(binary_rule[6])
-                elif f'{left}{center}{right}' == '000':
+                elif f"{left}{center}{right}" == "000":
                     grid[i, j] = int(binary_rule[7])
 
         return grid
@@ -168,7 +172,7 @@ class BaseAgent:
         image: np.ndarray,
         width: int,
         height: int,
-        rule: int
+        rule: int,
     ) -> dict:
         """
         Integrates the outputs of the five individual functions to create a complex, layered result.
@@ -191,7 +195,9 @@ class BaseAgent:
             A dictionary containing the results of each of the five functions.
         """
         processed_text = self._deterministic_context_engineering(text)
-        future_value = self._neoclassical_compounding(principal, rate, times_compounded, years)
+        future_value = self._neoclassical_compounding(
+            principal, rate, times_compounded, years
+        )
         network_state = self._symbolic_charge_network(nodes, charges, interactions)
         sepia_image = self._algorithmic_photography(image)
         generated_pattern = self._weaving_algorithm(width, height, rule)

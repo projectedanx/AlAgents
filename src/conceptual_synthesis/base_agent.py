@@ -129,15 +129,15 @@ class BaseAgent:
         grid = np.zeros((height, width), dtype=int)
         grid[0, :] = np.random.randint(2, size=width)
 
+        # Get the binary representation of the rule
+        binary_rule = format(rule, '08b')
+
         # Generate the pattern
         for i in range(1, height):
             for j in range(width):
                 left = grid[i-1, (j-1+width)%width]
                 center = grid[i-1, j]
                 right = grid[i-1, (j+1)%width]
-
-                # Get the binary representation of the rule
-                binary_rule = format(rule, '08b')
 
                 # Apply the rule
                 if f'{left}{center}{right}' == '111':

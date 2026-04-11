@@ -1,3 +1,4 @@
+# /// file: src/conceptual_synthesis/hybrid_system.py ///
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
@@ -30,23 +31,18 @@ def deterministic_context_engineering(text: str) -> list[str]:
     # Tokenize the text
     tokens = word_tokenize(text)
 
-    # Convert to lower case
-    tokens = [w.lower() for w in tokens]
-
-    # Remove punctuation
+    # Setup translation table, stopwords, and stemmer
     table = str.maketrans('', '', string.punctuation)
-    stripped = [w.translate(table) for w in tokens]
-
-    # Remove non-alphabetic tokens
-    words = [word for word in stripped if word.isalpha()]
-
-    # Filter out stopwords
     stop_words = set(stopwords.words('english'))
-    words = [w for w in words if not w in stop_words]
-
-    # Stemming
     porter = PorterStemmer()
-    stemmed = [porter.stem(word) for word in words]
+
+    # Consolidate lowering, punctuation removal, filtering, and stemming
+    # into a single list comprehension to avoid intermediate lists.
+    stemmed = [
+        porter.stem(w_clean)
+        for w in tokens
+        if (w_clean := w.lower().translate(table)).isalpha() and w_clean not in stop_words
+    ]
 
     return stemmed
 

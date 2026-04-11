@@ -1,10 +1,8 @@
 # /// file: src/conceptual_synthesis/hybrid_system.py ///
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
-from nltk.tokenize import word_tokenize
-import string
 import numpy as np
+from src.conceptual_synthesis.base_agent import BaseAgent
+
+_agent = BaseAgent()
 
 
 def deterministic_context_engineering(text: str) -> list[str]:
@@ -20,32 +18,7 @@ def deterministic_context_engineering(text: str) -> list[str]:
     Returns:
         A list of processed tokens.
     """
-    try:
-        stopwords.words("english")
-    except LookupError:
-        nltk.download("stopwords", quiet=True)
-    try:
-        nltk.data.find("tokenizers/punkt")
-    except LookupError:
-        nltk.download("punkt", quiet=True)
-
-    # Tokenize the text
-    tokens = word_tokenize(text)
-
-    # Setup translation table, stopwords, and stemmer
-    table = str.maketrans("", "", string.punctuation)
-    stop_words = set(stopwords.words("english"))
-    porter = PorterStemmer()
-
-    # Consolidate lowering, punctuation removal, filtering, and stemming
-    # into a single list comprehension to avoid intermediate lists.
-    stemmed = [
-        porter.stem(w_clean)
-        for w_clean in [w.lower().translate(table) for w in tokens]
-        if w_clean.isalpha() and w_clean not in stop_words
-    ]
-
-    return stemmed
+    return _agent._deterministic_context_engineering(text)
 
 
 def neoclassical_compounding(
@@ -71,7 +44,7 @@ def neoclassical_compounding(
             "times_compounded must be greater than zero to avoid division by zero."
         )
 
-    return principal * (1 + rate / times_compounded) ** (times_compounded * years)
+    return _agent._neoclassical_compounding(principal, rate, times_compounded, years)
 
 
 def symbolic_charge_network(
@@ -88,10 +61,7 @@ def symbolic_charge_network(
     Returns:
         A numpy array representing the final state of the network.
     """
-    if len(charges) != nodes or interactions.shape != (nodes, nodes):
-        raise ValueError("Input dimensions do not match the number of nodes.")
-
-    return np.dot(interactions, charges)
+    return _agent._symbolic_charge_network(nodes, charges, interactions)
 
 
 def algorithmic_photography(image: np.ndarray) -> np.ndarray:
@@ -104,15 +74,7 @@ def algorithmic_photography(image: np.ndarray) -> np.ndarray:
     Returns:
         A NumPy array representing the image with the sepia filter applied.
     """
-    sepia_filter = np.array(
-        [[0.393, 0.769, 0.189], [0.349, 0.686, 0.168], [0.272, 0.534, 0.131]]
-    )
-
-    # Apply the sepia filter
-    sepia_image = np.dot(image, sepia_filter.T)
-
-    # Clip the values to be in the valid range [0, 255]
-    return np.clip(sepia_image, 0, 255)
+    return _agent._algorithmic_photography(image)
 
 
 def weaving_algorithm(width: int, height: int, rule: int) -> np.ndarray:
@@ -127,42 +89,7 @@ def weaving_algorithm(width: int, height: int, rule: int) -> np.ndarray:
     Returns:
         A NumPy array representing the generated pattern.
     """
-    if not 0 <= rule <= 255:
-        raise ValueError("Rule must be between 0 and 255.")
-
-    # Create an initial random row
-    grid = np.zeros((height, width), dtype=int)
-    grid[0, :] = np.random.randint(2, size=width)
-
-    # Get the binary representation of the rule
-    binary_rule = format(rule, "08b")
-
-    # Generate the pattern
-    for i in range(1, height):
-        for j in range(width):
-            left = grid[i - 1, (j - 1 + width) % width]
-            center = grid[i - 1, j]
-            right = grid[i - 1, (j + 1) % width]
-
-            # Apply the rule
-            if f"{left}{center}{right}" == "111":
-                grid[i, j] = int(binary_rule[0])
-            elif f"{left}{center}{right}" == "110":
-                grid[i, j] = int(binary_rule[1])
-            elif f"{left}{center}{right}" == "101":
-                grid[i, j] = int(binary_rule[2])
-            elif f"{left}{center}{right}" == "100":
-                grid[i, j] = int(binary_rule[3])
-            elif f"{left}{center}{right}" == "011":
-                grid[i, j] = int(binary_rule[4])
-            elif f"{left}{center}{right}" == "010":
-                grid[i, j] = int(binary_rule[5])
-            elif f"{left}{center}{right}" == "001":
-                grid[i, j] = int(binary_rule[6])
-            elif f"{left}{center}{right}" == "000":
-                grid[i, j] = int(binary_rule[7])
-
-    return grid
+    return _agent._weaving_algorithm(width, height, rule)
 
 
 def hybrid_synthesis(
@@ -199,16 +126,17 @@ def hybrid_synthesis(
     Returns:
         A dictionary containing the results of each of the five functions.
     """
-    processed_text = deterministic_context_engineering(text)
-    future_value = neoclassical_compounding(principal, rate, times_compounded, years)
-    network_state = symbolic_charge_network(nodes, charges, interactions)
-    sepia_image = algorithmic_photography(image)
-    generated_pattern = weaving_algorithm(width, height, rule)
-
-    return {
-        "processed_text": processed_text,
-        "future_value": future_value,
-        "network_state": network_state,
-        "sepia_image": sepia_image,
-        "generated_pattern": generated_pattern,
-    }
+    return _agent.run(
+        text,
+        principal,
+        rate,
+        times_compounded,
+        years,
+        nodes,
+        charges,
+        interactions,
+        image,
+        width,
+        height,
+        rule,
+    )

@@ -24,3 +24,12 @@ scars:
       Environment instability and bandwidth usage caused CI failures. Migrated to
       `unittest.mock` for systems testing module integration paths.
     cfdi_spike: "Mocking sys.modules directly resolves import failures before parser runs."
+  - id: SCAR-003
+    date: "2025-04-11"
+    component: "PluriversalFeatureDiscoveryAgent"
+    rejected_approach: "Linear resolution of overlapping codebase features."
+    reasoning: >
+      FAILED_NLI_CONTRADICTION during VW3 Dissonance Induction. Attempting to linearly merge
+      incompatible topological domains caused collapse into deterministic monolingualism.
+      Resolved via RCC-8 Topological Blending and Z-Axis routing (Phantom Dimensions).
+    cfdi_spike: "CFDI breached due to semantic ossification; mutated via F-IPI into Paraconsistent fusion logic."

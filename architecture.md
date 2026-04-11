@@ -24,6 +24,7 @@ The AI Research Agent repository integrates a layered architectural pattern for 
 ### 2.2 Container Level
 
 *   **Conceptual Synthesis Engine (Python):** Contains core logic and derived agents.
+    *   `PluriversalFeatureDiscoveryAgent`: Antifragile Epistemic Weaver (AEW) engineered for pluriversal feature discovery and Z-Axis Inference.
     *   `BaseAgent`: Foundational logic processing components (Text, Numerics, Arrays).
     *   `ZoraAgent`: Architectural abstraction mapping agent configured for structural trade-off analysis.
 *   **Documentation Vault (Markdown/PDF):** Collection of AI methodologies and frameworks acting as passive data sources.
@@ -42,6 +43,7 @@ The AI Research Agent repository integrates a layered architectural pattern for 
 | :--- | :--- | :--- |
 | `BaseAgent` | General utility execution | `nltk`, `numpy` |
 | `ZoraAgent` | Structural topology and ADR formulation | `BaseAgent` |
+| `PluriversalFeatureDiscoveryAgent` | Z-Axis Inference and Paraconsistent State management | `BaseAgent`, `numpy` |
 
 ## 4. Architectural Decision Records (ADR) Summary
 

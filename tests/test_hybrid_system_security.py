@@ -8,7 +8,7 @@ sys.modules['nltk'] = MagicMock()
 sys.modules['nltk.corpus'] = MagicMock()
 sys.modules['nltk.stem'] = MagicMock()
 sys.modules['nltk.tokenize'] = MagicMock()
-sys.modules['numpy'] = MagicMock()
+# sys.modules['numpy'] = MagicMock()
 
 # Import the function after mocking
 from src.conceptual_synthesis.hybrid_system import neoclassical_compounding

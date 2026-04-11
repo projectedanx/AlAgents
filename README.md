@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository is a curated collection of research papers and documents focused on Artificial Intelligence, as well as a Python-based agentic system that implements some of the concepts from these papers. The core `BaseAgent` provides foundational utilities, while specialized agents like the `ZoraAgent` handle architectural configuration and system topology mapping.
+This repository is a curated collection of research papers and documents focused on Artificial Intelligence, as well as a Python-based agentic system that implements some of the concepts from these papers. The core `BaseAgent` provides foundational utilities, while specialized agents like the `ZoraAgent` handle architectural configuration, and the `PluriversalFeatureDiscoveryAgent` drives antifragile topological discovery.
 
 ## Setup
 
@@ -64,6 +64,26 @@ zora = ZoraAgent()
 print(f"Agent: {zora.agent_name} - {zora.designation}")
 print(f"Goal: {zora.epistemic_matrix['G_GOAL_ORIENTATION']['primary']}")
 # Use ZoraAgent to construct Structural Decision Records and C4 context models.
+```
+
+
+### Pluriversal Feature Discovery (AEW-SCC)
+
+The `PluriversalFeatureDiscoveryAgent` operates under the Antifragile Logic Kernel (ALK) protocol, discovering paraconsistent codebase features via Z-Axis inference and VW3 dissonance induction.
+
+```python
+from src.conceptual_synthesis.pluriversal_agent import PluriversalFeatureDiscoveryAgent
+
+aew = PluriversalFeatureDiscoveryAgent()
+print(f"Agent: {aew.agent_name} - {aew.designation}")
+
+# Execute the ALK Protocol
+# Parameters: stress_pi (mechanical stress), architectural_bias (baseline bias)
+feature_map = aew.discover_feature(stress_pi=0.8, architectural_bias=0.2)
+
+print(f"Validation Status: {feature_map['status']}")
+print(f"Phantom Dimension Depth: {feature_map['phantom_dimension']}")
+print(f"Topological Novelty: {feature_map['novelty']}")
 ```
 
 ### Symbolic Charge Network

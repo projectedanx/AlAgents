@@ -28,7 +28,7 @@ class TestSymbolicChargeNetwork(unittest.TestCase):
         self.assertAlmostEqual(ortho_similarity, 0.0, places=5)
 
     def test_fusion_potential(self):
-        potential = self.scn.calculate_fusion_potential(self.p1, self.p2)
+        potential = self.scn._cosine_similarity(self.p1.embedding, self.p2.embedding)
         self.assertAlmostEqual(potential, 0.99388, places=5)
 
     def test_successful_fusion(self):

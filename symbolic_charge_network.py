@@ -58,20 +58,6 @@ class SymbolicChargeNetwork:
             return 0.0
         return dot_product / norm_product
 
-    def calculate_fusion_potential(self, particle1, particle2):
-        """
-        Calculates the fusion potential between two particles, here simplified
-        as their cosine similarity.
-
-        Args:
-            particle1 (NeuroSymbolicParticle): The first particle.
-            particle2 (NeuroSymbolicParticle): The second particle.
-
-        Returns:
-            float: The fusion potential (cosine similarity) between the two particles.
-        """
-        return self._cosine_similarity(particle1.embedding, particle2.embedding)
-
     def fuse(self, particle1, particle2, fusion_threshold=0.5):
         """
         Fuses two particles if their fusion potential is above a threshold,
@@ -85,7 +71,7 @@ class SymbolicChargeNetwork:
         Returns:
             NeuroSymbolicParticle | None: The fused particle if successful, otherwise None.
         """
-        potential = self.calculate_fusion_potential(particle1, particle2)
+        potential = self._cosine_similarity(particle1.embedding, particle2.embedding)
         if potential > fusion_threshold:
             # New embedding is the average of the two source embeddings
             new_embedding = (particle1.embedding + particle2.embedding) / 2

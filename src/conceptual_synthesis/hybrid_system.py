@@ -181,6 +181,20 @@ def hybrid_synthesis(
     """
     Integrates the outputs of the five individual functions to create a complex, layered result.
 
+    Args:
+        text (str): The input text to process.
+        principal (float): The initial investment amount.
+        rate (float): The annual interest rate.
+        times_compounded (int): The number of times interest is compounded per year.
+        years (int): The investment duration in years.
+        nodes (int): The number of nodes in the network.
+        charges (list[float]): The charges for each node.
+        interactions (np.ndarray): The adjacency matrix for node interactions.
+        image (np.ndarray): The input image array.
+        width (int): The width of the weaving pattern.
+        height (int): The height of the weaving pattern.
+        rule (int): The cellular automaton rule to apply.
+
     Returns:
         A dictionary containing the results of each of the five functions.
     """

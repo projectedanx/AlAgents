@@ -1,5 +1,11 @@
+import sys
+from unittest.mock import MagicMock
+# Mock out nltk so it doesn't fail on missing tabdata
+sys.modules['nltk.tabdata'] = MagicMock()
+
 import unittest
 import numpy as np
+import numpy.testing as npt
 from src.conceptual_synthesis.base_agent import BaseAgent
 
 class TestBaseAgent(unittest.TestCase):
@@ -41,8 +47,8 @@ class TestBaseAgent(unittest.TestCase):
         self.assertIsInstance(result, dict)
         self.assertEqual(result["processed_text"], ['test', 'sentenc'])
         self.assertAlmostEqual(result["future_value"], 1647.0094976902204)
-        np.testing.assert_array_equal(result["network_state"], np.array([2., 4., 2.]))
-        np.testing.assert_array_almost_equal(result["sepia_image"], np.array([[[192.45, 171.4 , 133.5 ]]]))
+        npt.assert_array_equal(result["network_state"], np.array([2., 4., 2.]))
+        npt.assert_array_almost_equal(result["sepia_image"], np.array([[[192.45, 171.4 , 133.5 ]]]))
         self.assertEqual(result["generated_pattern"].shape, (5, 5))
 
     def test_weaving_algorithm_bounds(self):

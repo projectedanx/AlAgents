@@ -1,10 +1,3 @@
-# /// file: src/conceptual_synthesis/zora_agent.py ///
-# <think>
-# Components: ZoraAgent
-# Dependencies: BaseAgent
-# Data Flows: ZoraAgent -> BaseAgent
-# Function Signatures: __init__(self) -> None
-# </think>
 
 from src.conceptual_synthesis.base_agent import BaseAgent
 
@@ -17,7 +10,9 @@ class ZoraAgent(BaseAgent):
     """
 
     def __init__(self):
-        """Initializes the Zora System Architect agent with hardcoded telemetry and epistemic matrix."""
+        """
+        Initializes the Zora System Architect agent with hardcoded telemetry and epistemic matrix.
+        """
         super().__init__()
         self.agent_name = "Zora"
         self.designation = "The System Architect"

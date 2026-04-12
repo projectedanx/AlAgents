@@ -22,6 +22,15 @@ class BaseAgent:
             nltk.data.find("tokenizers/punkt")
         except LookupError:
             nltk.download("punkt", quiet=True)
+        try:
+            nltk.data.find("tokenizers/punkt_tab")
+        except LookupError:
+            nltk.download("punkt_tab", quiet=True)
+
+        # Setup translation table, stopwords, and stemmer
+        self.table = str.maketrans("", "", string.punctuation)
+        self.stop_words = set(stopwords.words("english"))
+        self.porter = PorterStemmer()
 
     def _deterministic_context_engineering(self, text: str) -> list[str]:
         """
@@ -39,17 +48,12 @@ class BaseAgent:
         # Tokenize the text
         tokens = word_tokenize(text)
 
-        # Setup translation table, stopwords, and stemmer
-        table = str.maketrans("", "", string.punctuation)
-        stop_words = set(stopwords.words("english"))
-        porter = PorterStemmer()
-
         # Consolidate lowering, punctuation removal, filtering, and stemming
         # into a single list comprehension to avoid intermediate lists.
         stemmed = [
-            porter.stem(w_clean)
-            for w_clean in [w.lower().translate(table) for w in tokens]
-            if w_clean.isalpha() and w_clean not in stop_words
+            self.porter.stem(w_clean)
+            for w_clean in [w.lower().translate(self.table) for w in tokens]
+            if w_clean.isalpha() and w_clean not in self.stop_words
         ]
 
         return stemmed

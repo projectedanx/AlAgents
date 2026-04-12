@@ -151,7 +151,7 @@ class EpistemicCartographerAgent(BaseAgent):
             "fipi_patch": "Failure-Informed Prompt Inversion generated."
         }
         try:
-            with open("SymbolicScar.json", "a") as f:
+            with open("SymbolicScar.jsonl", "a") as f:
                 f.write(json.dumps(scar_entry) + "\n")
         except Exception:
             pass

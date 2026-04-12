@@ -13,6 +13,9 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 from conceptual_synthesis.hybrid_system import (
+    triangle_logic_core,
+    square_state_preservation,
+    hexagon_combinatory_synthesis,
     deterministic_context_engineering,
     neoclassical_compounding,
     symbolic_charge_network,
@@ -82,6 +85,32 @@ class TestHybridSystem(unittest.TestCase):
             weaving_algorithm(5, 5, -1)
         with self.assertRaises(ValueError):
             weaving_algorithm(5, 5, 256)
+
+
+    def test_triangle_logic_core(self):
+        self.assertTrue(triangle_logic_core([True, True, True]))
+        self.assertFalse(triangle_logic_core([True, False, True]))
+        self.assertFalse(triangle_logic_core([]))
+
+    def test_square_state_preservation(self):
+        state = np.array([10.0, 20.0])
+        update = np.array([30.0, 40.0])
+        expected = np.array([10.0 * 0.618 + 30.0 * (1.0 - 0.618), 20.0 * 0.618 + 40.0 * (1.0 - 0.618)])
+        npt.assert_array_almost_equal(square_state_preservation(state, update), expected)
+
+    def test_hexagon_combinatory_synthesis(self):
+        streams = [np.array([1.0, 2.0]), np.array([3.0, 4.0]), np.array([5.0, 6.0])]
+        result = hexagon_combinatory_synthesis(streams)
+
+        stacked_streams = np.stack(streams)
+        mean_stream = np.mean(stacked_streams, axis=0)
+        variance_penalty = np.var(stacked_streams, axis=0) * 0.1
+        expected = mean_stream - variance_penalty
+
+        npt.assert_array_almost_equal(result, expected)
+
+        with self.assertRaises(ValueError):
+            hexagon_combinatory_synthesis([])
 
 if __name__ == "__main__":
     unittest.main()

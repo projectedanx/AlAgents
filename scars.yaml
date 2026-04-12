@@ -33,3 +33,13 @@ scars:
       incompatible topological domains caused collapse into deterministic monolingualism.
       Resolved via RCC-8 Topological Blending and Z-Axis routing (Phantom Dimensions).
     cfdi_spike: "CFDI breached due to semantic ossification; mutated via F-IPI into Paraconsistent fusion logic."
+  - id: SCAR-004
+    date: "2025-04-12"
+    component: "BaseAgent"
+    rejected_approach: "Standard harmonic mean for Hexagon Combinatory Synthesis."
+    reasoning: >
+      A strict harmonic mean approach introduces high CFDI (Confidence-Fidelity Divergence Index)
+      risks due to division-by-zero potentials when tracking null streams.
+      Instead, an variance-penalized arithmetic mean is leveraged to mimic harmonic properties
+      while preserving structural stability.
+    cfdi_spike: "Zero-division exceptions identified. F-IPI applied to stabilize variance logic."

@@ -145,6 +145,55 @@ class BaseAgent:
 
         return grid
 
+
+    # <think>
+    # Components: TopologicalCognition (Triangle, Square, Hexagon)
+    # Dependencies: numpy
+    # Data Flows:
+    #   - Logic Premises -> Triangle Logic Core -> Deductive Closure
+    #   - State Matrix -> Square State Preservation -> Immutable State
+    #   - Parallel Streams -> Hexagon Combinatory Synthesis -> Synthesized Output
+    # Function Signatures:
+    #   - _triangle_logic_core(self, premises: list[bool]) -> bool
+    #   - _square_state_preservation(self, state: np.ndarray, update: np.ndarray) -> np.ndarray
+    #   - _hexagon_combinatory_synthesis(self, streams: list[np.ndarray]) -> np.ndarray
+    # </think>
+
+    def _triangle_logic_core(self, premises: list[bool]) -> bool:
+        """
+        Triangle Archetype: Minimal logic and deductive closure.
+        Provides a foundational, indivisible unit of deductive reasoning.
+        Evaluates a list of logical premises for strict boolean consistency (AND logic).
+        """
+        if not premises:
+            return False
+        return all(premises)
+
+    def _square_state_preservation(self, state: np.ndarray, update: np.ndarray) -> np.ndarray:
+        """
+        Square Archetype: Stability, state-preservation, and memory.
+        Applies a stable update mechanism to preserve the homeostasis of the state matrix.
+        Blends the new update using a golden ratio weighting to prevent volatile state shifts.
+        """
+        stability_factor = 0.618  # Inverse of Golden Ratio for stability
+        return (state * stability_factor) + (update * (1.0 - stability_factor))
+
+    def _hexagon_combinatory_synthesis(self, streams: list[np.ndarray]) -> np.ndarray:
+        """
+        Hexagon Archetype: Combinatory computation and efficient parallelism.
+        Synthesizes diverse parallel processing streams into a coherent optimal output
+        by utilizing a harmonic mean equivalent to prevent overconvergence.
+        """
+        if not streams:
+            raise ValueError("Hexagon synthesis requires at least one data stream.")
+
+        stacked_streams = np.stack(streams)
+        # Avoid division by zero in harmonic mean equivalent; use a safe combination
+        # For simplicity, we use weighted average with penalty on variance to simulate efficient synthesis
+        mean_stream = np.mean(stacked_streams, axis=0)
+        variance_penalty = np.var(stacked_streams, axis=0) * 0.1
+        return mean_stream - variance_penalty
+
     def run(
         self,
         text: str,

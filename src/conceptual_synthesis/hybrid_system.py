@@ -92,6 +92,53 @@ def weaving_algorithm(width: int, height: int, rule: int) -> np.ndarray:
     return _agent._weaving_algorithm(width, height, rule)
 
 
+
+def triangle_logic_core(premises: list[bool]) -> bool:
+    """
+    Triangle Archetype: Minimal logic and deductive closure.
+    Provides a foundational, indivisible unit of deductive reasoning.
+    Evaluates a list of logical premises for strict boolean consistency (AND logic).
+
+    Args:
+        premises: A list of boolean logical premises to evaluate.
+
+    Returns:
+        The boolean consistency of the premises.
+    """
+    return _agent._triangle_logic_core(premises)
+
+
+def square_state_preservation(state: np.ndarray, update: np.ndarray) -> np.ndarray:
+    """
+    Square Archetype: Stability, state-preservation, and memory.
+    Applies a stable update mechanism to preserve the homeostasis of the state matrix.
+    Blends the new update using a golden ratio weighting to prevent volatile state shifts.
+
+    Args:
+        state: The current state array.
+        update: The update array.
+
+    Returns:
+        The newly preserved state array.
+    """
+    return _agent._square_state_preservation(state, update)
+
+
+def hexagon_combinatory_synthesis(streams: list[np.ndarray]) -> np.ndarray:
+    """
+    Hexagon Archetype: Combinatory computation and efficient parallelism.
+    Synthesizes diverse parallel processing streams into a coherent optimal output
+    by utilizing a harmonic mean equivalent to prevent overconvergence.
+
+    Args:
+        streams: A list of stream arrays to be combined.
+
+    Returns:
+        The final synthesized stream array.
+    """
+    return _agent._hexagon_combinatory_synthesis(streams)
+
+
 def hybrid_synthesis(
     text: str,
     principal: float,

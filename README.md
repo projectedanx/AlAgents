@@ -1,113 +1,73 @@
 # AI Research Agent Repository
 
 ## Purpose
-
-This repository is a curated collection of research papers and documents focused on Artificial Intelligence, as well as a Python-based agentic system that implements some of the concepts from these papers. The core `BaseAgent` provides foundational utilities, while specialized agents like the `ZoraAgent` handle architectural configuration, and the `PluriversalFeatureDiscoveryAgent` drives antifragile topological discovery.
+This repository serves as a unified system orchestrating deterministic reasoning, paraconsistent topological features, and collaborative epistemic ontology via Pluriversal AI Agents. It bridges abstract philosophical constructs and geometric cognitive frameworks from the embedded `Docs/Research/` documents to executable, verified Python logic.
 
 ## Setup
+### 1. Requirements
+Ensure your machine runs Python 3.12+.
 
-To bootstrap the environment:
-
+### 2. Initialization Script
+The fastest method to scaffold the architecture:
 ```bash
 ./setup.sh
 ```
 
-Alternatively, manually setup the environment:
-
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/source-_-repo/ai-research-agent.git
-    ```
-2.  Navigate to the project directory:
-    ```bash
-    cd ai-research-agent
-    ```
-3.  Install the required libraries:
-    ```bash
-    pip install -r requirements.txt
-    python -c "import nltk; nltk.download('all')"
-    ```
+### 3. Manual Installation
+Alternatively, manually synthesize the environment:
+```bash
+git clone https://github.com/source-_-repo/ai-research-agent.git
+cd ai-research-agent
+pip install -r requirements.txt
+python -c "import nltk; nltk.download('all')"
+```
+**Important Note:** The test suite specifically requires `numpy<2.0` to correctly resolve `numpy.testing` dependencies.
 
 ## Usage
 
-### Core Capabilities (BaseAgent)
-
-The `BaseAgent` class in `src/conceptual_synthesis/base_agent.py` provides a simple interface to the agent's foundational functionalities.
-
+### 1. Hybrid Synthesis System
+The `hybrid_system.py` module acts as a facade exposing the core functional logic derived from `BaseAgent`. This includes new topological capabilities:
 ```python
 import numpy as np
-from src.conceptual_synthesis.base_agent import BaseAgent
+from src.conceptual_synthesis.hybrid_system import triangle_logic_core, square_state_preservation, hexagon_combinatory_synthesis
 
-# Initialize the agent
-agent = BaseAgent()
+# Triangle (Deductive Closure)
+logic_result = triangle_logic_core([True, True])
 
-# Sample execution
-result = agent.run(
-    text="This is a test sentence.",
-    principal=1000, rate=0.05, times_compounded=12, years=10,
-    nodes=3, charges=[1.0, 2.0, 3.0], interactions=np.array([[0, 1, 0], [1, 0, 1], [0, 1, 0]]),
-    image=np.random.randint(0, 256, size=(100, 100, 3)),
-    width=10, height=10, rule=30,
-)
-print(result)
+# Square (State Preservation)
+preserved_state = square_state_preservation(state=np.array([10.0]), update=np.array([20.0]))
+
+# Hexagon (Combinatory Synthesis)
+synthesized = hexagon_combinatory_synthesis([np.array([1.0]), np.array([2.0])])
 ```
 
-### Architectural Mapping (ZoraAgent)
-
-The `ZoraAgent` (The System Architect) is used to define boundaries, services, and data flow before implementing code. It holds the telemetry and epistemic matrix for generating NFR-compliant system topologies.
-
-```python
-from src.conceptual_synthesis.zora_agent import ZoraAgent
-
-zora = ZoraAgent()
-
-print(f"Agent: {zora.agent_name} - {zora.designation}")
-print(f"Goal: {zora.epistemic_matrix['G_GOAL_ORIENTATION']['primary']}")
-# Use ZoraAgent to construct Structural Decision Records and C4 context models.
-```
-
-
-### Pluriversal Feature Discovery (AEW-SCC)
-
-The `PluriversalFeatureDiscoveryAgent` operates under the Antifragile Logic Kernel (ALK) protocol, discovering paraconsistent codebase features via Z-Axis inference and VW3 dissonance induction.
-
+### 2. Antifragile Epistemic Weaver (AEW)
+The `PluriversalFeatureDiscoveryAgent` initiates paraconsistent code mappings via Z-Axis logic and phantom dimensions.
 ```python
 from src.conceptual_synthesis.pluriversal_agent import PluriversalFeatureDiscoveryAgent
-
 aew = PluriversalFeatureDiscoveryAgent()
-print(f"Agent: {aew.agent_name} - {aew.designation}")
-
-# Execute the ALK Protocol
-# Parameters: stress_pi (mechanical stress), architectural_bias (baseline bias)
-feature_map = aew.discover_feature(stress_pi=0.8, architectural_bias=0.2)
-
-print(f"Validation Status: {feature_map['status']}")
-print(f"Phantom Dimension Depth: {feature_map['phantom_dimension']}")
-print(f"Topological Novelty: {feature_map['novelty']}")
+feature = aew.discover_feature(stress_pi=0.8, architectural_bias=0.2)
 ```
 
-### Symbolic Charge Network
-
-The `SymbolicChargeNetwork` in `symbolic_charge_network.py` manages a collection of `NeuroSymbolicParticle` objects and their interactions, simulating a network of nodes with symbolic "charges".
-
+### 3. Epistemic Cartographer
+Ensures pluralistic collaboration, mapping the Computational Shared Mental Model (SMM) and trapping logical trauma in Justified Uncertainty Reports (JUR).
 ```python
-from symbolic_charge_network import SymbolicChargeNetwork, NeuroSymbolicParticle
-
-scn = SymbolicChargeNetwork()
-p1 = NeuroSymbolicParticle(embedding=[1, 0], charge=1.0)
-p2 = NeuroSymbolicParticle(embedding=[0.9, 0.1], charge=-1.0)
-
-scn.add_particle(p1)
-scn.add_particle(p2)
-
-fused_particle = scn.fuse(p1, p2, fusion_threshold=0.9)
-if fused_particle:
-    print(f"Fusion successful: {fused_particle}")
+from src.conceptual_synthesis.epistemic_cartographer import EpistemicCartographerAgent
+cartographer = EpistemicCartographerAgent()
+# ... build CxB bundle ...
+dasl_output = cartographer.execute_petzold_loop(cxb)
 ```
 
-## How to Use This Repository
+### 4. Zora Architecture
+The `ZoraAgent` maintains Structural Decision Records (SDRs).
+```python
+from src.conceptual_synthesis.zora_agent import ZoraAgent
+zora = ZoraAgent()
+```
 
-All research papers are located in the `Docs/Research/` directory. You can browse the directory to find papers on various topics related to AI. Check `architecture.md` and `scars.yaml` for system blueprints and architectural decision logs.
+## Developer Notes
+All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
+See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging.
 
 ## Contributing
 
@@ -117,30 +77,3 @@ If you would like to contribute to this repository, please follow these guidelin
 2.  Add your research paper to the `Docs/Research/` directory.
 3.  Update the README.md to reflect your changes, if necessary.
 4.  Submit a pull request.
-
-### Epistemic Cartographer & Collaborative Ontology Weaver
-
-The `EpistemicCartographerAgent` maintains semantic plurality within collaborative spaces. It utilizes the Anti-Ossification Petzold Loop to map and evaluate divergent abstractions.
-
-```python
-from src.conceptual_synthesis.epistemic_cartographer import EpistemicCartographerAgent
-
-cartographer = EpistemicCartographerAgent()
-
-# Create a Context Bundle with simulated Epistemic Friction
-cxb = {
-    "vpt_verified": True,
-    "consensus_metric": 0.8,
-    "contradiction_present": True
-}
-
-# Process the context through the Petzold Loop
-dasl_output = cartographer.execute_petzold_loop(cxb)
-
-if dasl_output.get("status") == "SYNTHESIZED":
-    print(f"Synthesis Successful: {dasl_output['dasl_id']}")
-    print(f"Log: {dasl_output['spz_log']}")
-else:
-    print(f"Synthesis Halted: {dasl_output['state']}")
-    print(f"Reason: {dasl_output['jur']}")
-```

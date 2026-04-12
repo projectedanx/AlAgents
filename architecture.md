@@ -37,6 +37,12 @@ The AI Research Agent repository integrates a layered architectural pattern for 
 *   **Image Filter:** `algorithmic_photography`.
 *   **Pattern Generator:** `weaving_algorithm`.
 
+### 2.5 Topological Cognition
+The system utilizes geometric topologies encoded as functional agents based on the 'Topological Cognition: Encoding Polygonal Structures as Functional Agents in Modular AI Architectures and Recursive Intelligence Ecosystems' research.
+*   `Triangle`: Evaluates logical premises for strict boolean consistency acting as an indivisible logic core.
+*   `Square`: Enforces stable data state preservation through a weighted update mechanism.
+*   `Hexagon`: Synthesizes diverse parallel processing streams into a coherent optimal output by minimizing variance.
+
 ## 3. Integration Matrix
 
 | Component | Responsibility | Base Dependency |

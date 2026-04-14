@@ -6,3 +6,5 @@
 {"id": "SCAR-1775959237", "date": "2026-04-12", "component": "Synthesizer", "rejected_approach": "Silent Failure: Auto-correction attempted.", "cfdi_spike": "CFDI Spike: 0.6000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}
 {"id": "SCAR-1775959460", "date": "2026-04-12", "component": "PetzoldLoop", "rejected_approach": "High BAI detected.", "cfdi_spike": "CFDI Spike: 0.8000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}
 {"id": "SCAR-1775959460", "date": "2026-04-12", "component": "Synthesizer", "rejected_approach": "Silent Failure: Auto-correction attempted.", "cfdi_spike": "CFDI Spike: 0.6000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}
+{"id": "SCAR-1776152335", "date": "2026-04-14", "component": "PetzoldLoop", "rejected_approach": "High BAI detected.", "cfdi_spike": "CFDI Spike: 0.8000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}
+{"id": "SCAR-1776152335", "date": "2026-04-14", "component": "Synthesizer", "rejected_approach": "Silent Failure: Auto-correction attempted.", "cfdi_spike": "CFDI Spike: 0.6000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}

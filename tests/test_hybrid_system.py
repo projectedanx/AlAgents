@@ -48,6 +48,8 @@ class TestHybridSystem(unittest.TestCase):
         )
         with self.assertRaises(ValueError):
             symbolic_charge_network(3, charges, interactions)
+        with self.assertRaises(ValueError):
+            symbolic_charge_network(2, charges, np.array([[0, 1, 0], [1, 0, 0]]))
 
     def test_algorithmic_photography(self):
         image = np.array([[[100, 150, 200]]])

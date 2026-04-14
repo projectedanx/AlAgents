@@ -51,6 +51,18 @@ class TestBaseAgent(unittest.TestCase):
         npt.assert_array_almost_equal(result["sepia_image"], np.array([[[192.45, 171.4 , 133.5 ]]]))
         self.assertEqual(result["generated_pattern"].shape, (5, 5))
 
+    def test_symbolic_charge_network(self):
+        charges = [1, 2]
+        interactions = np.array([[0, 1], [1, 0]])
+        expected = np.array([2, 1])
+        npt.assert_array_equal(
+            self.agent._symbolic_charge_network(2, charges, interactions), expected
+        )
+        with self.assertRaises(ValueError):
+            self.agent._symbolic_charge_network(3, charges, interactions)
+        with self.assertRaises(ValueError):
+            self.agent._symbolic_charge_network(2, charges, np.array([[0, 1, 0], [1, 0, 0]]))
+
     def test_weaving_algorithm_bounds(self):
         with self.assertRaises(ValueError):
             self.agent._weaving_algorithm(5, 5, -1)

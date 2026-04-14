@@ -1,0 +1,5 @@
+🎯 **What:** The `symbolic_charge_network` function in `src/conceptual_synthesis/hybrid_system.py` explicitly raises a `ValueError` when the `interactions` adjacency matrix shape does not match `(nodes, nodes)`. This error path was not tested.
+
+📊 **Coverage:** The testing gap has been addressed. The test `test_symbolic_charge_network` (in both `tests/test_hybrid_system.py` and `tests/test_base_agent.py`) now asserts that `ValueError` is raised when the `interactions` array dimension isn't `(nodes, nodes)` by providing an asymmetric interactions array.
+
+✨ **Result:** Enhanced the reliability and error-handling test coverage for the network topology validation in the `symbolic_charge_network` method.

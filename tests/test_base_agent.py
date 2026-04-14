@@ -12,6 +12,10 @@ class TestBaseAgent(unittest.TestCase):
     def setUp(self):
         self.agent = BaseAgent()
 
+
+    def test_deterministic_context_engineering_empty_string(self):
+        self.assertEqual(self.agent._deterministic_context_engineering(""), [])
+
     def test_run(self):
         # Sample inputs
         text = "This is a test sentence."

@@ -1,3 +1,4 @@
+# /// file: test_symbolic_charge_network.py ///
 import unittest
 import numpy as np
 from symbolic_charge_network import NeuroSymbolicParticle, SymbolicChargeNetwork
@@ -52,6 +53,10 @@ class TestSymbolicChargeNetwork(unittest.TestCase):
         initial_potential = self.p1.activation_potential
         self.scn.inhibit(self.p1, inhibition_factor=2.0)
         self.assertEqual(self.p1.activation_potential, initial_potential * 2.0)
+
+    def test_particle_repr(self):
+        expected_repr = "NeuroSymbolicParticle(embedding=[1. 0.], charge=1.0, activation_potential=1.0)"
+        self.assertEqual(repr(self.p1), expected_repr)
 
 if __name__ == '__main__':
     unittest.main()

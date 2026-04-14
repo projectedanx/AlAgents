@@ -26,6 +26,10 @@ from conceptual_synthesis.hybrid_system import (
 
 class TestHybridSystem(unittest.TestCase):
 
+
+    def test_deterministic_context_engineering_empty_string(self):
+        self.assertEqual(deterministic_context_engineering(""), [])
+
     def test_deterministic_context_engineering(self):
         text = "This is a test sentence for the context engineering function."
         expected = ['test', 'sentenc', 'context', 'engin', 'function']

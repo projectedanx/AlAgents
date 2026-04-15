@@ -28,6 +28,13 @@ class TestSymbolicChargeNetwork(unittest.TestCase):
         ortho_similarity = self.scn._cosine_similarity(self.p1.embedding, self.p3.embedding)
         self.assertAlmostEqual(ortho_similarity, 0.0, places=5)
 
+    def test_cosine_similarity_zero_vector(self):
+        zero_sim = self.scn._cosine_similarity(np.array([0.0, 0.0]), np.array([1.0, 1.0]))
+        self.assertEqual(zero_sim, 0.0)
+
+        zero_sim_both = self.scn._cosine_similarity(np.array([0.0, 0.0]), np.array([0.0, 0.0]))
+        self.assertEqual(zero_sim_both, 0.0)
+
     def test_fusion_potential(self):
         potential = self.scn._cosine_similarity(self.p1.embedding, self.p2.embedding)
         self.assertAlmostEqual(potential, 0.99388, places=5)

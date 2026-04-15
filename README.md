@@ -65,6 +65,13 @@ from src.conceptual_synthesis.zora_agent import ZoraAgent
 zora = ZoraAgent()
 ```
 
+### 5. Vulcan Architecture
+The `VulcanAgent` acts as a high-viscosity topological router, specializing in Strict Domain-Driven Design (DDD), Event-Driven Architectures, C4 Modeling, and Trade-off / Risk Surface Analysis.
+```python
+from src.conceptual_synthesis.vulcan_agent import VulcanAgent
+vulcan = VulcanAgent()
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging.

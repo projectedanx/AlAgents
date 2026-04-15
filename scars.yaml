@@ -43,3 +43,12 @@ scars:
       Instead, an variance-penalized arithmetic mean is leveraged to mimic harmonic properties
       while preserving structural stability.
     cfdi_spike: "Zero-division exceptions identified. F-IPI applied to stabilize variance logic."
+  - id: SCAR-005
+    date: "2025-04-15"
+    component: "VulcanAgent"
+    rejected_approach: "Implement VulcanAgent as a standalone parser/generator rather than inheriting from BaseAgent."
+    reasoning: >
+      Like ZoraAgent, composition or standalone implementation broke telemetry tracking and isolated
+      the agent from foundational data processing pipelines inherited through the BaseAgent. It required
+      direct inheritance for the agent to correctly map boundaries using shared foundational tools.
+    cfdi_spike: "MRO telemetry breach when using composition. Aligned with SCAR-001 solution."

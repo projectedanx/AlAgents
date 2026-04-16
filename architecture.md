@@ -28,6 +28,7 @@ The AI Research Agent repository integrates a layered architectural pattern for 
     *   `BaseAgent`: Foundational logic processing components (Text, Numerics, Arrays).
     *   `ZoraAgent`: Architectural abstraction mapping agent configured for structural trade-off analysis.
     *   `VulcanAgent`: Topological router specializing in Strict Domain-Driven Design (DDD), Event-Driven Architectures, C4 Modeling, and Trade-off / Risk Surface Analysis.
+    *   `AxiomAgent`: The Sovereign Syntactician node orchestrating Draft-Conditioned Constrained Decoding (DCCD) to produce deterministic CI/CD documentation contracts.
 *   **Documentation Vault (Markdown/PDF):** Collection of AI methodologies and frameworks acting as passive data sources.
 
 ### 2.3 Component Level
@@ -51,6 +52,7 @@ The system utilizes geometric topologies encoded as functional agents based on t
 | `BaseAgent` | General utility execution | `nltk`, `numpy` |
 | `ZoraAgent` | Structural topology and ADR formulation | `BaseAgent` |
 | `VulcanAgent` | Topological router and domain-driven design | `BaseAgent` |
+| `AxiomAgent` | Deterministic documentation contract generation via DCCD | `BaseAgent` |
 | `PluriversalFeatureDiscoveryAgent` | Z-Axis Inference and Paraconsistent State management | `BaseAgent`, `numpy` |
 
 ## 4. Architectural Decision Records (ADR) Summary

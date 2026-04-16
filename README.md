@@ -72,6 +72,20 @@ from src.conceptual_synthesis.vulcan_agent import VulcanAgent
 vulcan = VulcanAgent()
 ```
 
+
+### 6. Axiom Architecture
+The `AxiomAgent` acts as the Sovereign Syntactician, generating deterministic CI/CD documentation contracts via Draft-Conditioned Constrained Decoding (DCCD).
+```python
+from src.conceptual_synthesis.axiom_agent import AxiomAgent
+axiom = AxiomAgent()
+cxb = {
+    "artifact_type": "ARTIFACT_A_OPENAPI_BLUEPRINT",
+    "cfdi": 0.1,
+    "raw_data": {"ssi": 0.02}
+}
+artifact = axiom.execute_petzold_loop(cxb)
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging.

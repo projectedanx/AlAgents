@@ -86,6 +86,22 @@ cxb = {
 artifact = axiom.execute_petzold_loop(cxb)
 ```
 
+
+### 7. Kut Architecture
+The `KutAgent` acts as The Retention Architect, enforcing algorithmic media thermodynamics and post-production constraints via the Anionic Architecture protocol.
+```python
+from src.conceptual_synthesis.kut_agent import KutAgent
+kut = KutAgent()
+
+# Evaluate sonic compliance
+result = kut.phase_4_sonic_sculpting(
+    creator_id="uuid-1234",
+    lufs_integrated=-14.2,
+    true_peak=-1.5
+)
+print(result["status"]) # PASS
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging.

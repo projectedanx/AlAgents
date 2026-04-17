@@ -52,3 +52,18 @@ scars:
       the agent from foundational data processing pipelines inherited through the BaseAgent. It required
       direct inheritance for the agent to correctly map boundaries using shared foundational tools.
     cfdi_spike: "MRO telemetry breach when using composition. Aligned with SCAR-001 solution."
+
+# Added for LexisSovereignAgent evaluation
+- id: S-008
+  agent: LexisSovereignAgent
+  category: CFDI_Spike
+  description: "Confidence-Fidelity Divergence Index spiked > 0.15 during REVIEW phase, indicating Semantic Saponification."
+  mitigation_strategy: "Increase ContextLock refresh frequency to re-anchor Voice Calibration Matrix."
+  cfdi_trigger: 0.16
+
+- id: S-009
+  agent: LexisSovereignAgent
+  category: Autonymic_Bypass_Failure
+  description: "Forbidden jargon (e.g., 'synergy', 'robust') bypassed logit penalty and appeared in finalized manuscript."
+  mitigation_strategy: "Hard logit bias re-calibration to -100 for offending terms and append failure to SymbolicScar.jsonl."
+  cfdi_trigger: null

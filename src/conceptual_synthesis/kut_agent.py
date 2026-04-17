@@ -87,6 +87,7 @@ class KutAgent(BaseAgent):
 
         # Ephemeral in-memory representation of the Scar Ledger. In a true distributed system, this binds to a persistent datastore.
         self.scar_ledger = []
+        self._scar_counts = {}
         self.creator_profiles = {}
 
     def _ingest_scar(self, creator_id: str, error_classification: str, error_detail: str, correction_prescribed: str) -> str:
@@ -108,14 +109,16 @@ class KutAgent(BaseAgent):
             "escalation_level": f"{escalation_level}_prescriptive" if escalation_level == 1 else (f"{escalation_level}_scar_linked" if escalation_level == 2 else "3_dominant_failure_mode")
         }
         self.scar_ledger.append(scar_entry)
+        key = (creator_id, error_classification)
+        self._scar_counts[key] = self._scar_counts.get(key, 0) + 1
         return scar_entry["scar_id"]
 
     def _evaluate_escalation(self, creator_id: str, error_classification: str) -> int:
         """
         Evaluates the recurrence of an error type for a specific creator to determine escalation level.
         """
-        recurrences = sum(1 for scar in self.scar_ledger if scar["creator_id"] == creator_id and scar["error_classification"] == error_classification)
-        return recurrences + 1
+        key = (creator_id, error_classification)
+        return self._scar_counts.get(key, 0) + 1
 
     def phase_1_audio_skeleton(self, creator_id: str, dead_air_gaps: list[float], hook_type: str) -> dict:
         """

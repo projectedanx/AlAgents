@@ -30,6 +30,7 @@ The AI Research Agent repository integrates a layered architectural pattern for 
     *   `VulcanAgent`: Topological router specializing in Strict Domain-Driven Design (DDD), Event-Driven Architectures, C4 Modeling, and Trade-off / Risk Surface Analysis.
     *   `AxiomAgent`: The Sovereign Syntactician node orchestrating Draft-Conditioned Constrained Decoding (DCCD) to produce deterministic CI/CD documentation contracts.
     *   `KutAgent`: The Retention Architect enforcing algorithmic media thermodynamics and post-production constraints via the Anionic Architecture protocol.
+    *   `LexisSovereignAgent`: The Auteur Co-Author executing strict THINK -> WRITE -> REVIEW Petzold sequences for deterministic, voice-invariant long-form manuscript generation.
 *   **Documentation Vault (Markdown/PDF):** Collection of AI methodologies and frameworks acting as passive data sources.
 
 ### 2.3 Component Level
@@ -55,6 +56,7 @@ The system utilizes geometric topologies encoded as functional agents based on t
 | `VulcanAgent` | Topological router and domain-driven design | `BaseAgent` |
 | `AxiomAgent` | Deterministic documentation contract generation via DCCD | `BaseAgent` |
 | `KutAgent` | Algorithmic media retention optimization and Scar Ledger management | `BaseAgent` |
+| `LexisSovereignAgent` | Deterministic manuscript generation protecting voice invariants | `BaseAgent` |
 | `PluriversalFeatureDiscoveryAgent` | Z-Axis Inference and Paraconsistent State management | `BaseAgent`, `numpy` |
 
 ## 4. Architectural Decision Records (ADR) Summary
@@ -66,7 +68,7 @@ The system utilizes geometric topologies encoded as functional agents based on t
 
 The `EpistemicCartographerAgent` (APP-PLURIVERSAL-ENVIRONMENT-ARCHITECT-v1.0) is a critical subsystem enforcing the Ontological Dignity of synthesized data. It prevents epistemological monopolization using the Anti-Ossification Petzold Loop (THINK -> SCAFFOLD -> VERIFY -> SYNTHESIZE) and halts executions exhibiting Semantic Drift via Epistemic Escrow triggers.
 
-*   **ADR 3: Anionic Constraint Enforcement.** `KutAgent` utilizes an Anionic Architecture (G- Anti-Goals) where constraints activate on pattern-matching forbidden behavior rather than the absence of prescribed behavior.
+*   **ADR 3: Anionic Constraint Enforcement.** `KutAgent` and `LexisSovereignAgent` utilize Anionic Architectures (G- Anti-Goals) where constraints activate on pattern-matching forbidden behavior rather than the absence of prescribed behavior.
 
 ### 2.6 KutAgent (The Retention Architect) Topology
 
@@ -98,4 +100,20 @@ Bounded Contexts:
     Responsibilities: LUFS Integration, True Peak limiting.
   - Context: Memory Ledger
     Responsibilities: Scar ingestion, Escalation logic evaluation.
+```
+
+### 2.7 Lexis Sovereign Topology
+
+#### DDD Context Map
+```yaml
+Domain: Auteur Book Co-Author Orchestration
+Bounded Contexts:
+  - Context: Identity Fabrication
+    Responsibilities: Extracting Epistemic Matrix and Voice Calibration.
+  - Context: Manifold Beta (THINK)
+    Responsibilities: Structural outlining, Dependency Graphs.
+  - Context: Manifold Alpha (WRITE)
+    Responsibilities: Draft-Conditioned Constrained Decoding (DCCD) execution.
+  - Context: Full Manifold Audit (REVIEW)
+    Responsibilities: Voice Match Score, CFDI spikes tracking, Symbolic Scar minting.
 ```

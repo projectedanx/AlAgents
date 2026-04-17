@@ -1,7 +1,7 @@
 # AI Research Agent Repository
 
 ## Purpose
-This repository serves as a unified system orchestrating deterministic reasoning, paraconsistent topological features, and collaborative epistemic ontology via Pluriversal AI Agents. It bridges abstract philosophical constructs and geometric cognitive frameworks from the embedded `Docs/Research/` documents to executable, verified Python logic.
+This repository serves as a unified system orchestrating deterministic reasoning, paraconsistent topological features, and collaborative epistemic ontology via Pluriversal AI Agents. It bridges abstract philosophical constructs and geometric cognitive frameworks from the embedded `Docs/Research/` documents to executable, verified Python logic. It serves as a complete guide for developers to understand the project's purpose, setup environment, and utilize the autonomous agent pipelines.
 
 ## Setup
 ### 1. Requirements
@@ -72,7 +72,6 @@ from src.conceptual_synthesis.vulcan_agent import VulcanAgent
 vulcan = VulcanAgent()
 ```
 
-
 ### 6. Axiom Architecture
 The `AxiomAgent` acts as the Sovereign Syntactician, generating deterministic CI/CD documentation contracts via Draft-Conditioned Constrained Decoding (DCCD).
 ```python
@@ -85,7 +84,6 @@ cxb = {
 }
 artifact = axiom.execute_petzold_loop(cxb)
 ```
-
 
 ### 7. Kut Architecture
 The `KutAgent` acts as The Retention Architect, enforcing algorithmic media thermodynamics and post-production constraints via the Anionic Architecture protocol.
@@ -102,9 +100,24 @@ result = kut.phase_4_sonic_sculpting(
 print(result["status"]) # PASS
 ```
 
+### 8. Lexis Sovereign Architecture
+The `LexisSovereignAgent` acts as The Auteur Co-Author, a deterministic ghostwriting agent that enforces semantic voice across long-form generations using a strict THINK -> WRITE -> REVIEW loop to fight semantic saponification.
+```python
+from src.conceptual_synthesis.lexis_sovereign_agent import LexisSovereignAgent
+lexis = LexisSovereignAgent()
+
+context = {
+    "chapter_id": "CH01",
+    "raw_input": "Insightful commentary on systems design and architecture."
+}
+result = lexis.execute_petzold_loop(context)
+print(result["status"]) # COMPLETE
+print(result["final_draft"])
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
-See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging.
+See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging. All public methods and classes maintain complete docstrings. The `__pycache__` artifacts are excluded via `.gitignore`.
 
 ## Contributing
 

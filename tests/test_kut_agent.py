@@ -71,5 +71,56 @@ class TestKutAgent(unittest.TestCase):
         result_fail_peak = self.agent.phase_4_sonic_sculpting(self.creator_id, -14.0, 0.0)
         self.assertEqual(result_fail_peak["status"], "FAIL")
 
+
+    def test_phase_5_export_audit(self):
+        # Mock _ingest_scar to verify its calls
+        original_ingest = self.agent._ingest_scar
+        self.agent._ingest_scar = MagicMock(return_value="SCAR-TEST-123")
+
+        # Pass condition
+        checklist_pass = {
+            "aspect_ratio_9_16": True,
+            "codec_h264_or_h265": True,
+            "color_space_rec709": True,
+            "first_3s_interrupt": True
+        }
+        result_pass = self.agent.phase_5_export_audit(self.creator_id, checklist_pass)
+        self.assertEqual(result_pass["status"], "PASS")
+
+        # Fail condition - Multiple missing keys (Export_Artifact)
+        checklist_fail_general = {
+            "first_3s_interrupt": True
+        }
+        result_fail_general = self.agent.phase_5_export_audit(self.creator_id, checklist_fail_general)
+        self.assertEqual(result_fail_general["status"], "FAIL")
+        self.agent._ingest_scar.assert_called_with(
+            self.creator_id,
+            "Export_Artifact",
+            "Export audit failed: Aspect Ratio must be 9:16, Codec must be H.264 or H.265, Color space must be Rec.709.",
+            "Correct export parameters and re-audit."
+        )
+        self.assertEqual(len(result_fail_general["failures"]), 3)
+        self.assertIn("Aspect Ratio must be 9:16", result_fail_general["failures"])
+
+        # Fail condition - Hook_Latency priority
+        checklist_fail_hook = {
+            "aspect_ratio_9_16": True,
+            "codec_h264_or_h265": True,
+            "color_space_rec709": True,
+            "first_3s_interrupt": False
+        }
+        result_fail_hook = self.agent.phase_5_export_audit(self.creator_id, checklist_fail_hook)
+        self.assertEqual(result_fail_hook["status"], "FAIL")
+        self.agent._ingest_scar.assert_called_with(
+            self.creator_id,
+            "Hook_Latency",
+            "Export audit failed: Hook pattern interrupt missing in first 1.5s.",
+            "Correct export parameters and re-audit."
+        )
+        self.assertIn("scar_id", result_fail_hook)
+
+        # Restore original function
+        self.agent._ingest_scar = original_ingest
+
 if __name__ == "__main__":
     unittest.main()

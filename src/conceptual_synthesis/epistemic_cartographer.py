@@ -153,8 +153,9 @@ class EpistemicCartographerAgent(BaseAgent):
         try:
             with open("SymbolicScar.jsonl", "a") as f:
                 f.write(json.dumps(scar_entry) + "\n")
-        except Exception:
-            pass
+        except Exception as e:
+            import logging
+            logging.error(f"Failed to log symbolic scar: {e}")
 
     def execute_petzold_loop(self, cxb: dict) -> dict:
         """

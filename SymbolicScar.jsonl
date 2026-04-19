@@ -54,3 +54,5 @@
 {"id": "SSR-20260417-1776385831", "date": "2026-04-17", "component": "DRAFT_VOICE Phase", "failure_mode": "SSI Exceeds Threshold", "metrics": {"ssi": 0.06}, "prevention_directive": "Generated via Axiom Epistemic Guard."}
 {"id": "SCAR-1776385831", "date": "2026-04-17", "component": "PetzoldLoop", "rejected_approach": "High BAI detected.", "cfdi_spike": "CFDI Spike: 0.8000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}
 {"id": "SCAR-1776385831", "date": "2026-04-17", "component": "Synthesizer", "rejected_approach": "Silent Failure: Auto-correction attempted.", "cfdi_spike": "CFDI Spike: 0.6000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}
+{"id": "SCAR-1776641225", "date": "2026-04-19", "component": "PetzoldLoop", "rejected_approach": "High BAI detected.", "cfdi_spike": "CFDI Spike: 0.8000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}
+{"id": "SCAR-1776641225", "date": "2026-04-19", "component": "Synthesizer", "rejected_approach": "Silent Failure: Auto-correction attempted.", "cfdi_spike": "CFDI Spike: 0.6000", "fipi_patch": "Failure-Informed Prompt Inversion generated."}

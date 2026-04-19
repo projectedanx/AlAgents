@@ -14,6 +14,7 @@
 # </think>
 
 import json
+import logging
 from datetime import datetime
 import numpy as np
 from src.conceptual_synthesis.base_agent import BaseAgent
@@ -154,7 +155,6 @@ class EpistemicCartographerAgent(BaseAgent):
             with open("SymbolicScar.jsonl", "a") as f:
                 f.write(json.dumps(scar_entry) + "\n")
         except Exception as e:
-            import logging
             logging.error(f"Failed to log symbolic scar: {e}")
 
     def execute_petzold_loop(self, cxb: dict) -> dict:

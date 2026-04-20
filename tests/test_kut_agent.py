@@ -58,6 +58,23 @@ class TestKutAgent(unittest.TestCase):
         self.assertEqual(result_fail["status"], "FAIL")
         self.assertEqual(result_fail["floor"], 18)
 
+    def test_phase_3_typographic_layer(self):
+        # Pass condition
+        result_pass = self.agent.phase_3_typographic_layer(self.creator_id, 3, True)
+        self.assertEqual(result_pass["status"], "PASS")
+
+        # Fail condition - Caption Overflow
+        result_fail_caption = self.agent.phase_3_typographic_layer(self.creator_id, 4, True)
+        self.assertEqual(result_fail_caption["status"], "FAIL")
+        self.assertEqual(result_fail_caption["reason"], "Caption word limit exceeded")
+        self.assertIn("scar_id", result_fail_caption)
+
+        # Fail condition - Safe Zone Violation
+        result_fail_safe_zone = self.agent.phase_3_typographic_layer(self.creator_id, 3, False)
+        self.assertEqual(result_fail_safe_zone["status"], "FAIL")
+        self.assertEqual(result_fail_safe_zone["reason"], "Safe zone violation")
+        self.assertIn("scar_id", result_fail_safe_zone)
+
     def test_phase_4_sonic_sculpting(self):
         # Pass condition
         result_pass = self.agent.phase_4_sonic_sculpting(self.creator_id, -14.0, -1.5)

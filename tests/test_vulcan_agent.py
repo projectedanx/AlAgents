@@ -3,7 +3,11 @@
 # Components: TestVulcanAgent
 # Dependencies: unittest, unittest.mock, VulcanAgent
 # Data Flows: None
-# Function Signatures: test_vulcan_initialization(self) -> None
+# Function Signatures:
+#   - test_vulcan_initialization(self) -> None
+#   - test_execute_petzold_loop_success(self) -> None
+#   - test_mereological_mandate_violation(self) -> None
+#   - test_shared_database_anathema_violation(self) -> None
 # </think>
 
 import unittest
@@ -16,7 +20,6 @@ sys.modules['nltk'] = MagicMock()
 sys.modules['nltk.corpus'] = MagicMock()
 sys.modules['nltk.stem'] = MagicMock()
 sys.modules['nltk.tokenize'] = MagicMock()
-# sys.modules["numpy"] = MagicMock()
 
 # Ensure src is in path to allow standard module discovery
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
@@ -46,6 +49,49 @@ class TestVulcanAgent(unittest.TestCase):
             agent.epistemic_matrix["G_NEGATIVE_ANTIGOALS"]["forbidden_practices"][0],
             "Semantic Saponification (bleeding of distinct business domains)"
         )
+
+    def test_execute_petzold_loop_success(self):
+        """Tests successful architecture generation loop."""
+        agent = VulcanAgent()
+        context = {
+            "requirements": [{"domain": "Billing"}],
+            "microservices": [{"name": "BillingService", "inherits_state": False}],
+            "databases": [{"name": "BillingDB", "writers": ["BillingService"]}]
+        }
+        result = agent.execute_petzold_loop(context)
+
+        self.assertEqual(result["status"], "COMPLETE")
+        self.assertIn("Architecture Decision Record", result["adr"])
+        self.assertIn("C4Context", result["c4_model"])
+        self.assertIn("Domain:", result["ddd_context_map"])
+
+    def test_mereological_mandate_violation(self):
+        """Tests failure during DAG phase due to Mereological Mandate violation."""
+        agent = VulcanAgent()
+        context = {
+            "requirements": [{"domain": "Billing"}],
+            "microservices": [{"name": "BillingService", "inherits_state": True}],
+            "databases": [{"name": "BillingDB", "writers": ["BillingService"]}]
+        }
+        result = agent.execute_petzold_loop(context)
+
+        self.assertEqual(result["status"], "HALTED")
+        self.assertEqual(result["state"], "EPISTEMIC_ESCROW")
+        self.assertIn("Mereological Mandate Violation", result["jur"])
+
+    def test_shared_database_anathema_violation(self):
+        """Tests failure during EVALUATE phase due to Shared Database Anathema violation."""
+        agent = VulcanAgent()
+        context = {
+            "requirements": [{"domain": "Billing"}],
+            "microservices": [{"name": "BillingService", "inherits_state": False}],
+            "databases": [{"name": "SharedDB", "writers": ["BillingService", "AuthService"]}]
+        }
+        result = agent.execute_petzold_loop(context)
+
+        self.assertEqual(result["status"], "HALTED")
+        self.assertEqual(result["state"], "EPISTEMIC_ESCROW")
+        self.assertIn("Shared Database Anathema Violation", result["jur"])
 
 if __name__ == "__main__":
     unittest.main()

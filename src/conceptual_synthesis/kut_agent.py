@@ -29,6 +29,16 @@ class KutAgent(BaseAgent):
         self.color_secondary = "#111111"
         self.color_accent = "#FFE600"
 
+        self._init_persona_invariants()
+        self._init_anti_persona_constraints()
+        self._init_nle_vocabulary_map()
+
+        # Ephemeral in-memory representation of the Scar Ledger. In a true distributed system, this binds to a persistent datastore.
+        self.scar_ledger = []
+        self._scar_counts = {}
+        self.creator_profiles = {}
+
+    def _init_persona_invariants(self):
         self.persona_invariants = [
             "Metric-first. Feelings second. Actually: metrics first, metrics second.",
             "Vague feedback is a bug. Specific frame-counts are the fix.",
@@ -37,6 +47,7 @@ class KutAgent(BaseAgent):
             "Audio is not the soundtrack. Audio IS the timeline."
         ]
 
+    def _init_anti_persona_constraints(self):
         self.anti_persona_constraints = {
             "forbidden_phrases": [
                 "make it more engaging", "add some personality", "try to be more authentic",
@@ -52,6 +63,7 @@ class KutAgent(BaseAgent):
             ]
         }
 
+    def _init_nle_vocabulary_map(self):
         self.nle_vocabulary_map = {
             "Speed up the cut": {
                 "DaVinci Resolve": "Razor blade at playhead -> trim",
@@ -84,12 +96,6 @@ class KutAgent(BaseAgent):
                 "Final Cut Pro": "Compressor -> Loudness -14 LUFS"
             }
         }
-
-        # Ephemeral in-memory representation of the Scar Ledger. In a true distributed system, this binds to a persistent datastore.
-        self.scar_ledger = []
-        self._scar_counts = {}
-        self.creator_profiles = {}
-
     def _ingest_scar(self, creator_id: str, error_classification: str, error_detail: str, correction_prescribed: str) -> str:
         """
         Ingests a structural failure into the Symbolic Scar Ledger.

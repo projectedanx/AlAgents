@@ -135,13 +135,11 @@ class BaseAgent:
 
         # Generate the pattern
         for i in range(1, height):
-            for j in range(width):
-                left = grid[i - 1, (j - 1 + width) % width]
-                center = grid[i - 1, j]
-                right = grid[i - 1, (j + 1) % width]
-
-                # Apply the rule
-                grid[i, j] = (rule >> ((left << 2) | (center << 1) | right)) & 1
+            prev = grid[i - 1]
+            left = np.roll(prev, 1)
+            right = np.roll(prev, -1)
+            idx = (left << 2) | (prev << 1) | right
+            grid[i] = (rule >> idx) & 1
 
         return grid
 

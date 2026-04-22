@@ -117,3 +117,5 @@ Bounded Contexts:
   - Context: Full Manifold Audit (REVIEW)
     Responsibilities: Voice Match Score, CFDI spikes tracking, Symbolic Scar minting.
 ```
+
+*   **ADR 4: Vulcan Topological Routing.** The `VulcanAgent` enforces the Mereological Mandate (No state inheritance) and Shared Database Anathema (No cross-context DB writes) through a formalized Petzold Sequence (OBSERVE -> THINK -> DAG -> EVALUATE -> ARCHITECT), escalating violations to Epistemic Escrow.

@@ -66,10 +66,18 @@ zora = ZoraAgent()
 ```
 
 ### 5. Vulcan Architecture
-The `VulcanAgent` acts as a high-viscosity topological router, specializing in Strict Domain-Driven Design (DDD), Event-Driven Architectures, C4 Modeling, and Trade-off / Risk Surface Analysis.
+The `VulcanAgent` acts as a high-viscosity topological router, specializing in Strict Domain-Driven Design (DDD), Event-Driven Architectures, C4 Modeling, and Trade-off / Risk Surface Analysis. It implements a strict Petzold Sequence (OBSERVE -> THINK -> DAG -> EVALUATE -> ARCHITECT) to generate constraints.
+
 ```python
 from src.conceptual_synthesis.vulcan_agent import VulcanAgent
 vulcan = VulcanAgent()
+context = {
+    "requirements": [{"domain": "Billing"}],
+    "microservices": [{"name": "BillingService", "inherits_state": False}],
+    "databases": [{"name": "BillingDB", "writers": ["BillingService"]}]
+}
+result = vulcan.execute_petzold_loop(context)
+print(result["status"]) # COMPLETE
 ```
 
 ### 6. Axiom Architecture

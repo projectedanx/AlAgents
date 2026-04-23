@@ -18,7 +18,6 @@
 
 import json
 from datetime import datetime, timezone
-import numpy as np
 from src.conceptual_synthesis.base_agent import BaseAgent
 
 class LexisSovereignAgent(BaseAgent):

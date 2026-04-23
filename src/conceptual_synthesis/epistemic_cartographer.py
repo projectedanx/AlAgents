@@ -13,6 +13,7 @@
 #   - _log_symbolic_scar(component: str, reason: str, cfdi: float) -> None
 # </think>
 
+import hashlib
 import json
 import logging
 from datetime import datetime
@@ -117,7 +118,7 @@ class EpistemicCartographerAgent(BaseAgent):
         spz_data = "Preserved dialectic tension" if smm.get("spz_detected") else "No contradiction"
         return {
             "dasl_id": f"DASL-{datetime.now().timestamp()}",
-            "smm_hash": hash(str(smm)),
+            "smm_hash": hashlib.sha256(str(smm).encode('utf-8')).hexdigest(),
             "spz_log": spz_data,
             "status": "SYNTHESIZED"
         }

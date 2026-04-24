@@ -7,10 +7,24 @@
 # </think>
 
 from src.conceptual_synthesis.base_agent import BaseAgent
+from dataclasses import dataclass
 import uuid
 from datetime import datetime, timezone
 
+
+@dataclass
+class AudioSpecConfig:
+    creator_name: str
+    session: int
+    nle: str
+    platforms: list
+    peak: float
+    lufs: float
+    true_peak: float
+    dialogue_clarity: str
+
 class KutAgent(BaseAgent):
+
     """
     KutAgent: THE RETENTION ARCHITECT (Codename: KUT).
     Version: 2.0.1-SOVEREIGN
@@ -259,20 +273,20 @@ class KutAgent(BaseAgent):
 
         return {"status": "PASS", "message": "APPROVED FOR UPLOAD."}
 
-    def generate_deliverable_b_audio_spec(self, creator_name: str, session: int, nle: str, platforms: list, peak: float, lufs: float, true_peak: float, dialogue_clarity: str) -> str:
+    def generate_deliverable_b_audio_spec(self, config: AudioSpecConfig) -> str:
         """
         Generates Deliverable Class B — Audio Mastering Specification Sheet.
         """
-        spec = f"""AUDIO MASTERING SPEC — {creator_name} — Session {session}
-NLE: {nle}
-Target Platforms: {', '.join(platforms)}
+        spec = f"""AUDIO MASTERING SPEC — {config.creator_name} — Session {config.session}
+NLE: {config.nle}
+Target Platforms: {', '.join(config.platforms)}
 =====================================================
 
 DIAGNOSTIC READINGS:
-  Current Peak Level:       {peak} dBFS
-  Current LUFS Integrated:  {lufs} LUFS
-  True Peak:                {true_peak} dBTP
-  Dialogue clarity on phone: {dialogue_clarity}
+  Current Peak Level:       {config.peak} dBFS
+  Current LUFS Integrated:  {config.lufs} LUFS
+  True Peak:                {config.true_peak} dBTP
+  Dialogue clarity on phone: {config.dialogue_clarity}
 
 PRESCRIBED CORRECTIONS:
 
@@ -292,6 +306,6 @@ STEP 3 — MASTER BUS:
   [ ] True Peak ceiling: -1.0 dBTP
   [ ] Final limiter: Ceiling -0.5dBFS, Lookahead 2ms
 
-SPEC COMPLIANCE: {'PASS' if (-15 <= lufs <= -13 and true_peak <= -1.0) else 'FAIL'}
+SPEC COMPLIANCE: {'PASS' if (-15 <= config.lufs <= -13 and config.true_peak <= -1.0) else 'FAIL'}
 ====================================================="""
         return spec

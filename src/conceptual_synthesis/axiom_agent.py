@@ -220,7 +220,7 @@ class AxiomAgent(BaseAgent):
         try:
             with open(self.scar_log_path, "a") as f:
                 f.write(json.dumps(scar_entry) + "\n")
-        except Exception as e:
+        except OSError as e:
             logging.error(f"Failed to log symbolic scar: {e}")
 
     def execute_petzold_loop(self, cxb: dict) -> dict:

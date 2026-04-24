@@ -1,10 +1,9 @@
-🔒 [Security] Replace non-cryptographic hash() with SHA-256 for persistent integrity
+🧹 [Narrow exception handling for file IO operations]
 
-🎯 **What:** The vulnerability fixed
-The `EpistemicCartographerAgent._synthesize()` method previously used Python's built-in `hash()` function to generate the `smm_hash` field for the `DASL` object.
+🎯 What: Replaced broad `except Exception:` blocks with `except OSError:` in the `_log_symbolic_scar` methods across `epistemic_cartographer.py`, `lexis_sovereign_agent.py`, `axiom_agent.py`, and `vulcan_agent.py`. Additionally, updated `lexis_sovereign_agent.py` to use `logging.error` instead of `print`.
 
-⚠️ **Risk:** The potential impact if left unfixed
-Python's built-in `hash()` function incorporates a randomized salt per-process for strings and bytes to prevent hash collision denial-of-service (DOS) attacks. This means `hash(str(smm))` will yield different results for identical inputs across different runs or processes. Because this hash is used for persistent verification and integrity mapping in the Dynamic Affordance Sync Ledger (DASL), its non-deterministic nature across sessions undermines the reliability of state tracking and allows potential spoofing of validation trails, posing both a data-integrity and security risk.
+💡 Why: Catching the base `Exception` class is considered a bad practice as it can silently swallow critical errors like `MemoryError` or `ValueError`. Since these `try` blocks specifically wrap file write operations, catching `OSError` accurately targets the potential failures (e.g., permissions, disk space) without masking unrelated bugs.
 
-🛡️ **Solution:** How the fix addresses the vulnerability
-Replaced the built-in `hash()` function with a cryptographically secure and deterministic algorithm `hashlib.sha256()`. By using `hashlib.sha256(str(smm).encode('utf-8')).hexdigest()`, the resulting `smm_hash` is now strictly deterministic and provides strong cryptographic collision resistance, ensuring the generated DASL maintains persistent, verifiable integrity across all executions.
+✅ Verification: Validated the changes by inspecting the git diff and running the unit test suite (`python -m unittest discover tests`). All tests pass.
+
+✨ Result: More resilient error handling, preventing unintended bugs from being silently ignored, and ensuring consistent error reporting via the standard `logging` module.

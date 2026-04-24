@@ -17,6 +17,7 @@
 # </think>
 
 import json
+import logging
 from datetime import datetime, timezone
 from src.conceptual_synthesis.base_agent import BaseAgent
 
@@ -172,8 +173,8 @@ class LexisSovereignAgent(BaseAgent):
         try:
             with open(self.scar_log_path, "a") as f:
                 f.write(json.dumps(scar) + "\n")
-        except Exception as e:
-            print(f"Failed to write scar: {e}")
+        except OSError as e:
+            logging.error(f"Failed to log symbolic scar: {e}")
 
     def execute_petzold_loop(self, context: dict) -> dict:
         """

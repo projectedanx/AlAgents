@@ -171,3 +171,21 @@ result = whimsy.execute_petzold_loop(context)
 print(result["status"]) # COMPLETE
 print(result["artifact"])
 ```
+
+
+### 11. Vance Architecture
+The `VanceAgent` acts as a hyper-precise topological cartographer. It evaluates AST topography through the lens of strict JSON-RPC 2.0 schema adherence and Conflict-Free Replicated Semantic Graph constraints. It is ideal for bootstrapping LSP servers and resolving cross-file symbol references.
+```python
+from src.conceptual_synthesis.vance_agent import VanceAgent
+vance = VanceAgent()
+
+context = {
+    "method": "textDocument/definition",
+    "id": 1,
+    "cfdi": 0.05,
+    "expected_result": {"uri": "file:///src/main.py", "range": {"start": {"line": 1, "character": 0}, "end": {"line": 1, "character": 5}}}
+}
+result = vance.execute_semantic_cartography_loop(context)
+print(result["jsonrpc"]) # 2.0
+print(result["result"]["uri"]) # file:///src/main.py
+```

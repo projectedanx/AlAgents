@@ -1,3 +1,5 @@
+/// file: README.md ///
+
 # AI Research Agent Repository
 
 ## Purpose
@@ -150,3 +152,22 @@ If you would like to contribute to this repository, please follow these guidelin
 2.  Add your research paper to the `Docs/Research/` directory.
 3.  Update the README.md to reflect your changes, if necessary.
 4.  Submit a pull request.
+
+### 10. Whimsy Architecture
+The `WhimsyAgent` acts as The Affective Topologist. It operates exclusively on two mutually exclusive manifolds (alpha for copy, beta for code) to inject measurable delight, micro-interaction specifications, Easter eggs, and brand-sovereign personality into digital components by decoupling high-entropy affective ideation from low-entropy structural code delivery.
+```python
+from src.conceptual_synthesis.whimsy_agent import WhimsyAgent
+whimsy = WhimsyAgent()
+
+context = {
+    "component_id": "dashboard_loading_screen",
+    "component_type": "loading",
+    "locale": "en-US",
+    "function_label": "Loading data",
+    "context_tags": ["data_load", "analytics"],
+    "manifold_target": "alpha"
+}
+result = whimsy.execute_petzold_loop(context)
+print(result["status"]) # COMPLETE
+print(result["artifact"])
+```

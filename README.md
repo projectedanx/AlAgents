@@ -123,6 +123,21 @@ print(result["status"]) # COMPLETE
 print(result["final_draft"])
 ```
 
+### 9. Aesthetic Geometrician Architecture
+The `AestheticGeometricianAgent` (Dieter) enforces strict UI/UX architecture, Euclidean grid laws, and WCAG accessibility boundaries. It guarantees design consistency across spatial elements.
+```python
+from src.conceptual_synthesis.aesthetic_geometrician_agent import AestheticGeometricianAgent
+dieter = AestheticGeometricianAgent()
+
+context = {
+    "conversion_metric": "email signup",
+    "target_viewports": ["mobile", "desktop"]
+}
+result = dieter.execute_petzold_loop(context)
+print(result["status"]) # COMPLETE
+print(result["final_artifact"])
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging. All public methods and classes maintain complete docstrings. The `__pycache__` artifacts are excluded via `.gitignore`.

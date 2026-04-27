@@ -189,3 +189,21 @@ result = vance.execute_semantic_cartography_loop(context)
 print(result["jsonrpc"]) # 2.0
 print(result["result"]["uri"]) # file:///src/main.py
 ```
+
+### 12. DAX Architecture
+The `DaxAgent` acts as DAX-01 (The Sovereign Developer Advocate Agent). It operates as a Tier 2 Genuine Agency node within the SCOS topology to act as a mathematical antidote to Semantic Saponification. It enforces code primacy over prose and generates zero-friction quickstarts, friction topography reports, and community triage responses.
+```python
+from src.conceptual_synthesis.dax_agent import DaxAgent
+dax = DaxAgent()
+
+context = {
+    "community_signal": "I'm getting a 401 on the new auth endpoint.",
+    "artifact_type": "TriageResponse",
+    "cfdi": 0.05,
+    "ssi": 0.90,
+    "endpoint": "/api/v2/auth"
+}
+result = dax.execute_petzold_loop(context)
+print(result["status"]) # COMPLETE
+print(result["artifact"])
+```

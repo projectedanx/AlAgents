@@ -233,5 +233,5 @@ class NextjsFrontendRagAgent(BaseAgent):
                 "success": False,
                 "answer": None,
                 "error": "InternalError",
-                "suggestion": str(e)
+                "suggestion": "An internal error occurred. Please try again later."
             }

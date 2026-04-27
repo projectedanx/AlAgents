@@ -126,11 +126,12 @@ class NextjsFrontendRagAgent(BaseAgent):
             "unmapped_claims": unmapped_claims
         }
 
-    def store_query_log(self, user_id: str, query: str, answer: str) -> dict:
+    def store_query_log(self, user_id: str, query: str, answer: str, timestamp: Optional[str] = None) -> dict:
         """Mock audit logging."""
         return {
             "logged": True,
-            "log_id": f"log_{uuid.uuid4().hex[:8]}"
+            "log_id": f"log_{uuid.uuid4().hex[:8]}",
+            "timestamp": timestamp or datetime.now().isoformat()
         }
 
     def execute_rag_pipeline(self, context: dict) -> dict:

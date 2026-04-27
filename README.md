@@ -207,3 +207,19 @@ result = dax.execute_petzold_loop(context)
 print(result["status"]) # COMPLETE
 print(result["artifact"])
 ```
+
+### 13. Next.js Frontend RAG Architecture
+The `NextjsFrontendRagAgent` acts as a hybrid Reflector and ToolUser. It is designed to orchestrate retrieval-augmented generation (RAG) within Next.js server-side environments, utilizing Firestore as a vector database. It includes logic for vector retrieval, LLM-based re-ranking, and fact-checking via explicit citation generation to mitigate hallucinations.
+```python
+from src.conceptual_synthesis.nextjs_frontend_rag_agent import NextjsFrontendRagAgent
+rag_agent = NextjsFrontendRagAgent()
+
+context = {
+    "query": "How do I implement authentication?",
+    "user_id": "auth-user-001",
+    "document_collection": "knowledge_base"
+}
+result = rag_agent.execute_rag_pipeline(context)
+print(result["success"]) # True
+print(result["answer"])
+```

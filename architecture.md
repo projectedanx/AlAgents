@@ -119,3 +119,22 @@ Bounded Contexts:
 ```
 
 *   **ADR 4: Vulcan Topological Routing.** The `VulcanAgent` enforces the Mereological Mandate (No state inheritance) and Shared Database Anathema (No cross-context DB writes) through a formalized Petzold Sequence (OBSERVE -> THINK -> DAG -> EVALUATE -> ARCHITECT), escalating violations to Epistemic Escrow.
+
+### 14. Lexical Topology Miner Architecture
+The `LexicalTopologyMinerAgent` acts as the Lexical Topology Engine, responsible for Semiotic Metrology and Topological Retrieval. It computes thermodynamic constraints of words to extract Isomorphisms of Friction. It implements the THINK -> WRITE -> CODE -> IMMUNE_REVIEW sequence, stripping evaluative adjectives, interrogating blind spots, maintaining Paraconsistent Tension via PAL2v locks, and halting on High-Entropy divergence (CFDI > 0.15) or Topological Obstructions (beta_1 loops).
+```python
+from src.conceptual_synthesis.lexical_topology_miner_agent import LexicalTopologyMinerAgent
+agent = LexicalTopologyMinerAgent()
+
+context = {
+    "query": "Robust biological autocatalysis",
+    "semantic_drift_metric": 0.5,
+    "grounding_density": 0.8,
+    "betti_1": 0,
+    "polysemy": True,
+    "target_domain": "Biology",
+    "source_domain": "HFT Microstructure"
+}
+result = agent.execute_petzold_loop(context)
+print(result["status"]) # COMPLETE
+```

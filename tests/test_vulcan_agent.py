@@ -93,5 +93,27 @@ class TestVulcanAgent(unittest.TestCase):
         self.assertEqual(result["state"], "EPISTEMIC_ESCROW")
         self.assertIn("Shared Database Anathema Violation", result["jur"])
 
+
+    def test_observe_method(self):
+        """Tests the _observe method correctly extracts requirements and constraints."""
+        agent = VulcanAgent()
+
+        # Test with provided context
+        context_full = {
+            "requirements": [{"domain": "Billing"}],
+            "constraints": ["No shared DBs", "Strict DDD"],
+            "extra_field": "should be ignored"
+        }
+        result_full = agent._observe(context_full)
+        self.assertEqual(result_full["requirements"], [{"domain": "Billing"}])
+        self.assertEqual(result_full["constraints"], ["No shared DBs", "Strict DDD"])
+        self.assertNotIn("extra_field", result_full)
+
+        # Test with missing keys (defaults to empty list)
+        context_empty = {}
+        result_empty = agent._observe(context_empty)
+        self.assertEqual(result_empty["requirements"], [])
+        self.assertEqual(result_empty["constraints"], [])
+
 if __name__ == "__main__":
     unittest.main()

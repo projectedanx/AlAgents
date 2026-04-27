@@ -8,6 +8,7 @@ import numpy as np
 import numpy.testing as npt
 import sys
 import os
+from src.conceptual_synthesis.base_agent import SynthesisPayload
 
 # Add the src directory to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
@@ -66,20 +67,21 @@ class TestHybridSystem(unittest.TestCase):
         self.assertEqual(pattern.shape, (5, 10))
 
     def test_hybrid_synthesis(self):
-        results = hybrid_synthesis(
+        payload = SynthesisPayload(
             text="This is a test.",
             principal=1000,
             rate=0.05,
             times_compounded=12,
             years=10,
             nodes=2,
-            charges=[1, 2],
+            charges=[1.0, 2.0],
             interactions=np.array([[0, 1], [1, 0]]),
             image=np.array([[[100, 150, 200]]]),
             width=10,
             height=5,
             rule=90
         )
+        results = hybrid_synthesis(payload)
         self.assertIn("processed_text", results)
         self.assertIn("future_value", results)
         self.assertIn("network_state", results)

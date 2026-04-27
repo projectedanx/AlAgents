@@ -6,7 +6,7 @@ sys.modules['nltk.tabdata'] = MagicMock()
 import unittest
 import numpy as np
 import numpy.testing as npt
-from src.conceptual_synthesis.base_agent import BaseAgent
+from src.conceptual_synthesis.base_agent import BaseAgent, SynthesisPayload
 
 class TestBaseAgent(unittest.TestCase):
     def setUp(self):
@@ -18,34 +18,23 @@ class TestBaseAgent(unittest.TestCase):
 
     def test_run(self):
         # Sample inputs
-        text = "This is a test sentence."
-        principal = 1000
-        rate = 0.05
-        times_compounded = 12
-        years = 10
-        nodes = 3
-        charges = [1.0, 2.0, 3.0]
-        interactions = np.array([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
-        image = np.array([[[100, 150, 200]]])
-        width = 5
-        height = 5
-        rule = 30
+        payload = SynthesisPayload(
+            text="This is a test sentence.",
+            principal=1000,
+            rate=0.05,
+            times_compounded=12,
+            years=10,
+            nodes=3,
+            charges=[1.0, 2.0, 3.0],
+            interactions=np.array([[0, 1, 0], [1, 0, 1], [0, 1, 0]]),
+            image=np.array([[[100, 150, 200]]]),
+            width=5,
+            height=5,
+            rule=30
+        )
 
         # Run the agent
-        result = self.agent.run(
-            text,
-            principal,
-            rate,
-            times_compounded,
-            years,
-            nodes,
-            charges,
-            interactions,
-            image,
-            width,
-            height,
-            rule,
-        )
+        result = self.agent.run(payload)
 
         # Assertions
         self.assertIsInstance(result, dict)

@@ -6,6 +6,23 @@ from nltk.tokenize import word_tokenize
 import string
 import numpy as np
 
+from dataclasses import dataclass
+
+@dataclass
+class SynthesisPayload:
+    text: str
+    principal: float
+    rate: float
+    times_compounded: int
+    years: int
+    nodes: int
+    charges: list[float]
+    interactions: np.ndarray
+    image: np.ndarray
+    width: int
+    height: int
+    rule: int
+
 
 class BaseAgent:
     """A base agent that integrates multiple functionalities to produce a complex, layered result."""
@@ -192,48 +209,23 @@ class BaseAgent:
         variance_penalty = np.var(stacked_streams, axis=0) * 0.1
         return mean_stream - variance_penalty
 
-    def run(
-        self,
-        text: str,
-        principal: float,
-        rate: float,
-        times_compounded: int,
-        years: int,
-        nodes: int,
-        charges: list[float],
-        interactions: np.ndarray,
-        image: np.ndarray,
-        width: int,
-        height: int,
-        rule: int,
-    ) -> dict:
+    def run(self, payload: SynthesisPayload) -> dict:
         """
         Integrates the outputs of the five individual functions to create a complex, layered result.
 
         Args:
-            text (str): The input text to process.
-            principal (float): The initial investment amount.
-            rate (float): The annual interest rate.
-            times_compounded (int): The number of times interest is compounded per year.
-            years (int): The investment duration in years.
-            nodes (int): The number of nodes in the network.
-            charges (list[float]): The charges for each node.
-            interactions (np.ndarray): The adjacency matrix for node interactions.
-            image (np.ndarray): The input image array.
-            width (int): The width of the weaving pattern.
-            height (int): The height of the weaving pattern.
-            rule (int): The cellular automaton rule to apply.
+            payload (SynthesisPayload): The configuration object containing all synthesis parameters.
 
         Returns:
             A dictionary containing the results of each of the five functions.
         """
-        processed_text = self._deterministic_context_engineering(text)
+        processed_text = self._deterministic_context_engineering(payload.text)
         future_value = self._neoclassical_compounding(
-            principal, rate, times_compounded, years
+            payload.principal, payload.rate, payload.times_compounded, payload.years
         )
-        network_state = self._symbolic_charge_network(nodes, charges, interactions)
-        sepia_image = self._algorithmic_photography(image)
-        generated_pattern = self._weaving_algorithm(width, height, rule)
+        network_state = self._symbolic_charge_network(payload.nodes, payload.charges, payload.interactions)
+        sepia_image = self._algorithmic_photography(payload.image)
+        generated_pattern = self._weaving_algorithm(payload.width, payload.height, payload.rule)
 
         return {
             "processed_text": processed_text,

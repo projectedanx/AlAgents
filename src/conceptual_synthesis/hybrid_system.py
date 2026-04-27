@@ -1,6 +1,6 @@
 # /// file: src/conceptual_synthesis/hybrid_system.py ///
 import numpy as np
-from src.conceptual_synthesis.base_agent import BaseAgent
+from src.conceptual_synthesis.base_agent import BaseAgent, SynthesisPayload
 
 _agent = BaseAgent()
 
@@ -139,51 +139,14 @@ def hexagon_combinatory_synthesis(streams: list[np.ndarray]) -> np.ndarray:
     return _agent._hexagon_combinatory_synthesis(streams)
 
 
-def hybrid_synthesis(
-    text: str,
-    principal: float,
-    rate: float,
-    times_compounded: int,
-    years: int,
-    nodes: int,
-    charges: list[float],
-    interactions: np.ndarray,
-    image: np.ndarray,
-    width: int,
-    height: int,
-    rule: int,
-) -> dict:
+def hybrid_synthesis(payload: SynthesisPayload) -> dict:
     """
     Integrates the outputs of the five individual functions to create a complex, layered result.
 
     Args:
-        text (str): The input text to process.
-        principal (float): The initial investment amount.
-        rate (float): The annual interest rate.
-        times_compounded (int): The number of times interest is compounded per year.
-        years (int): The investment duration in years.
-        nodes (int): The number of nodes in the network.
-        charges (list[float]): The charges for each node.
-        interactions (np.ndarray): The adjacency matrix for node interactions.
-        image (np.ndarray): The input image array.
-        width (int): The width of the weaving pattern.
-        height (int): The height of the weaving pattern.
-        rule (int): The cellular automaton rule to apply.
+        payload (SynthesisPayload): The configuration object containing all synthesis parameters.
 
     Returns:
         A dictionary containing the results of each of the five functions.
     """
-    return _agent.run(
-        text,
-        principal,
-        rate,
-        times_compounded,
-        years,
-        nodes,
-        charges,
-        interactions,
-        image,
-        width,
-        height,
-        rule,
-    )
+    return _agent.run(payload)

@@ -140,6 +140,26 @@ print(result["status"]) # COMPLETE
 print(result["final_artifact"])
 ```
 
+
+### 15. Pluriversal Architecture and Defense Mechanisms
+The `pluriversal_architecture` module introduces core capabilities discussed in the Pluriversal Agent framework, including Logit-Level Masking (Anionic Filter), Hegelian Dialectical Synthesis, and Topological Failure Mitigation using Betti numbers.
+
+```python
+import numpy as np
+from src.conceptual_synthesis.pluriversal_architecture import TopologicalMonitor, AnionicFilter
+
+# Monitor codebase topology for recursive failures
+adjacency = np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
+beta_0, beta_1 = TopologicalMonitor.compute_betti_numbers(adjacency)
+print(f"Components: {beta_0}, Loops: {beta_1}") # Components: 1, Loops: 1
+
+# Enforce Anionic Architecture
+filter = AnionicFilter(vocabulary_size=5, forbidden_tokens={1, 3})
+logits = np.array([1.0, 1.0, 1.0, 1.0, 1.0])
+masked = filter.apply_mask(logits)
+print(masked) # [  1. -inf   1. -inf   1.]
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging. All public methods and classes maintain complete docstrings. The `__pycache__` artifacts are excluded via `.gitignore`.

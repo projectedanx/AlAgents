@@ -67,9 +67,10 @@ class BaseAgent:
 
         # Consolidate lowering, punctuation removal, filtering, and stemming
         # into a single list comprehension to avoid intermediate lists.
+        # Use a generator expression for the inner loop to save memory.
         stemmed = [
             self.porter.stem(w_clean)
-            for w_clean in [w.lower().translate(self.table) for w in tokens]
+            for w_clean in (w.lower().translate(self.table) for w in tokens)
             if w_clean.isalpha() and w_clean not in self.stop_words
         ]
 

@@ -31,6 +31,7 @@ The AI Research Agent repository integrates a layered architectural pattern for 
     *   `AxiomAgent`: The Sovereign Syntactician node orchestrating Draft-Conditioned Constrained Decoding (DCCD) to produce deterministic CI/CD documentation contracts.
     *   `KutAgent`: The Retention Architect enforcing algorithmic media thermodynamics and post-production constraints via the Anionic Architecture protocol.
     *   `LexisSovereignAgent`: The Auteur Co-Author executing strict THINK -> WRITE -> REVIEW Petzold sequences for deterministic, voice-invariant long-form manuscript generation.
+    *   `PersonaMetrologyAgent`: The Persona Metrology Agent synthesizing human empirical operational friction with AI deterministic topology (DE-9IM / SDF), enforcing strict spatial bounds and Paraconsistent logic (PNS5) without Boolean collapse.
 *   **Documentation Vault (Markdown/PDF):** Collection of AI methodologies and frameworks acting as passive data sources.
 
 ### 2.3 Component Level

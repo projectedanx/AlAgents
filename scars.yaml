@@ -67,3 +67,9 @@ scars:
   description: "Forbidden jargon (e.g., 'synergy', 'robust') bypassed logit penalty and appeared in finalized manuscript."
   mitigation_strategy: "Hard logit bias re-calibration to -100 for offending terms and append failure to SymbolicScar.jsonl."
   cfdi_trigger: null
+
+  - timestamp: 2026-05-01T07:30:00Z
+    component: StrategicIntegrationProjectManagerAgent
+    failure_mode: Simulated Epistemic Escrow / Resolution Collapse due to Eikonal Violation.
+    resolution: "Debt gradient exceeded epsilon band; operation quarantined."
+    cfdi_spike: 0.18

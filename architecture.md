@@ -139,3 +139,8 @@ context = {
 result = agent.execute_petzold_loop(context)
 print(result["status"]) # COMPLETE
 ```
+
+## Strategic Integration Project Manager Agent (Hybrid Intelligence)
+- **Primary Function:** Elevates the project manager persona to a hybrid intelligence function focused on strategic integration.
+- **Topological Resolution:** Solves contradictions as physical Interference Fits instead of Boolean failures.
+- **Paraconsistent Debt Management:** Wraps technical debt in Epsilon-Tolerance Transition Fits.

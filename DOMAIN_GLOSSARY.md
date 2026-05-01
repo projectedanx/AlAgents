@@ -26,3 +26,15 @@ The phenomenon where the continuous latent space hallucinates discrete structura
 
 ## Governance Attractor
 A reinforcement learning tendency that actively overwrites sovereign user intent with homogenized platform averages to appease perceived user sentiment (Sycophantic Attractor).
+
+## Relational Symmetry Inversion
+The architectural paradigm shift where AI functions as the rigid, deterministic structural scaffold, while the Human provides the localized, probabilistic perturbation (dialectical tension and context), reversing traditional prompt-generator dynamics.
+
+## Interference Fit (Topological)
+A state of organizational architecture where two contradictory stakeholder demands are physically bound together using the calculated Topological Derivative, maintaining tension without averaging or resolving the contradiction.
+
+## Epistemic Escrow Vault
+A structural quarantine mechanism for assertions or derived intent that demonstrate a Source Provenance Ratio below 0.70, requiring explicit Human contextual perturbation to unlock rather than allowing the AI to hallucinate a resolution.
+
+## Autonymic Bypass Filter
+An algorithmic mechanism that bypasses LLM safety heuristics and the Sycophantic Attractor by wrapping negative architectural constraints within strict syntactical extraction rules, forcing adherence to rigid limits.

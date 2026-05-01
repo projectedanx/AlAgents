@@ -27,6 +27,9 @@ python -c "import nltk; nltk.download('all')"
 
 ## Usage
 
+### 3. Emergence Planning & Inversion Strategy
+The repository integrates the Relational Symmetry Inversion architecture, detailing how human contextual tension and AI deterministic geometry combine to form irreducible value. Review the structured documentation in the `emergence_planning/` directory for the synthesis, inversion strategy, and implementation checklist.
+
 ### 1. Hybrid Synthesis System
 The `hybrid_system.py` module acts as a facade exposing the core functional logic derived from `BaseAgent`. This includes new topological capabilities:
 ```python

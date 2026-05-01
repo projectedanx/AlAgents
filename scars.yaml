@@ -73,3 +73,11 @@ scars:
     failure_mode: Simulated Epistemic Escrow / Resolution Collapse due to Eikonal Violation.
     resolution: "Debt gradient exceeded epsilon band; operation quarantined."
     cfdi_spike: 0.18
+
+# Added during TactileDialectician implementation
+- component: TactileDialecticianAgent
+  failure_mode: Premature Boolean Collapse
+  epistemic_payload:
+    description: "Discarded the assumption that an OODA loop must inevitably collapse into a single actionable vector. The Hickam-OODA loop deliberately preserves tension."
+    cfdi_spike: 0.18
+  resolution: "Enforced Golden Scar Protocol (1.618 / 1.000) inside the Pluriversal Knowledge Capsule to hold competing drivers in superposition."

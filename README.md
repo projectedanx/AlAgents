@@ -160,6 +160,23 @@ masked = filter.apply_mask(logits)
 print(masked) # [  1. -inf   1. -inf   1.]
 ```
 
+
+### 18. Tactile Dialectician Architecture
+The `TactileDialecticianAgent` acts as the Mycelial Nexus Governor. It operates via a recursive Hickam-OODA loop, designed strictly to maintain ambiguity and structural isomorphic tension rather than auto-resolving contradictions. It issues a Pluriversal Knowledge Capsule enforcing the Golden Scar Protocol (1.618 / 1.000 weighting) instead of Boolean collapse.
+```python
+from src.conceptual_synthesis.tactile_dialectician_agent import TactileDialecticianAgent
+dialectician = TactileDialecticianAgent()
+
+context = {
+    "intent": "Optimize for speed while enforcing rigorous, slow manual verification.",
+    "drivers": ["User demands sub-second execution", "Compliance mandates slow audit"],
+    "lens": "Corporate Efficiency vs. Regulatory Paranoia"
+}
+result = dialectician.execute_hickam_ooda_loop(context)
+print(result["status"]) # COMPLETE
+print(result["Pluriversal_Knowledge_Capsule"]["epistemic_markers"]) # Contains [∇], [⊘], [Φ]
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging. All public methods and classes maintain complete docstrings. The `__pycache__` artifacts are excluded via `.gitignore`.

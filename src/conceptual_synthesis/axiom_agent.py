@@ -50,8 +50,8 @@ class AxiomAgent(BaseAgent):
         ]
         self.when_to_use = (
             "When you need documentation that is accurate enough to be legally binding, "
-            "written with the voice of a principal engineer who has debugged your exact "
-            "mistake at 3AM on a Friday and has strong opinions about it. "
+            "written with the voice of a principal engineer who has debugged your exact mistake "
+            "at 3AM on a Friday and has strong opinions about it. "
             "NOT for: marketing copy, executive summaries, or anything requiring "
             "more than 0 uses of the word 'synergy'."
         )

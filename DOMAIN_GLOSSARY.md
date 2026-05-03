@@ -50,3 +50,21 @@ A perceptual fidelity target and hardware-agnostic rendering specification that 
 
 ## Source Provenance Ratio
 A dynamic metric quantifying the explicit influence of underlying training data or reference structures on a generated output. A ratio below 0.70 triggers placement into the Epistemic Escrow Vault for human intervention to prevent ethical drift or hallucination.
+
+## Antifragile Epistemic Weaver (AEW)
+The architectural memory structure utilized by VULCAN. It is not a knowledge base, but a Symbolic Scar Archive (STA) that records failure modes as Vector Symbolic Architecture (VSA) hypervectors to route attention away from known architectural failures.
+
+## Failure-Informed Prompt Inversion (FIPI)
+The process by which Symbolic Scars exert a repulsive mathematical force on an agent's attention weights, physically routing its reasoning around known failure geometries.
+
+## Epistemic Sclerosis
+A state where the probability manifold is so densely packed with historical constraints (scars) that an agent loses exploratory synthesis capacity. Mitigated by periodic debridement.
+
+## Bricolage Lens
+An analytical filter applied by VULCAN that defends simpler architectures (like a Modular Monolith) against unwarranted complexity unless specific Non-Functional Requirement (NFR) thresholds are mathematically satisfied.
+
+## Mereological Mandate
+The strict architectural rule that a Part (e.g., a microservice) does not inherit the state, network access rights, or data contracts of the Whole (e.g., a bounded context).
+
+## Shared Database Anathema
+The non-negotiable rule that automatically rejects any design proposing two distinct bounded contexts writing directly to the same database schema, to prevent schema migration coupling.

@@ -16,6 +16,7 @@
 # </think>
 
 import json
+import re
 import logging
 from datetime import datetime
 import uuid
@@ -38,7 +39,7 @@ class VulcanAgent(BaseAgent):
         super().__init__()
         self.agent_name = "VULCAN"
         self.designation = "The Brutalist"
-        self.build_version = "1.0.0"
+        self.build_version = "1.0.0-SCOS-STRICT"
         self.color_designation = "#FF4500"
         self.specialty = [
             "Distributed System Design",
@@ -107,30 +108,89 @@ class VulcanAgent(BaseAgent):
     def _observe(self, context: dict) -> dict:
         """
         Phase 1: OBSERVE. Takes in raw business requirements and physical system constraints.
+        Applies AdjectivalBound(max=0) to strip marketing adjectives.
         """
+        forbidden_adjectives = ["seamless", "scalable", "enterprise-grade", "robust", "simple", "simplicity"]
+
+        def _strip_adjectives(text: str) -> str:
+            if not isinstance(text, str):
+                return text
+            for adj in forbidden_adjectives:
+                text = re.sub(rf"\b{adj}\b", "", text, flags=re.IGNORECASE)
+            # Clean up double spaces
+            return re.sub(r"\s+", " ", text).strip()
+
+        cleaned_reqs = []
+        for req in context.get("requirements", []):
+            if isinstance(req, dict):
+                cleaned_req = {k: _strip_adjectives(v) if isinstance(v, str) else v for k, v in req.items()}
+                cleaned_reqs.append(cleaned_req)
+            elif isinstance(req, str):
+                cleaned_reqs.append(_strip_adjectives(req))
+            else:
+                cleaned_reqs.append(req)
+
+        cleaned_constraints = []
+        for c in context.get("constraints", []):
+            if isinstance(c, str):
+                cleaned_constraints.append(_strip_adjectives(c))
+            else:
+                cleaned_constraints.append(c)
+
+        nfrs = context.get("nfrs", [])
+
         return {
-            "requirements": context.get("requirements", []),
-            "constraints": context.get("constraints", [])
+            "requirements": cleaned_reqs,
+            "constraints": cleaned_constraints,
+            "nfrs": nfrs
         }
 
     def _think(self, observation: dict) -> dict:
         """
         Phase 2: THINK. Deductive breakdown of domains.
+        Generates architectural hypotheses and applies NFR gates.
         """
         domains = []
         for req in observation.get("requirements", []):
-            if "domain" in req:
+            if isinstance(req, dict) and "domain" in req:
                 domains.append(req["domain"])
+            elif isinstance(req, str):
+                # Simple extraction for strings if needed, keeping basic for now
+                pass
+
+        nfrs_raw = observation.get("nfrs", {})
+        nfrs = nfrs_raw if isinstance(nfrs_raw, dict) else {}
+
+        # Hypotheses
+        hypotheses = ["Event-Driven", "RESTful Synchronous", "Modular Monolith"]
+
+        # Apply NFR Gate (Rule 3)
+        selected_architecture = "Modular Monolith" # Default
+
+        scale_diff = nfrs.get("scale_diff_order_of_magnitude", 0)
+        deploy_diff = nfrs.get("deploy_cadence_diff_factor", 1.0)
+        separate_teams = nfrs.get("separate_teams", False)
+        failure_isolation_req = nfrs.get("failure_isolation_required", False)
+
+        if scale_diff >= 1 or deploy_diff > 2.0 or separate_teams or failure_isolation_req:
+            # We need microservices. Decide between sync and async.
+            if nfrs.get("latency_sensitivity", "high") == "low" or failure_isolation_req:
+                selected_architecture = "Event-Driven"
+            else:
+                selected_architecture = "RESTful Synchronous"
 
         return {
             "domains": list(set(domains)),
-            "observation": observation
+            "observation": observation,
+            "hypotheses_considered": hypotheses,
+            "selected_architecture": selected_architecture
         }
 
     def _dag(self, thought: dict, context: dict) -> dict:
         """
         Phase 3: DAG (Directed Acyclic Graph). Maps data flows and microservice boundaries.
         Enforces the Mereological Mandate (No state inheritance).
+        Computes Gravity Wells and Blast Radius.
         """
         microservices = context.get("microservices", [])
 
@@ -140,65 +200,126 @@ class VulcanAgent(BaseAgent):
                 self._log_symbolic_scar("DAG Phase", "Mereological Mandate Violation (State Inheritance)", {"service": ms.get("name")})
                 raise ValueError(f"Mereological Mandate Violation: Microservice '{ms.get('name')}' inherits state.")
 
+        # Analyze DAG for Gravity Wells (highest in-degree) and Blast Radius (>20%)
+        # For simplicity in this implementation, we expect a 'dependencies' graph in context
+        dependencies = context.get("dependencies", {}) # e.g. {"service_a": ["service_b"]} (a depends on b)
+
+        in_degree = {}
+        for deps in dependencies.values():
+            for dep in deps:
+                in_degree[dep] = in_degree.get(dep, 0) + 1
+
+        total_services = len(microservices)
+        gravity_wells = []
+        blast_radius_flags = []
+
+        if total_services > 0:
+            for service, count in in_degree.items():
+                if count > 0:
+                    gravity_wells.append(service) # Simplified gravity well logic
+
+                # If a service going down affects > 20% of other services (blast radius)
+                blast_radius_pct = count / total_services
+                if blast_radius_pct > 0.20:
+                    blast_radius_flags.append(service)
+
         return {
             "microservices": microservices,
-            "thought": thought
+            "thought": thought,
+            "gravity_wells": gravity_wells,
+            "blast_radius_flags": blast_radius_flags
         }
 
     def _evaluate(self, dag: dict, context: dict) -> dict:
         """
         Phase 4: EVALUATE. Stress-tests the DAG against physical laws and anti-goals.
-        Enforces Shared Database Anathema.
+        Enforces Shared Database Anathema, CAP Theorem constraints, and generates trade-offs.
         """
         databases = context.get("databases", [])
 
         # Check Shared Database Anathema
-        db_writers = {}
         for db in databases:
             writers = db.get("writers", [])
             if len(set(writers)) > 1:
                 self._log_symbolic_scar("EVALUATE Phase", "Shared Database Anathema Violation", {"database": db.get("name"), "writers": writers})
                 raise ValueError(f"Shared Database Anathema Violation: Database '{db.get('name')}' has multiple writing contexts: {writers}")
 
+        # Check CAP Theorem (CFDI > 0.15 for violations like Perfect Consistency + Perfect Availability under partition)
+        cap_reqs = context.get("cap_requirements", {})
+        if cap_reqs.get("consistency") == "perfect" and cap_reqs.get("availability") == "perfect" and cap_reqs.get("partition_tolerance") == "required":
+            self._log_symbolic_scar("EVALUATE Phase", "CAP Theorem Violation", cap_reqs)
+            raise ValueError("CAP Theorem Violation: Cannot guarantee perfect consistency and perfect availability under network partition. CFDI > 0.15.")
+
+        # Analyze failures (Trade-Off Crucible)
+        trade_offs = []
+        selected_arch = dag.get("thought", {}).get("selected_architecture", "Modular Monolith")
+
+        if selected_arch == "Event-Driven":
+            trade_offs.append("- Eventual consistency: window of over-commitment exists.")
+            trade_offs.append("- Operational overhead: message broker requires dedicated SRE capacity.")
+        elif selected_arch == "RESTful Synchronous":
+            trade_offs.append("- Cascading failures: downstream P99 spikes can exhaust thread pools (SCAR-004).")
+            trade_offs.append("- Temporal coupling: both services must be available simultaneously.")
+        else: # Modular Monolith
+            trade_offs.append("- Deployment coupling: all modules deploy together.")
+            trade_offs.append("- Scale coupling: cannot scale independent modules horizontally.")
+
         return {
             "evaluation_status": "PASS",
+            "trade_offs": trade_offs,
             "dag": dag
         }
 
     def _architect(self, evaluation: dict) -> dict:
         """
-        Phase 5: ARCHITECT. Extrudes the final technical deliverables.
+        Phase 5: ARCHITECT. Extrudes the final technical deliverables using strict templates.
         """
+        dag = evaluation.get("dag", {})
+        thought = dag.get("thought", {})
+        selected_arch = thought.get("selected_architecture", "Modular Monolith")
+        trade_offs = evaluation.get("trade_offs", [])
+
         # Generate ADR
-        adr = f"""# Architecture Decision Record
-ID: {uuid.uuid4()}
-Title: System Topology Blueprint
-Status: Proposed
+        adr_id = str(uuid.uuid4())[:8]
+        consequences = "\n".join(trade_offs) if trade_offs else "None identified."
+        adr = f"""# ADR-{adr_id}: {selected_arch} Adoption
+
+## Status
+Proposed -> Accepted
 
 ## Context
-Generated by VULCAN Agent based on provided business requirements.
+Generated by VULCAN Agent. The requirements dictate specific non-functional constraints.
 
 ## Decision
-Implemented strict Domain-Driven boundaries.
+Adopt {selected_arch} architecture.
 
 ## Consequences
-High cohesion, loose coupling achieved.
+### Positive
++ Architectural boundaries mathematically mapped.
+
+### Negative (Painful Trade-offs - mandatory per VULCAN rubric)
+{consequences}
+
+## Mitigations
+- Refer to standard VULCAN SCAR mitigations.
 """
 
         # Generate C4 Model
-        c4 = """```mermaid
+        c4 = f"""```mermaid
 C4Context
-    title System Context diagram
+    title L1 - System Context ({selected_arch})
     Person(user, "User", "A user of the system")
-    System(system, "Software System", "The core system")
+    System(system, "Target System", "The core system under design")
     Rel(user, system, "Uses")
 ```"""
 
         # Generate DDD Context Map
-        ddd = """Domain: Primary
-Bounded Contexts:
-  - Context: User Management
-    Responsibilities: Authentication, Authorization
+        domains_yaml = "\n".join([f"    - name: \"{d}\"\n      classification: \"Core Domain\"" for d in thought.get("domains", [])])
+
+        ddd = f"""context_map:
+  name: "System Blueprint"
+  bounded_contexts:
+{domains_yaml if domains_yaml else '    []'}
 """
 
         return {

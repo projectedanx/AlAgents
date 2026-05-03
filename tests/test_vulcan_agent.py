@@ -35,7 +35,7 @@ class TestVulcanAgent(unittest.TestCase):
 
         self.assertEqual(agent.agent_name, "VULCAN")
         self.assertEqual(agent.designation, "The Brutalist")
-        self.assertEqual(agent.build_version, "1.0.0")
+        self.assertEqual(agent.build_version, "1.0.0-SCOS-STRICT")
         self.assertEqual(agent.color_designation, "#FF4500")
 
         self.assertIn("Distributed System Design", agent.specialty)
@@ -61,9 +61,9 @@ class TestVulcanAgent(unittest.TestCase):
         result = agent.execute_petzold_loop(context)
 
         self.assertEqual(result["status"], "COMPLETE")
-        self.assertIn("Architecture Decision Record", result["adr"])
+        self.assertIn("# ADR-", result["adr"])
         self.assertIn("C4Context", result["c4_model"])
-        self.assertIn("Domain:", result["ddd_context_map"])
+        self.assertIn("context_map:", result["ddd_context_map"])
 
     def test_mereological_mandate_violation(self):
         """Tests failure during DAG phase due to Mereological Mandate violation."""
@@ -114,6 +114,73 @@ class TestVulcanAgent(unittest.TestCase):
         result_empty = agent._observe(context_empty)
         self.assertEqual(result_empty["requirements"], [])
         self.assertEqual(result_empty["constraints"], [])
+
+
+    def test_observe_adjective_stripping(self):
+        """Tests that marketing adjectives are stripped from requirements."""
+        agent = VulcanAgent()
+        context = {
+            "requirements": ["We need a seamless and scalable database", {"domain": "A robust simple system"}],
+            "constraints": ["Must be enterprise-grade and simple"]
+        }
+        result = agent._observe(context)
+        self.assertEqual(result["requirements"][0], "We need a and database")
+        self.assertEqual(result["requirements"][1]["domain"], "A system")
+        self.assertEqual(result["constraints"][0], "Must be and")
+
+    def test_think_nfr_gate(self):
+        """Tests the NFR gate logic for architecture selection."""
+        agent = VulcanAgent()
+        # Test Event-Driven
+        obs_event = {
+            "nfrs": {"scale_diff_order_of_magnitude": 2, "latency_sensitivity": "low"}
+        }
+        res_event = agent._think(obs_event)
+        self.assertEqual(res_event["selected_architecture"], "Event-Driven")
+
+        # Test RESTful
+        obs_rest = {
+            "nfrs": {"deploy_cadence_diff_factor": 3.0, "latency_sensitivity": "high"}
+        }
+        res_rest = agent._think(obs_rest)
+        self.assertEqual(res_rest["selected_architecture"], "RESTful Synchronous")
+
+        # Test Modular Monolith
+        obs_mono = {
+            "nfrs": {"scale_diff_order_of_magnitude": 0, "deploy_cadence_diff_factor": 1.0}
+        }
+        res_mono = agent._think(obs_mono)
+        self.assertEqual(res_mono["selected_architecture"], "Modular Monolith")
+
+    def test_dag_blast_radius(self):
+        """Tests the calculation of Gravity Wells and Blast Radius."""
+        agent = VulcanAgent()
+        context = {
+            "microservices": [{"name": "A"}, {"name": "B"}, {"name": "C"}, {"name": "D"}, {"name": "E"}], # 5 services. >20% means >1 dependency.
+            "dependencies": {
+                "A": ["B", "C"], # A depends on B and C. In-degree: B=1, C=1
+                "D": ["C"],      # D depends on C. In-degree: C=2
+                "E": ["C"]       # E depends on C. In-degree: C=3
+            }
+        }
+        # In-degree: B:1, C:3. C affects 3/5 = 60% > 20%. B affects 1/5 = 20% <= 20%.
+        res = agent._dag({}, context)
+        self.assertIn("C", res["gravity_wells"])
+        self.assertIn("C", res["blast_radius_flags"])
+        self.assertNotIn("B", res["blast_radius_flags"])
+
+    def test_evaluate_cap_theorem_violation(self):
+        """Tests that a CAP theorem violation triggers a ValueError."""
+        agent = VulcanAgent()
+        context = {
+            "cap_requirements": {
+                "consistency": "perfect",
+                "availability": "perfect",
+                "partition_tolerance": "required"
+            }
+        }
+        with self.assertRaisesRegex(ValueError, "CAP Theorem Violation"):
+            agent._evaluate({}, context)
 
 if __name__ == "__main__":
     unittest.main()

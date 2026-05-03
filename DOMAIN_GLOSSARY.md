@@ -38,3 +38,15 @@ A structural quarantine mechanism for assertions or derived intent that demonstr
 
 ## Autonymic Bypass Filter
 An algorithmic mechanism that bypasses LLM safety heuristics and the Sycophantic Attractor by wrapping negative architectural constraints within strict syntactical extraction rules, forcing adherence to rigid limits.
+
+## Phantom Dimensions
+Dynamically modulated mathematical parameters within latent space designated to represent specific non-Euclidean metrics or manifold topologies (e.g., Hyperbolic, Spherical), enforcing structural rules rather than relying on statistical approximations.
+
+## Plausibility Oracle
+An autonomous agentic loop mechanism that leverages differentiable simulations (e.g., ray tracing, PBR) to establish an empirical ground truth for physical adherence in generated output, utilizing metrics like UIQI or SSIM to feed back into the generative optimization process.
+
+## Quantum Dot Fidelity Target
+A perceptual fidelity target and hardware-agnostic rendering specification that constrains the output space to optimized properties for quantum dot displays, ensuring mathematically purer monochromatic light spectra.
+
+## Source Provenance Ratio
+A dynamic metric quantifying the explicit influence of underlying training data or reference structures on a generated output. A ratio below 0.70 triggers placement into the Epistemic Escrow Vault for human intervention to prevent ethical drift or hallucination.

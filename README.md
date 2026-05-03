@@ -180,6 +180,11 @@ print(result["status"]) # COMPLETE
 print(result["Pluriversal_Knowledge_Capsule"]["epistemic_markers"]) # Contains [∇], [⊘], [Φ]
 ```
 
+
+### MoE Emergence Planning
+The `moe_emergence_planning/` directory contains the strategy and checklists for the Mixture of Engineers (MoE) Concept Value Synthesis. This paradigm inverts the traditional AI-Human relationship, utilizing a multi-node deterministic ensemble (P0-P8) to scaffold and hold dialectical tension provided by the human, preventing Resolution Collapse.
+
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging. All public methods and classes maintain complete docstrings. The `__pycache__` artifacts are excluded via `.gitignore`.

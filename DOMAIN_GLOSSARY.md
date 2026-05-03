@@ -68,3 +68,13 @@ The strict architectural rule that a Part (e.g., a microservice) does not inheri
 
 ## Shared Database Anathema
 The non-negotiable rule that automatically rejects any design proposing two distinct bounded contexts writing directly to the same database schema, to prevent schema migration coupling.
+
+
+## Mixture of Engineers (MoE P0-P8)
+A dynamic, self-regulating ensemble of deterministic architectural agent nodes (Router, Clarifier, Strategist, Implementer, Reviewer, Release Manager) designed to distribute epistemic boundaries and hold contradictions in paraconsistent tension without boolean collapse.
+
+## State Map Governance
+The mechanism by which the MoE P0 (Router) node maintains the Global Topological Boundary, routing tasks and state transitions based on Confidence-Fidelity Divergence Index (CFDI) ceilings and Betti-number loop detection.
+
+## Adversarial Tension (P5/P6)
+The intentional, structured conflict between the P5 (Implementer) and P6 (Reviewer) nodes, designed to prevent Semantic Saponification and Sycophantic Homogenization by forcing generated code/text to survive rigorous NFR and anti-goal interrogation before release.

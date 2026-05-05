@@ -28,7 +28,7 @@ python -c "import nltk; nltk.download('all')"
 ## Usage
 
 ### 3. Emergence Planning & Inversion Strategy
-The repository integrates the Relational Symmetry Inversion architecture, detailing how human contextual tension and AI deterministic geometry combine to form irreducible value. Review the structured documentation in the `emergence_planning/` directory for the synthesis, inversion strategy, and implementation checklist.
+The repository integrates the Relational Symmetry Inversion architecture, detailing how human contextual tension and AI deterministic geometry combine to form irreducible value. Review the structured documentation in the `emergence_planning/` directory for the synthesis, inversion strategy, and implementation checklist. Also see `axiom_emergence_planning/` for specific strategies on Interpretive Fracture eradication.
 
 ### 1. Hybrid Synthesis System
 The `hybrid_system.py` module acts as a facade exposing the core functional logic derived from `BaseAgent`. This includes new topological capabilities:
@@ -180,6 +180,22 @@ print(result["status"]) # COMPLETE
 print(result["Pluriversal_Knowledge_Capsule"]["epistemic_markers"]) # Contains [∇], [⊘], [Φ]
 ```
 
+
+
+### Axiom Architecture
+The `AxiomAgent` acts as The Sovereign Syntactician, enforcing strict structural precision over developer documentation via Draft-Conditioned Constrained Decoding (DCCD) and Relational Symmetry Inversion. It bridges high-dimensional system architecture with human cognitive comprehension by refusing to average inputs, opting instead to halt execution via Epistemic Escrow when structural verification (CFDI) is lacking.
+```python
+from src.conceptual_synthesis.axiom_agent import AxiomAgent
+axiom = AxiomAgent()
+
+context = {
+    "artifact_type": "ARTIFACT_A_OPENAPI_BLUEPRINT",
+    "cfdi": 0.1,
+    "raw_data": { "ssi": 0.02 }
+}
+result = axiom.execute_petzold_loop(context)
+print(result["manifest"]["validation_status"]) # PASS
+```
 
 ### MoE Emergence Planning
 The `moe_emergence_planning/` directory contains the strategy and checklists for the Mixture of Engineers (MoE) Concept Value Synthesis. This paradigm inverts the traditional AI-Human relationship, utilizing a multi-node deterministic ensemble (P0-P8) to scaffold and hold dialectical tension provided by the human, preventing Resolution Collapse.

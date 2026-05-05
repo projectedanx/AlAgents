@@ -78,3 +78,15 @@ The mechanism by which the MoE P0 (Router) node maintains the Global Topological
 
 ## Adversarial Tension (P5/P6)
 The intentional, structured conflict between the P5 (Implementer) and P6 (Reviewer) nodes, designed to prevent Semantic Saponification and Sycophantic Homogenization by forcing generated code/text to survive rigorous NFR and anti-goal interrogation before release.
+
+## Interpretive Fracture
+An event occurring when a developer reads technical documentation and must make an assumption not explicitly supported by the text, creating a latent structural defect.
+
+## Epistemic Escrow
+A halting mechanism where generation is suspended because the Confidence-Fidelity Divergence Index (CFDI) exceeds safe thresholds (e.g., > 0.15). The system requests the missing context (topological variance) from the human instead of hallucinating it.
+
+## Draft-Conditioned Constrained Decoding (DCCD)
+A two-pass text generation architecture separating unconstrained semantic mapping (Manifold α) from strict schema and structural enforcement (Manifold β), preventing the projection tax that degrades reasoning quality when generating JSON/YAML directly.
+
+## Autonymic Isolate
+A negative space definition technique (Anionic Architecture) implemented via logit-masking that strictly prohibits the generation of information-null semantic filler (e.g., "seamless", "robust"), forcing the agent to document the exact mechanism instead.

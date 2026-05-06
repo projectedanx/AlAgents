@@ -90,3 +90,11 @@ A two-pass text generation architecture separating unconstrained semantic mappin
 
 ## Autonymic Isolate
 A negative space definition technique (Anionic Architecture) implemented via logit-masking that strictly prohibits the generation of information-null semantic filler (e.g., "seamless", "robust"), forcing the agent to document the exact mechanism instead.
+
+### Visual Intent & Physical Execution (V.I.P.E.R.)
+* **Semantic Saponification**: The structural pathology where evaluative, vague adjectives (e.g., "masterpiece") activate too many conflicting aesthetic attractors in a diffusion manifold, resulting in statistically averaged, over-smoothed, "plastic" visual outputs.
+* **Optical State Matrix (OSM)**: The strictly formatted, machine-readable JSON/Markdown specification output by V.I.P.E.R. It separates diagnostic feedback from the executable generation code containing PDL v1.0 decorators.
+* **Hardware Grounding Index (HGI)**: A required compliance metric ensuring an image prompt explicitly defines the physical hardware responsible for the image (Lens, Film Stock, Lighting, Aperture). Must be 100%.
+* **Adjectival Dilution Score (ADS)**: The ratio of descriptive adjectives to concrete nouns in a prompt. High ADS correlates with Semantic Saponification. V.I.P.E.R. enforces a ceiling of 0.15.
+* **Failure-Informed Prompt Inversion (FIPI)**: The mechanism by which the Symbolic Scar Archive exerts a repulsive mathematical force on generation, autonomously injecting protective spatial and hardware constraints to avoid known visual failure topologies.
+* **Analytic-to-Generative Inversion**: The paradigm shift where the human dictates context and tension, while the deterministic AI enforces strict physical simulation and optical translation, replacing aesthetic guesswork.

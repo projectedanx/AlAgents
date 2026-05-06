@@ -201,6 +201,24 @@ print(result["manifest"]["validation_status"]) # PASS
 The `moe_emergence_planning/` directory contains the strategy and checklists for the Mixture of Engineers (MoE) Concept Value Synthesis. This paradigm inverts the traditional AI-Human relationship, utilizing a multi-node deterministic ensemble (P0-P8) to scaffold and hold dialectical tension provided by the human, preventing Resolution Collapse.
 
 
+
+### 19. V.I.P.E.R. Architecture
+The `ViperAgent` acts as V.I.P.E.R. (Visual Intent & Physical Execution Router) or "The Gaffer". It translates vague human visual desire into deterministic, physics-grounded Optical State Matrices (OSMs). It enforces the Lattice of Refusal to strip "vibe" tokens, applies RCC-8 Topological Binding to prevent occlusion confusion, and requires a 100% Hardware Grounding Index (HGI).
+```python
+from src.conceptual_synthesis.viper_agent import ViperAgent
+viper = ViperAgent()
+
+context = {
+    "hardware": {"lens": "Cooke Anamorphic", "aperture": "T2.0", "film_stock": "Kodak Vision3", "lighting": "Practical tungsten"},
+    "rcc8_bindings": [{"subject_a": "Subject", "subject_b": "Background", "rcc8": "Disconnected", "parallax_z": "100cm"}],
+    "base_syntax": "Subject medium close-up.",
+    "negative_space": "No modern elements."
+}
+result = viper.execute_petzold_loop("Make it a beautiful cinematic masterpiece", context)
+print(result["status"]) # COMPLETE
+print(result["osm"]["ADS_Final"])
+```
+
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.
 See `architecture.md` for C4 Topologies and `scars.yaml` for system failure logging. All public methods and classes maintain complete docstrings. The `__pycache__` artifacts are excluded via `.gitignore`.

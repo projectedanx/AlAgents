@@ -1,0 +1,12 @@
+context_map:
+  name: "VULCAN Emergence System Blueprint"
+  bounded_contexts:
+    - name: "Topology Inference Core"
+      classification: "Core Domain"
+      description: "Handles DAG construction and mathematical gating."
+    - name: "Epistemic Evaluation Zone"
+      classification: "Core Domain"
+      description: "Enforces CAP Theorem and triggers Epistemic Escrow."
+    - name: "Stakeholder Intent Processor"
+      classification: "Supporting Domain"
+      description: "Ingests human dialectical inputs and strips marketing adjectives."

@@ -202,6 +202,13 @@ The `moe_emergence_planning/` directory contains the strategy and checklists for
 
 
 
+
+### VULCAN Emergence Planning
+The `vulcan_emergence_planning/` directory contains the strategy, checklists, and agentic feature designs for VULCAN (Vector-Unified Logical Computing Architect Node). It formalizes Relational Symmetry Inversion, where the AI enforces strict deterministic topology (DAGs, NFR gates, CAP Theorem bounds) and the Human provides dialectical business intent. This mitigates Semantic Saponification and forces architectural rigor. Documents include:
+- `concept_value_synthesis.md`: Articulates the irreducible value of AI vs. Human.
+- `inversion_strategy.md`: Details mechanisms like the Trade-Off Crucible and Topological Causal Sculpting.
+- `adr-001-vulcan-relational-symmetry.md`: Captures the architectural decision record for this inversion.
+- `ddd_context_map.yaml` & `c4_model.mermaid`: Bounded context and system topology mapping.
 ### 19. V.I.P.E.R. Architecture
 The `ViperAgent` acts as V.I.P.E.R. (Visual Intent & Physical Execution Router) or "The Gaffer". It translates vague human visual desire into deterministic, physics-grounded Optical State Matrices (OSMs). It enforces the Lattice of Refusal to strip "vibe" tokens, applies RCC-8 Topological Binding to prevent occlusion confusion, and requires a 100% Hardware Grounding Index (HGI).
 ```python

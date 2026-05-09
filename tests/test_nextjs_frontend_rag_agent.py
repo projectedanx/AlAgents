@@ -1,5 +1,7 @@
 # /// file: tests/test_nextjs_frontend_rag_agent.py ///
 import unittest
+from unittest.mock import patch
+import os
 
 from src.conceptual_synthesis.nextjs_frontend_rag_agent import NextjsFrontendRagAgent
 
@@ -23,6 +25,7 @@ class TestNextjsFrontendRagAgent(unittest.TestCase):
         self.assertTrue(len(result["citations"]) > 0)
         self.assertIn("retrieval_stats", result)
 
+    @patch.dict(os.environ, {"ENABLE_AGENT_SIMULATION": "true"})
     def test_insufficient_context(self):
         context = {
             "query": "sim_empty_context: something completely unrelated",
@@ -46,6 +49,7 @@ class TestNextjsFrontendRagAgent(unittest.TestCase):
         self.assertEqual(result["error"], "UnauthorizedAccess")
         self.assertIsNone(result["answer"])
 
+    @patch.dict(os.environ, {"ENABLE_AGENT_SIMULATION": "true"})
     def test_vector_db_unavailable(self):
         context = {
             "query": "sim_db_fail: trigger a db error",
@@ -57,6 +61,7 @@ class TestNextjsFrontendRagAgent(unittest.TestCase):
         self.assertEqual(result["error"], "VectorDBUnavailable")
         self.assertIsNone(result["answer"])
 
+    @patch.dict(os.environ, {"ENABLE_AGENT_SIMULATION": "true"})
     def test_hallucination_detection(self):
         # We simulate hallucination in synthesize_answer if query contains a certain string,
         # but our mock is hardcoded to return a specific string.

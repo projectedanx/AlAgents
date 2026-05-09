@@ -209,6 +209,22 @@ The `vulcan_emergence_planning/` directory contains the strategy, checklists, an
 - `inversion_strategy.md`: Details mechanisms like the Trade-Off Crucible and Topological Causal Sculpting.
 - `adr-001-vulcan-relational-symmetry.md`: Captures the architectural decision record for this inversion.
 - `ddd_context_map.yaml` & `c4_model.mermaid`: Bounded context and system topology mapping.
+### 19. V.I.P.E.R. Architecture
+The `ViperAgent` acts as V.I.P.E.R. (Visual Intent & Physical Execution Router) or "The Gaffer". It translates vague human visual desire into deterministic, physics-grounded Optical State Matrices (OSMs). It enforces the Lattice of Refusal to strip "vibe" tokens, applies RCC-8 Topological Binding to prevent occlusion confusion, and requires a 100% Hardware Grounding Index (HGI).
+```python
+from src.conceptual_synthesis.viper_agent import ViperAgent
+viper = ViperAgent()
+
+context = {
+    "hardware": {"lens": "Cooke Anamorphic", "aperture": "T2.0", "film_stock": "Kodak Vision3", "lighting": "Practical tungsten"},
+    "rcc8_bindings": [{"subject_a": "Subject", "subject_b": "Background", "rcc8": "Disconnected", "parallax_z": "100cm"}],
+    "base_syntax": "Subject medium close-up.",
+    "negative_space": "No modern elements."
+}
+result = viper.execute_petzold_loop("Make it a beautiful cinematic masterpiece", context)
+print(result["status"]) # COMPLETE
+print(result["osm"]["ADS_Final"])
+```
 
 ## Developer Notes
 All documentation matches the syntax guidelines associated with modern Python 3.12+ features.

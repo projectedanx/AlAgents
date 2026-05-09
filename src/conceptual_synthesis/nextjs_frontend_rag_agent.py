@@ -17,6 +17,7 @@
 import json
 import logging
 import time
+import os
 from datetime import datetime
 import uuid
 from typing import Optional, List, Dict, Any
@@ -62,13 +63,16 @@ class NextjsFrontendRagAgent(BaseAgent):
         """Mock vector search in Firestore."""
         start_time = time.time()
 
-        # Simulate db failure
-        if "sim_db_fail" in query:
+        # Simulate db failure - Gated behind environment variable for security
+        if os.getenv("ENABLE_AGENT_SIMULATION") == "true" and "sim_db_fail" in query:
             raise ConnectionError("VectorDBUnavailable: Firestore connection failed")
 
         # Simulate retrieved docs
         mock_docs = []
-        if "sim_empty_context" not in query:
+        # Simulation Gated behind environment variable for security
+        if os.getenv("ENABLE_AGENT_SIMULATION") == "true" and "sim_empty_context" in query:
+            mock_docs = []
+        else:
             mock_docs = [
                 {"doc_id": "doc1", "doc_title": "Getting Started", "url": "https://docs.example.com/start", "text_snippet": "To start, npm install.", "relevance_score": 0.9},
                 {"doc_id": "doc2", "doc_title": "Advanced Topics", "url": "https://docs.example.com/advanced", "text_snippet": "Use the retrieve_documents tool for vector search.", "relevance_score": 0.7}
@@ -116,9 +120,9 @@ class NextjsFrontendRagAgent(BaseAgent):
                 "relevance_score": doc["relevance_score"]
             })
 
-        # Simulate a hallucination check
+        # Simulate a hallucination check - Gated behind environment variable for security
         unmapped_claims = []
-        if "sim_hallucination" in answer:
+        if os.getenv("ENABLE_AGENT_SIMULATION") == "true" and "sim_hallucination" in answer:
             unmapped_claims.append("This is an invented fact.")
 
         return {

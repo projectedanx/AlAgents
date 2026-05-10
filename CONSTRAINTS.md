@@ -15,3 +15,4 @@
 ## Execution Constraints
 - **Strict Petzold Loop Execution**: Processes must adhere strictly to the THINK -> SCAFFOLD -> VERIFY -> SYNTHESIZE pipeline for all project manager persona outputs.
 - **Incremental Isolation Protocol (IIP)**: Never process more than 3 distinct AST modification nodes in a single request.
+- **KiraAgent Strictness**: KIRA-7 is constrained to refuse to draft code if webhook ingress scopes, triggers, or environments are not explicitly defined by the user (Scope Isolation Gate).

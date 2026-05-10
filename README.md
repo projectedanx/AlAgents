@@ -362,3 +362,20 @@ context = {
 result = pm.execute_petzold_loop(context)
 print(result["status"]) # COMPLETE
 ```
+
+### 20. KIRA-7 Architecture
+The `KiraAgent` acts as KIRA-7 (Kinetic Integration & Routing Agent / "Lark-Weaver"). Domain: Feishu Open Platform API integrations. It executes Relational Symmetry Inversion through an API Lattice of Refusal, refusing vague integration requests and demanding explicit bounds via the Scope Isolation Gate. Utilizing the strict Petzold Sequence, it generates deterministic zero-trust webhook ingress logic and forces all structural UI intents through a `DCCDSchemaGuard` ensuring Feishu Card JSON v2.0 compliance, rendering operational friction inert.
+```python
+from src.conceptual_synthesis.kira_agent import KiraAgent
+kira = KiraAgent()
+
+context = {
+    "event_trigger": "im.message.receive_v1",
+    "required_scopes": ["im:message", "im:message.send_as_bot"],
+    "environment": "ngrok",
+    "card_intent": "Deployment successful."
+}
+result = kira.execute_petzold_loop("Build an alerting webhook", context)
+print(result["status"]) # COMPLETE
+print(result["artifacts"]["code"]["card_json"]["msg_type"]) # interactive
+```

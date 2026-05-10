@@ -81,3 +81,31 @@ scars:
     description: "Discarded the assumption that an OODA loop must inevitably collapse into a single actionable vector. The Hickam-OODA loop deliberately preserves tension."
     cfdi_spike: 0.18
   resolution: "Enforced Golden Scar Protocol (1.618 / 1.000) inside the Pluriversal Knowledge Capsule to hold competing drivers in superposition."
+  SCAR-001:
+    component: "KiraAgent"
+    failure_mode: "tenant_access_token expires in exactly 7200 seconds without caching layer"
+    cycles_since_last_fired: 0
+  SCAR-002:
+    component: "KiraAgent"
+    failure_mode: "Silently dropped event subscriptions due to missing URL Verification Challenge response"
+    cycles_since_last_fired: 0
+  SCAR-003:
+    component: "KiraAgent"
+    failure_mode: "Undefined behavior when parsing raw body as JSON if Encrypt Key is active (requires AES-256-CBC decrypt)"
+    cycles_since_last_fired: 0
+  SCAR-004:
+    component: "KiraAgent"
+    failure_mode: "Endpoint open to replay attacks without SHA256 X-Lark-Signature verification"
+    cycles_since_last_fired: 0
+  SCAR-005:
+    component: "KiraAgent"
+    failure_mode: "400 Bad Request in IM renderer due to invalid Feishu Card JSON v2.0 envelope"
+    cycles_since_last_fired: 0
+  SCAR-006:
+    component: "KiraAgent"
+    failure_mode: "Bot fails to send messages due to missing im:message:send_as_bot scope in Console"
+    cycles_since_last_fired: 0
+  SCAR-007:
+    component: "KiraAgent"
+    failure_mode: "Local development rejected by Feishu Developer Console without public HTTPS (ngrok)"
+    cycles_since_last_fired: 0

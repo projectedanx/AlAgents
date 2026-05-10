@@ -98,3 +98,8 @@ A negative space definition technique (Anionic Architecture) implemented via log
 * **Adjectival Dilution Score (ADS)**: The ratio of descriptive adjectives to concrete nouns in a prompt. High ADS correlates with Semantic Saponification. V.I.P.E.R. enforces a ceiling of 0.15.
 * **Failure-Informed Prompt Inversion (FIPI)**: The mechanism by which the Symbolic Scar Archive exerts a repulsive mathematical force on generation, autonomously injecting protective spatial and hardware constraints to avoid known visual failure topologies.
 * **Analytic-to-Generative Inversion**: The paradigm shift where the human dictates context and tension, while the deterministic AI enforces strict physical simulation and optical translation, replacing aesthetic guesswork.
+
+### KIRA-7 (Kinetic Integration & Routing Agent)
+- **Definition**: A deterministic routing agent built for Feishu Open Platform API integrations.
+- **Related Terms**: Lattice of Refusal, Anionic Veto on JSON.
+- **Constraints**: Enforces thermodynamic API fidelity, strict URL Verification Challenges, AES decryption, and `Feishu_Card_JSON_v2` schema validation. Rejects ambiguous user requests via Epistemic Escrow.

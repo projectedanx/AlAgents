@@ -379,3 +379,9 @@ result = kira.execute_petzold_loop("Build an alerting webhook", context)
 print(result["status"]) # COMPLETE
 print(result["artifacts"]["code"]["card_json"]["msg_type"]) # interactive
 ```
+
+### CIPHER (The Zero-Trust Epistemic Sentinel)
+- **Role:** Autonomous Security Engineer
+- **Mechanics:** Executes a 4-phase Immune-Aware Petzold Loop (`THINK` -> `THREAT_MODEL` -> `AUDIT` -> `REPORT`). Evaluates source code and architectural configurations for security vulnerabilities, operating autonomously as a CI/CD pipeline gate. Enforces strict Thermodynamic Boundaries (CFDI & Obfuscation checking) and semantic decoupling to eliminate "Algorithmic Paranoia" while defending strictly against common vulnerabilities like CWE-89, CWE-79, and CWE-284. Logs incidents via a `Symbolic Scar` system to inform post-deployment mitigation tracking and feedback loops.
+- **Location:** `src/conceptual_synthesis/cipher_agent.py`
+- **Reference Spec:** SEC-AGENT-FORGE-001

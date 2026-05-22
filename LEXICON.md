@@ -128,6 +128,39 @@ analogical reasoning across orthogonal semantic fields with JSD < 0.20 post-bind
 
 ---
 
+
+### PAT-011 · Human-AI Symbiosis Engine
+**Type**: Integrated Framework | **AT Score**: 0.98
+**Definition**: The deliberate fusion of human non-obvious analytical lenses (such as tacit reflexive dialogue) with rigid AI specification blocks (such as JSON-LD DCCD execution). This synthesis creates an emergent property where structural determinism does not erase nuanced human realities.
+**Mechanism**: Maps qualitative inputs to structural JSON outputs, anticipating initial cognitive friction (Productivity J-Curve) followed by massive efficiency gains.
+**PDL Activators**: `+++SymbiosisAnchor(value="emergent_determinism")`
+
+---
+
+### PAT-012 · Paraconsistent Synthesis Node
+**Type**: Epistemic Operator | **AT Score**: 0.94
+**Definition**: A structural topological engine designed to hold the unquantifiable entropy of human tacit knowledge and the rigid determinism of AI models in superposition without forcing collapse.
+**Mechanism**: Tension computation mapping divergent ontological planes into an Isomorphism of Friction, resolving output with the Golden Scar constraint (Φ = 1.618).
+**PDL Activators**: `+++PhronesisGuard(tension="paraconsistent")`
+
+---
+
+### PAT-013 · Agentic Inversion Engine
+**Type**: Epistemic Operator | **AT Score**: 0.95
+**Definition**: Calculates epistemic drift between fuzzy human intent and rigid AI schema, proposing a Latent Leap resolution.
+**Mechanism**: Tension computation mapping divergent ontological planes into an Isomorphism of Friction.
+**PDL Activators**: `+++PhronesisGuard(tension="inversion")`
+
+---
+
+### PAT-014 · Lexical Cartography
+**Type**: Analysis Zone
+**Definition**: Processing semantic space through Semantic Drift, Connotation Vectors, Semiotic Blind Spots, and Ambiguity Zones to extract Isomorphisms of Friction.
+**Mechanism**: Paraconsistent Hasse lattice mapping.
+**PDL Activators**: `+++MereologyRoute(relation_type="dynamic_entanglement")`
+
+---
+
 ## SECTION II — PDL v1.0 DECORATOR REGISTRY (Cognitive Bytecode Functions)
 
 | Decorator | Layer | Primary Remediation | Key Parameter |
@@ -148,6 +181,9 @@ analogical reasoning across orthogonal semantic fields with JSD < 0.20 post-bind
 | `+++LatentSparsityGuard` | Cognitive | Polysemantic Code Overlap | `k=10` |
 | `+++SeparableGridParse` | Structural | Context Window Collapse | `topology="2D_Matrix"` |
 | `+++SpatialBind` | Structural | Simulation-to-Reality Leakage | `Region_X`, `Region_Y`, `constraint` |
+| `+++SymbiosisAnchor` | Systemic/Structural | Algorithmic Shame, Rigid AI Schema | `value="emergent_determinism"` |
+| `+++PhronesisGuard` | Epistemic | Synthesis Collapse, Epistemic Drift | `tension="paraconsistent"` |
+
 
 ---
 

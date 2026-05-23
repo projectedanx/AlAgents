@@ -53,7 +53,7 @@ class StrategicIntegrationProjectManagerAgent(BaseAgent):
 
         # Compute the interference fit (Topological Derivative) preserving both forces via cross-like binding
         # We simulate the binding by utilizing a deterministic gradient combination.
-        derivative = np.gradient(anchored_a) + np.gradient(anchored_b)
+        derivative = np.convolve(np.gradient(anchored_a), np.gradient(anchored_b), mode='same')
 
         return derivative
 

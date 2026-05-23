@@ -21,9 +21,9 @@ class TestStrategicIntegrationProjectManagerAgent(unittest.TestCase):
         # b_anchored = [0.5, 1.0, 1.5]
         # gradient of a_anchored: [(3.236-1.618), (4.854-1.618)/2, (4.854-3.236)] = [1.618, 1.618, 1.618]
         # gradient of b_anchored: [0.5, 0.5, 0.5]
-        # sum: [2.118, 2.118, 2.118]
+        # np.convolve([1.618, 1.618, 1.618], [0.5, 0.5, 0.5], mode='same') => [1.618, 2.427, 1.618]
 
-        expected = np.array([2.118, 2.118, 2.118])
+        expected = np.array([1.618, 2.427, 1.618])
         result = self.agent._calculate_topological_derivative_of_dissonance(conflict_a, conflict_b)
         npt.assert_array_almost_equal(result, expected)
 

@@ -1,0 +1,2 @@
+Instability: Root directory pollution with application logic and unpinned broad dependencies in requirements.txt (e.g. numpy<2.0 and unpinned nltk) causing "leaky pipes" and semantic saponification.
+Fortification: Relocated `symbolic_charge_network.py` and `test_symbolic_charge_network.py` to `src/` and `tests/` respectively. Abstracted `setup.sh` into a new `scripts/` directory. Pinned numpy==1.26.4 and nltk==3.9.4 in requirements.txt. Test imports refactored.

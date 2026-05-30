@@ -150,3 +150,19 @@ def hybrid_synthesis(payload: SynthesisPayload) -> dict:
         A dictionary containing the results of each of the five functions.
     """
     return _agent.run(payload)
+
+from src.conceptual_synthesis.infomorphism_agent import InfomorphismAgent
+
+_info_agent = InfomorphismAgent()
+
+def execute_infomorphism_resonance(context: dict) -> dict:
+    """
+    Executes the Infomorphism Resonance loop via the InfomorphismAgent.
+
+    Args:
+        context: A dictionary containing 'human_tension' and 'ai_determinism' values.
+
+    Returns:
+        A dictionary containing the calculated inverse safety state and epistemic markers.
+    """
+    return _info_agent.execute_infomorphism_loop(context)

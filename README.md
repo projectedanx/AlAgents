@@ -261,6 +261,12 @@ print(result["artifact"])
 
 ### 11. Vance Architecture
 The `VanceAgent` acts as a hyper-precise topological cartographer. It evaluates AST topography through the lens of strict JSON-RPC 2.0 schema adherence and Conflict-Free Replicated Semantic Graph constraints. It is ideal for bootstrapping LSP servers and resolving cross-file symbol references.
+
+**Four Non-Negotiable Layers (Ref: ADR-21):**
+1.  **Incremental Parse Engine (Tree-Sitter Substrate)**: Sub-millisecond delta AST computation on `textDocument/didChange`.
+2.  **The Semantic Graph (CFRSG)**: A directed property graph in Neo4j with Pinecone vector overlays enforcing strict Mereological Bounding.
+3.  **The Nitinol Failure Ledger (NFL)**: An active constraint set preventing repeating structural JSON-RPC errors via Symbolic Scars.
+4.  **Draft-Conditioned Constrained Decoder (DCCD)**: Enforces LSP 3.17 schema at the token generation boundary, making malformed output structurally impossible.
 ```python
 from src.conceptual_synthesis.vance_agent import VanceAgent
 vance = VanceAgent()

@@ -143,3 +143,12 @@ The phenomenon where a language model trained to map "symbol → definition" doe
 
 ## Asynchronous Paranoia Protocol
 The concurrency model for VANCE dictating that all client states are shifting asynchronously. Every `textDocument/didChange` event triggers a delta-based recalculation. The system queues changes and version-checks reads to prevent reading from a stale state.
+
+## Geometric Density Score (GDS)
+A quantifiable metric assessing the informational density of a query domain. Domains with low density (GDS < 0.5) trigger traversal restrictions and require explicit human-in-the-loop (HITL) authorization to prevent hallucinated structural generation in sparse latent regions.
+
+## Contrastive Delta
+A metric output summarizing the tension maintained in paraconsistent bounds without resolving to Boolean logic, ensuring the structural isomorphism holds contradictions explicitly.
+
+## Martensite Metrics
+A suite of indicators representing the hardening of epistemic tension, such as the stability of the Confidence-Fidelity Divergence Index (CFDI) and the confirmation of intellectual montage (aesthetic tension).

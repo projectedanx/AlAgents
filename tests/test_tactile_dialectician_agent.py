@@ -48,5 +48,43 @@ class TestTactileDialecticianAgent(unittest.TestCase):
         self.assertTrue(checklist["epistemic_escrow_secured"])
         self.assertTrue(checklist["symbolic_scar_integrity_maintained"])
 
+
+
+    def test_gds_computation_and_logging(self):
+        context = {
+            "intent": "Simple short text",
+            "query_domain": "A",
+            "drivers": ["speed"],
+            "lens": "Test Lens"
+        }
+
+        # Test low GDS (< 0.5)
+        context["query_domain"] = "AAAA"
+
+        result = self.agent.execute_hickam_ooda_loop(context)
+
+        self.assertEqual(result["status"], "COMPLETE")
+        self.assertIn("Contrastive_Delta", result)
+        self.assertIn("Martensite_Metrics", result)
+
+        contrastive_delta = result["Contrastive_Delta"]
+        self.assertTrue(contrastive_delta["hitl_required"])
+        self.assertLess(contrastive_delta["gds_score"], 0.5)
+
+        # Verify it logged to SymbolicScar.jsonl
+        import os
+        self.assertTrue(os.path.exists("SymbolicScar.jsonl"))
+        with open("SymbolicScar.jsonl", "r") as f:
+            lines = f.readlines()
+            last_line = lines[-1]
+            self.assertIn("ontological_correction", last_line)
+            self.assertIn("Test Lens", last_line)
+
+        # Cleanup
+        if os.path.exists("SymbolicScar.jsonl"):
+            os.remove("SymbolicScar.jsonl")
+
 if __name__ == '__main__':
+
+
     unittest.main()

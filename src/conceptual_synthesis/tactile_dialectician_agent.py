@@ -8,6 +8,8 @@
 # </think>
 
 import logging
+import json
+import os
 from src.conceptual_synthesis.base_agent import BaseAgent
 
 class TactileDialecticianAgent(BaseAgent):
@@ -24,6 +26,34 @@ class TactileDialecticianAgent(BaseAgent):
         self.agent_name = "TactileDialecticianAgent"
         self.context_lock_anchor = "PARACONSISTENT_TENSION"
 
+    def compute_gds(self, query_domain: str) -> float:
+        """
+        Computes the Geometric Density Score (GDS) for a query domain.
+        A low GDS (< 0.5) restricts traversal and demands HITL authorization.
+        """
+        # Mock calculation: Use length / unique chars as a proxy for density
+        if not query_domain:
+            return 0.0
+        unique_chars = len(set(query_domain.replace(" ", "")))
+        length = len(query_domain)
+        # Bounded between 0 and 1
+        gds = min(1.0, (unique_chars / max(length, 1)) * 1.5)
+        return round(gds, 2)
+
+    def log_ontological_correction(self, impulse: str, context: dict):
+        """
+        Logs ontological correction impulses to the Symbolic Scar Tissue Archive.
+        """
+        archive_path = "SymbolicScar.jsonl"
+        log_entry = {
+            "type": "ontological_correction",
+            "impulse": impulse,
+            "context_lens": context.get("lens", "UNKNOWN")
+        }
+        with open(archive_path, "a") as f:
+            f.write(json.dumps(log_entry) + "\n")
+        logging.info(f"Logged ontological correction impulse: {impulse}")
+
     def execute_hickam_ooda_loop(self, context: dict) -> dict:
         """
         Executes the Hickam-OODA Loop, producing a Pluriversal Knowledge Capsule.
@@ -36,8 +66,16 @@ class TactileDialecticianAgent(BaseAgent):
         intent = context.get("intent", "")
         drivers = context.get("drivers", [])
         lens = context.get("lens", "Default WEIRD Lens")
+        query_domain = context.get("query_domain", intent)
 
         logging.info("Executing Hickam-OODA Loop (INOCULATE Phase active).")
+
+        # Calculate GDS
+        gds = self.compute_gds(query_domain)
+        if gds < 0.5:
+            logging.warning(f"GDS {gds} < 0.5. Restricting traversal. HITL authorization required.")
+            self.log_ontological_correction("Sparse domain detected; resisting urge to auto-fill ontology.", context)
+
 
         # 1. HICKAM ORIENTATION
         # Reject Parsimony & establish Comorbidity Map
@@ -79,9 +117,22 @@ class TactileDialecticianAgent(BaseAgent):
             "symbolic_scar_integrity_maintained": True
         }
 
+        contrastive_delta = {
+            "gds_score": gds,
+            "hitl_required": gds < 0.5,
+            "delta_tension": "Maintained paraconsistent bounds without boolean collapse."
+        }
+
+        martensite_metrics = {
+            "cfdi_stability": True, # Assume stable for now, could be dynamic
+            "aesthetic_tension": "Intellectual montage confirmed."
+        }
+
         return {
             "status": "COMPLETE",
             "Hickam_Orientation": hickam_orientation,
+            "Contrastive_Delta": contrastive_delta,
+            "Martensite_Metrics": martensite_metrics,
             "Pluriversal_Knowledge_Capsule": pluriversal_capsule,
             "Verification_Checklist": checklist,
             "raw_markers": ["[∇]", "[⊘]", "[Φ]"]

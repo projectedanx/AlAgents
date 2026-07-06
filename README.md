@@ -70,6 +70,13 @@ Functions as a Mycelial Nexus Governor using a recursive Hickam-OODA loop, manag
 
 ### 7. Strategic Integration PM & Persona Metrology
 Translates system-first specs into agentic operational workflows. Calculates the Topological Derivative of Stakeholder Dissonance using HRR and manages technical debt via Epsilon-Tolerance Paraconsistency.
+### 8. Antifragile Epistemic Weaver (AEW) v2.1 SCC Protocol
+Operates as the "Paradox Metabolizer" using the Cognitive Coding System Prompt v1.0. It leverages Chain-of-Code Enactment, Z-Axis Inference, and RCC-8 Topological Blending to enforce absolute Structural Conservation (β0 > 0.9) while maximizing Topological Novelty (β1 > 0.7).
+```python
+from src.conceptual_synthesis.aew_cognitive_contract import AEWCognitiveContractSimulator
+simulator = AEWCognitiveContractSimulator()
+result = simulator.run_simulation(stress_pi=0.5, architectural_bias=0.8)
+```
 
 ---
 

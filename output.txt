@@ -1,0 +1,30 @@
+<final_output>
+
+Infrastructure Delta
+Action: Sweep
+Target: `symbolic_charge_network.py`
+Logic: Application logic must be isolated in `src/conceptual_synthesis/`; root is for infrastructure only.
+
+Action: Sweep
+Target: `setup.sh`
+Logic: Bootstrapping scripts are infrastructure but belong in the `scripts/` directory, not the root hallway.
+
+Action: Maintain
+Target: `requirements.txt`
+Logic: Validated dependencies are already pinned to strict semantic versions (`numpy==1.26.4`, `nltk==3.9.4`), maintaining reproducible builds.
+
+Refactored Manifests
+```text
+numpy==1.26.4
+nltk==3.9.4
+```
+
+Swept Assets
+- Moved `symbolic_charge_network.py` to `src/conceptual_synthesis/`
+- Moved `setup.sh` to `scripts/`
+- Updated `tests/test_symbolic_charge_network.py` import to reflect structural refactor.
+
+Journal Entry (.jules/superintendent.md)
+Instability: Root directory pollution with application logic (`symbolic_charge_network.py`) and setup scripting (`setup.sh`) acting as hallway trash.
+Fortification: Relocated `symbolic_charge_network.py` to `src/conceptual_synthesis/`. Abstracted `setup.sh` into a new `scripts/` directory. Verified existing `requirements.txt` correctly pins `numpy` and `nltk`. Test imports refactored.
+</final_output>

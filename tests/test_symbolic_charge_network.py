@@ -1,7 +1,7 @@
 # /// file: test_symbolic_charge_network.py ///
 import unittest
 import numpy as np
-from symbolic_charge_network import NeuroSymbolicParticle, SymbolicChargeNetwork
+from conceptual_synthesis.symbolic_charge_network import NeuroSymbolicParticle, SymbolicChargeNetwork
 
 class TestSymbolicChargeNetwork(unittest.TestCase):
 

@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 sys.modules['nltk.tabdata'] = MagicMock()
 
 import unittest
-from src.conceptual_synthesis.kut_agent import KutAgent
+from src.conceptual_synthesis.kut_agent import KutAgent, AudioSpecConfig
 
 class TestKutAgent(unittest.TestCase):
     def setUp(self):
@@ -138,6 +138,43 @@ class TestKutAgent(unittest.TestCase):
 
         # Restore original function
         self.agent._ingest_scar = original_ingest
+
+
+    def test_generate_deliverable_b_audio_spec(self):
+        # Pass condition
+        pass_config = AudioSpecConfig(
+            creator_name="Test Creator",
+            session=1,
+            nle="DaVinci Resolve",
+            platforms=["TikTok", "Instagram Reels"],
+            peak=-3.0,
+            lufs=-14.0,
+            true_peak=-1.0,
+            dialogue_clarity="Excellent"
+        )
+        spec_pass = self.agent.generate_deliverable_b_audio_spec(pass_config)
+        self.assertIn("AUDIO MASTERING SPEC — Test Creator — Session 1", spec_pass)
+        self.assertIn("NLE: DaVinci Resolve", spec_pass)
+        self.assertIn("Target Platforms: TikTok, Instagram Reels", spec_pass)
+        self.assertIn("Current LUFS Integrated:  -14.0 LUFS", spec_pass)
+        self.assertIn("True Peak:                -1.0 dBTP", spec_pass)
+        self.assertIn("SPEC COMPLIANCE: PASS", spec_pass)
+
+        # Fail condition
+        fail_config = AudioSpecConfig(
+            creator_name="Test Creator",
+            session=2,
+            nle="Premiere Pro",
+            platforms=["YouTube Shorts"],
+            peak=-1.0,
+            lufs=-10.0,
+            true_peak=0.5,
+            dialogue_clarity="Good"
+        )
+        spec_fail = self.agent.generate_deliverable_b_audio_spec(fail_config)
+        self.assertIn("Current LUFS Integrated:  -10.0 LUFS", spec_fail)
+        self.assertIn("True Peak:                0.5 dBTP", spec_fail)
+        self.assertIn("SPEC COMPLIANCE: FAIL", spec_fail)
 
 if __name__ == "__main__":
     unittest.main()

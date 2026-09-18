@@ -6,6 +6,8 @@ from nltk.tokenize import word_tokenize
 import string
 import numpy as np
 
+from src.conceptual_synthesis.rheological_controller import RheologicalController
+
 from dataclasses import dataclass
 
 @dataclass
@@ -26,6 +28,11 @@ class SynthesisPayload:
     width: int
     height: int
     rule: int
+    cfdi: float = 0.0
+    constraint_density: float = 1.0
+    token_budget: float = 1.0
+    latent_heat: float = 1.0
+    context_volume: float = 1.0
 
 
 class BaseAgent:
@@ -52,6 +59,7 @@ class BaseAgent:
         self.table = str.maketrans("", "", string.punctuation)
         self.stop_words = set(stopwords.words("english"))
         self.porter = PorterStemmer()
+        self.rheological_controller = RheologicalController()
 
     def _deterministic_context_engineering(self, text: str) -> list[str]:
         """
@@ -224,6 +232,23 @@ class BaseAgent:
         Returns:
             A dictionary containing the results of each of the five functions.
         """
+        # Rheological Viscosity Regulation
+        if getattr(self, 'rheological_controller', None):
+            escrow_triggered = self.rheological_controller.monitor_cfdi(getattr(payload, 'cfdi', 0.0))
+            if escrow_triggered:
+                return {"status": "HALTED", "reason": "EPISTEMIC_ESCROW"}
+
+            viscosity_ratio = self.rheological_controller.calculate_viscosity(
+                getattr(payload, 'constraint_density', 1.0),
+                getattr(payload, 'token_budget', 1.0),
+                getattr(payload, 'latent_heat', 1.0),
+                getattr(payload, 'context_volume', 1.0)
+            )
+            active_mode = self.rheological_controller.switch_mode(viscosity_ratio)
+        else:
+            active_mode = "Unknown"
+            viscosity_ratio = 0.0
+
         processed_text = self._deterministic_context_engineering(payload.text)
         future_value = self._neoclassical_compounding(
             payload.principal, payload.rate, payload.times_compounded, payload.years
@@ -238,4 +263,6 @@ class BaseAgent:
             "network_state": network_state,
             "sepia_image": sepia_image,
             "generated_pattern": generated_pattern,
+            "active_mode": active_mode,
+            "viscosity_ratio": viscosity_ratio
         }

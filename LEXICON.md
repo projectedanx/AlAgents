@@ -207,6 +207,12 @@ analogical reasoning across orthogonal semantic fields with JSD < 0.20 post-bind
 
 ---
 
+### PAT-017 · Rheological Viscosity Regulation
+**Type**: Architectural Meta-Controller | **AT Score**: 0.98
+**Definition**: The active modulation of cognitive probability mass across the latent space to enforce strict execution boundaries via Variable Viscosity Prompting (VVP).
+**Mechanism**: Computes constraint density vs token budget (`dP/dT`) to shift states between Crystal Mode and Cloud Mode.
+**PDL Activators**: `+++RheologicalSwitch(target_viscosity="high")`
+
 ## SECTION V — FALSIFICATION CONDITIONS
 
 - If Tier 1 prompt chaining with `+++DCCDSchemaGuard` alone outperforms Tier 3 PAL2v orchestration on complex cross-domain synthesis without triggering β₁ loops → Three-Tier Autonomy hypothesis falsified.

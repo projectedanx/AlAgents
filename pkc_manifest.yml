@@ -1,0 +1,115 @@
+# =========================================================================== #
+# PERSONAL KNOWLEDGE CORPUS (PKC) SCHEMA v1.0.0                              #
+# Provenance: Designed for Git-based Prompt Registries (CxEP Compliance)       #
+# Meets: NIST RMF (GOVERN) & EU AI Act Art. 12 (Record-Keeping) requirements  #
+# =========================================================================== #
+
+apiVersion: "pkc.epistemic.ai/v1"
+kind: "PersonalKnowledgeCorpus"
+
+# --------------------------------------------------------------------------- #
+# 1. Corpus Metadata: Cryptographic and Ontological Provenance               #
+# --------------------------------------------------------------------------- #
+metadata:
+  corpus_uuid: "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+  owner_did: "did:key:z6MkpTHR8VNsBxRkWSt9xX8807KGX7v21S" # W3C DID of owner
+  semantic_version: "1.0.0"
+  created_at: "2026-08-27T06:56:58Z"
+  last_anchored_commit: "commit_sha256_9f83a2b100e451b6239167c..." # Git commit hash
+  active_ontology_references:
+    - "http://example.org/sepao/ontology#v0.1" # Semantic Plugin Affordance
+    - "https://www.w3.org/ns/prov#"            # W3C PROV-O for Lineage
+  context_hashes: # Cryptographic tracking of source documents for drift detection
+    - "research/biolux_sdl_blueprint.md:sha256-a1b2c3d4e5f6g7h8..."
+    - "pkm/context_engineering_manifesto.md:sha256-f9e8d7c6b5a4..."
+
+# --------------------------------------------------------------------------- #
+# 2. Global Sovereignty Controls & Guardrails                                 #
+# --------------------------------------------------------------------------- #
+sovereignty_controls:
+  privacy_default: "all_private_by_default" # [all_private_by_default, hybrid_published]
+  epistemic_humility_target: 0.90 # Target rating for self-knowledge validation
+  cfd_trigger_threshold: 0.15     # Halt execution if CFD exceeds this score
+  drift_tolerance_threshold: 0.05 # Allowed divergence on concept coordinates
+  automatic_reparation_protocols: true # Self-heal semantic inconsistencies on commit
+  zero_trust_policy:
+    enforce_signature_verification: true
+    allow_unverified_external_pulls: false
+
+# --------------------------------------------------------------------------- #
+# 3. Content Nodes: The Layered Memory Palimpsest                             #
+# --------------------------------------------------------------------------- #
+content_nodes:
+  - node_uuid: "urn:uuid:7b0f1a1c-92b6-455b-8012-7bb605e55e09"
+    title: "Biolux-SDL Therapeutic Framework"
+    content_path: "pkm/biolux_sdl_framework.md"
+    node_type: "Markdown" # [Markdown, PDF_Atom, Zotero, Canvas_Node, Entity]
+    status: "curated"     # [transient, curated, published]
+    version_number: 3
+    epistemic_tag: "stable" # [stable, hypothetical, contested, speculative]
+
+    # Neuro-Symbolic Latent Space Alignment Details
+    meaning_space_anchor:
+      prototypical_vector: [0.825, -0.114, 0.491, 0.007, -0.312] # Latent coordinates
+      hyperspherical_radius: 0.05 # Permissible boundary for valid RAG queries
+      embedding_model: "text-embedding-3-small"
+
+    # Metadata attributes for indexing and tracking
+    metadata_fields:
+      epistemic_risk_level: "Low"
+      architectural_layer: "Cognitive_Core"
+      implementation_horizon: "Near-Term_Prototype"
+
+  - node_uuid: "urn:uuid:9e01f112-c2b1-49e0-811c-2200a0cfb2e1"
+    title: "Algorithmic Kintsugi Protocols"
+    content_path: "pkm/algorithmic_kintsugi.md"
+    node_type: "Markdown"
+    status: "published"
+    version_number: 14
+    epistemic_tag: "stable"
+    meaning_space_anchor:
+      prototypical_vector: [0.312, 0.902, -0.054, 0.112, 0.654]
+      hyperspherical_radius: 0.02
+      embedding_model: "text-embedding-3-small"
+    metadata_fields:
+      epistemic_risk_level: "High" # Complex failure loops require high review priority
+      architectural_layer: "Governance_Overlay"
+      implementation_horizon: "Production_Ready"
+
+# --------------------------------------------------------------------------- #
+# 4. Directed Semantic Edges: Relational Graph Topology                      #
+# --------------------------------------------------------------------------- #
+semantic_edges:
+  - edge_uuid: "urn:uuid:1a2b3c4d-5e6f-7a8b-9c0d-123456789abc"
+    source_node: "urn:uuid:9e01f112-c2b1-49e0-811c-2200a0cfb2e1" # Algorithmic Kintsugi
+    target_node: "urn:uuid:7b0f1a1c-92b6-455b-8012-7bb605e55e09" # Biolux-SDL
+    predicate: "refines" # [derives_from, is_supported_by, contradicts, refines]
+    weight: 0.95         # Strength of connection
+    created_by_agent: "did:key:z6MkpTHR8VNsBxRkWSt9xX8807KGX7v21S"
+
+# --------------------------------------------------------------------------- #
+# 5. Symbolic Scar Tissue Registry (SSTR): Operational Error Tracking         #
+# --------------------------------------------------------------------------- #
+symbolic_scar_tissue_registry:
+  - scar_uuid: "urn:uuid:bc012e1a-8fbc-499c-bf8a-24cd78a1fb01"
+    timestamp_utc: "2026-08-27T06:32:51Z"
+    originating_prompt_id: "feat-biolux-refinement-v2.1"
+    payload_hash: "8f1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e"
+    confidence_fidelity_divergence: 0.182 # CFD exceeded 0.15, triggering escrow
+    resolved_status: "glazed" # [unresolved, glazed, archived]
+    reparative_action_log:
+      action_taken: "Executed Geodesic Re-anchoring of the 'Biolux-SDL' concept vector"
+      mitigated_by_agent: "did:key:z6MkpTHR8VNsBxRkWSt9xX8807KGX7v21S"
+      residual_drift_delta: 0.012
+
+# --------------------------------------------------------------------------- #
+# 6. Pre-flight Validation Gates (Design by Contract Postconditions)          #
+# --------------------------------------------------------------------------- #
+validation_gates:
+  pre_compile_checks:
+    - "Ensure all referenced markdown file paths exist in the local Git workspace."
+    - "Verify that all edge source and target node UUIDs resolve successfully."
+    - "Run PyYAML / schema validation before updating the SQLite-Vec indexes."
+  post_compile_checks:
+    - "Assert Merkle-root parity between the SQLite DB state and the Git HEAD commit."
+    - "Ensure the overall corpus Semantic Drift Score (SDS) has not increased by >0.02."

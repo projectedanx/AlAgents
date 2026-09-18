@@ -106,3 +106,40 @@ Provides server-side synthesis for React/Next.js UI generation applications, man
 1. Fork the repository.
 2. Read the Cartograph Reports to understand the established Golden Scars.
 3. Submit a Pull Request ensuring zero Semantic Saponification, 100% docstring coverage, and adherence to the `+++DCCDSchemaGuard`.
+
+---
+
+## Personal Knowledge Corpus (PKC) Framework
+
+The **Personal Knowledge Corpus (PKC) Framework** represents a rigorous, structural inversion of traditional generative AI workflows. By formalizing a personal knowledge vault (storing plain-text Markdown files with structured YAML frontmatter) into a machine-readable, schema-validated cognitive specification, the human user establishes a **"Semantic Tether"**.
+
+The prompt is elevated from a casual query into an **Executable Context Bundle (CxB)**—a version-controlled software artifact committed directly to a Git-based registry.
+
+### Sovereign PKC YAML Schema Specification (`pkc_manifest.yml`)
+
+The schema establishes a strict, dual-layer contract for both content nodes and graph topology, featuring:
+1. **Provenance Logging & Version-Controlled Hashing**: Tracks source document checksums for drift detection.
+2. **Neuro-Symbolic Latent Space Alignment (RMSA)**: Establishes bounded meaning zones via prototypical vectors and hyperspherical radii.
+3. **Causal Relational Mapping**: Uses directed edges with strict semantic predicates (`derives_from`, `is_supported_by`, `contradicts`, `refines`).
+4. **Algorithmic Kintsugi Logging (The SSTR)**: Implements failure tracking directly at the metadata layer.
+
+### Automated Workflows
+
+#### Git-Anchored Context Hashing CLI Pipeline
+Located at `.git/hooks/pre-commit`, this script automatically recalculates and seals PKC context hashes upon each commit, ensuring "Trust-by-Design" versioning for your personal notes.
+
+#### The Automated "Flesh-to-Symbol" Ingestion Loop (Zotero + OCR)
+Located at `scripts/zotero_watcher.py`, this background CLI listener watches the Zotero attachments folder for new PDFs. It extracts text via `pdfplumber` and dynamically registers the PDF as a new node in the `pkc_manifest.yml`, generating initial semantic parameters and maintaining strict corpus synchronization.
+### Setup Instructions
+
+1. **Install Dependencies:**
+   Ensure you have installed the required python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure Git Hooks:**
+   To enable the automated context hashing pipeline on commit, configure your git repository to use the `scripts/` directory for hooks:
+   ```bash
+   git config core.hooksPath scripts/
+   ```

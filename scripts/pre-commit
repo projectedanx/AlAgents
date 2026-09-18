@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+import os
+import hashlib
+import yaml
+
+# Parse our personal knowledge corpus manifest
+manifest_path = "pkc_manifest.yml"
+if not os.path.exists(manifest_path):
+    print("[SKIP] pkc_manifest.yml not found.")
+    exit(0)
+
+with open(manifest_path, 'r') as f:
+    manifest = yaml.safe_load(f)
+
+# Automatically scan files and update context_hashes
+updated_hashes = []
+for node in manifest.get('content_nodes', []):
+    file_path = node.get('content_path')
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as f:
+            sha256 = hashlib.sha256(f.read()).hexdigest()
+        updated_hashes.append(f"{file_path}:sha256-{sha256}")
+    else:
+        print(f"[WARN] File not found: {file_path}")
+
+# Add other existing files from original context_hashes to ensure we don't drop them if they aren't explicitly in content_nodes but present locally
+existing_hashes = manifest.get('metadata', {}).get('context_hashes', [])
+for existing_hash in existing_hashes:
+    file_path = existing_hash.split(":")[0]
+    if not any(h.startswith(f"{file_path}:") for h in updated_hashes):
+        if os.path.exists(file_path):
+            with open(file_path, 'rb') as f:
+                sha256 = hashlib.sha256(f.read()).hexdigest()
+            updated_hashes.append(f"{file_path}:sha256-{sha256}")
+
+# Write the updated hashes back to the manifest metadata
+manifest['metadata']['context_hashes'] = updated_hashes
+with open(manifest_path, 'w') as f:
+    yaml.safe_dump(manifest, f, default_flow_style=False)
+
+print("[SUCCESS] PKC Context Hashes successfully recalculated and sealed.")
+# Automatically add the modified manifest to the commit index
+os.system(f"git add {manifest_path}")

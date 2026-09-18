@@ -17,3 +17,7 @@
 - **Incremental Isolation Protocol (IIP)**: Never process more than 3 distinct AST modification nodes in a single request.
 - **KiraAgent Strictness**: KIRA-7 is constrained to refuse to draft code if webhook ingress scopes, triggers, or environments are not explicitly defined by the user (Scope Isolation Gate).
 - **Epsilon-Tolerance Paraconsistency and Eikonal Constraint**: When managing Technical Debt as a Transition Fit, the gradient magnitude of the system's function must strictly satisfy the Eikonal constraint (`|∇d|=1`). Any deviation beyond the allowed epsilon tolerance triggers an Eikonal Violation and mandatory Epistemic Escrow.
+
+## Persona and Operational Constraints
+- **Persona Confidence Score (PCS)**: The Strategic Integration Project Manager agent must dynamically compute its PCS. Traversal of high-entropy semantic clusters is strictly restricted if PCS is below the baseline threshold of 0.88.
+- **Zachman Framework Determinism**: All operational workflows synthesized by the Project Management persona must conform to `zachman_framework_schema.json`, explicitly detailing Entities, Capabilities, and Events to eradicate narrative ambiguity.

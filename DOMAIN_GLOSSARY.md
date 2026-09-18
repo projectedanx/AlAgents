@@ -158,3 +158,12 @@ A suite of indicators representing the hardening of epistemic tension, such as t
 **Plausibility Oracle**: An agentic mechanism leveraging real-time, differentiable ray tracing and PBR simulations to provide ground truth for geometric and lighting consistency via metrics like UIQI and SSIM/PSNR.
 **Provenance Tracker**: A system that quantifies the influence of training data samples on generated output and manages Semantic Drift by triggering Epistemic Escrow when the source attribution ratio falls below acceptable limits.
 **Quantum Dot Fidelity Engine**: A cross-modal perceptual fusion mechanism that mathematically constrains the generative pipeline to target specific multispectral optical peaks, optimizing for pure monochromatic RGB output.
+
+## Contract Robustness Index
+A quantitative metric evaluating a Backend for Frontend (BFF) layer's ability to isolate client applications from upstream schema drift, grading its capacity to gracefully degrade functionality using default fallbacks without breaking the client-facing schema.
+
+## Shared Persistence Trap
+An architectural anti-pattern where an intermediate boundary (such as a BFF) bypasses downstream service APIs to write directly to a relational store, breaking bounded contexts and inducing tight coupling.
+
+## Gateway Sinkhole
+A critical failure scenario occurring when a central API Gateway lacks Circuit Breaker and Bulkhead isolation. A failing downstream dependency exhausts the gateway's thread pool, degrading unrelated routes and establishing the gateway as a single point of failure.

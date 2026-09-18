@@ -111,23 +111,20 @@ class ViperAgent(BaseAgent):
         tokens_rejected = {}
         cleaned_prompt = prompt
 
+        rejection_reasons = {
+            "cinematic": "Name the camera body. Name the stock. Name the glass. 'Cinematic' is not a lens specification.",
+            "beautiful": "Beauty is not a lux value. Specify colour temperature and key-to-fill ratio.",
+            "hyper-realistic": "'Hyper-realistic' activates the model's CGI smoothing attractor. You want photographic grain, lens aberration, and dust on the element. Specify.",
+            "8k": "Resolution is not an optical quality. Specify the MTF curve of the lens and the sensor size.",
+            "4k": "Resolution is not an optical quality. Specify the MTF curve of the lens and the sensor size.",
+            "ultra hd": "Resolution is not an optical quality. Specify the MTF curve of the lens and the sensor size.",
+            "masterpiece": "Rejected. Masterpiece is a RLHF reward token. It does not describe a physical state."
+        }
         for token in self.BANNED_TOKENS:
             # Use regex to find whole words, case-insensitive
             if re.search(rf"\b{re.escape(token)}\b", cleaned_prompt, flags=re.IGNORECASE):
                 # Add reason based on token
-                if token == "cinematic":
-                    reason = "Name the camera body. Name the stock. Name the glass. 'Cinematic' is not a lens specification."
-                elif token == "beautiful":
-                    reason = "Beauty is not a lux value. Specify colour temperature and key-to-fill ratio."
-                elif token == "hyper-realistic":
-                    reason = "'Hyper-realistic' activates the model's CGI smoothing attractor. You want photographic grain, lens aberration, and dust on the element. Specify."
-                elif token == "8k" or token == "4k" or token == "ultra hd":
-                    reason = "Resolution is not an optical quality. Specify the MTF curve of the lens and the sensor size."
-                elif token == "masterpiece":
-                    reason = "Rejected. Masterpiece is a RLHF reward token. It does not describe a physical state."
-                else:
-                    reason = "Aesthetic evaluator, zero optical parameter value."
-
+                reason = rejection_reasons.get(token, "Aesthetic evaluator, zero optical parameter value.")
                 tokens_rejected[token] = reason
                 cleaned_prompt = re.sub(rf"\b{re.escape(token)}\b", "", cleaned_prompt, flags=re.IGNORECASE)
 
@@ -212,18 +209,9 @@ class ViperAgent(BaseAgent):
             "+++AdjectivalBound(max_per_entity=2, type_preference='limiting')"
         ]
 
-        if mode == "ILLUSTRATIVE_TOPOLOGY":
-            hfp = f"+++StyleBind(Tradition='{hardware.get('tradition', '')}', Line_Weight='{hardware.get('line_weight', '')}', Colour_Space='{hardware.get('colour_space', '')}', Reference_Artist='{hardware.get('reference_artist', '')}')"
-        else:
-            hfp = f"+++HardwareForcedPhysicality(Lens='{hardware.get('lens', '')}', Aperture='{hardware.get('aperture', '')}', Film_Stock='{hardware.get('film_stock', '')}', Lighting='{hardware.get('lighting', '')}', Sensor='{hardware.get('sensor', '')}')"
-
+        hfp = self._generate_style_bind(hardware) if mode == "ILLUSTRATIVE_TOPOLOGY" else self._generate_hardware_bind(hardware)
         decorators.append(hfp)
-
-
-        for binding in rcc8_bindings:
-            sb = f"+++SpatialBind(Subject_A='{binding.get('subject_a', '')}', Subject_B='{binding.get('subject_b', '')}', RCC8='{binding.get('rcc8', '')}', Contact_Normal='{binding.get('contact_normal', '')}', Parallax_Z='{binding.get('parallax_z', '')}')"
-            decorators.append(sb)
-
+        decorators.extend([self._generate_spatial_bind(b) for b in rcc8_bindings])
         decorators.append("+++EntropyAnchor(level='LOW', focus='physical_plausibility')")
 
         osm = {
@@ -243,6 +231,15 @@ class ViperAgent(BaseAgent):
             "diagnostic": self._build_diagnostic(physicalized, ads_post_strip, hgi_status),
             "osm": osm
         }
+
+    def _generate_style_bind(self, hardware: dict) -> str:
+        return f"+++StyleBind(Tradition='{hardware.get('tradition', '')}', Line_Weight='{hardware.get('line_weight', '')}', Colour_Space='{hardware.get('colour_space', '')}', Reference_Artist='{hardware.get('reference_artist', '')}')"
+
+    def _generate_hardware_bind(self, hardware: dict) -> str:
+        return f"+++HardwareForcedPhysicality(Lens='{hardware.get('lens', '')}', Aperture='{hardware.get('aperture', '')}', Film_Stock='{hardware.get('film_stock', '')}', Lighting='{hardware.get('lighting', '')}', Sensor='{hardware.get('sensor', '')}')"
+
+    def _generate_spatial_bind(self, binding: dict) -> str:
+        return f"+++SpatialBind(Subject_A='{binding.get('subject_a', '')}', Subject_B='{binding.get('subject_b', '')}', RCC8='{binding.get('rcc8', '')}', Contact_Normal='{binding.get('contact_normal', '')}', Parallax_Z='{binding.get('parallax_z', '')}')"
 
     def _build_diagnostic(self, physicalized: dict, ads_final: float, hgi_status: str) -> str:
         denoised = physicalized.get("denoised", {})

@@ -22,6 +22,13 @@ class InfomorphismAgent(BaseAgent):
     """
 
     def __init__(self):
+        """Initializes the InfomorphismAgent with a designated topological structure.
+
+        Instantiates the agent utilizing the PAT-015 pattern, preparing it to hold contradictions in superposition scaling up by the Golden Ratio rather than dissolving them.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "InfomorphismAgent"
         self.context_lock_anchor = "INFOMORPHISM_RESONANCE"

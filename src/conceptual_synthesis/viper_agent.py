@@ -23,6 +23,16 @@ class ViperAgent(BaseAgent):
     }
 
     def __init__(self, scar_archive_path: str = "SymbolicScar.jsonl"):
+        """Initializes the ViperAgent to execute Analytic-to-Generative Inversion workflows.
+
+        Sets up the internal memory structures, references the symbolic scar archive for failure tracking, and establishes constraints required to yield 100% Hardware Grounding Index (HGI).
+
+        Args:
+            scar_archive_path (str): The file path where semantic failure scars are persisted for future reference.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.scar_archive_path = scar_archive_path
         self.active_scars = []

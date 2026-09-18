@@ -11,25 +11,67 @@ from .pluriversal_architecture import SymbolicScar, TopologicalMonitor
 
 @dataclass
 class EpistemicPheromone:
+    """Represents a time-stamped stigmergic signal deposited within the conceptual topology.
+
+    This construct acts as a breadcrumb allowing distributed agents to coordinate without direct communication, communicating the location and identity of a recent epistemic alteration.
+    """
     location: str
     signature: str
     timestamp: float
 
 class SemanticMutexDaemon:
+    """Governs concurrency and prevents structural collisions within the abstract syntax tree.
+
+    By maintaining explicit registries of acquired node locks and left epistemic pheromones, this daemon ensures that parallel multi-agent synthesis does not result in dialectical fracture or overwritten topological states.
+    """
     def __init__(self):
+        """Initializes the SemanticMutexDaemon with isolated registries for locks and pheromones.
+
+        Returns:
+            None
+        """
         self.locked_nodes = set()
         self.pheromones: List[EpistemicPheromone] = []
 
     def acquire_ast_lock(self, node_id: str) -> bool:
+        """Attempts to secure exclusive access to a semantic node within the abstract syntax tree.
+
+        Evaluates whether the requested topological node is currently bound by another process, acquiring it if available to prevent divergent conceptual transformations.
+
+        Args:
+            node_id (str): The unique string identifier of the AST node to be secured.
+
+        Returns:
+            bool: True if the lock was successfully acquired, False if the node is already locked.
+        """
         if node_id in self.locked_nodes:
             return False
         self.locked_nodes.add(node_id)
         return True
 
     def release_ast_lock(self, node_id: str) -> None:
+        """Relinquishes control over a previously secured semantic node in the abstract syntax tree.
+
+        Args:
+            node_id (str): The unique identifier of the AST node to be unlocked.
+
+        Returns:
+            None
+        """
         self.locked_nodes.discard(node_id)
 
     def leave_epistemic_pheromone(self, location: str, signature: str) -> None:
+        """Deposits a stigmergic marker in the system to broadcast epistemic state changes.
+
+        Records the spatial location and qualitative signature of an event alongside its temporal occurrence, allowing downstream processes to adjust based on prior semantic trails.
+
+        Args:
+            location (str): The designated node or coordinate within the abstract syntax tree receiving the marker.
+            signature (str): The qualitative nature or identifier of the epistemic event.
+
+        Returns:
+            None
+        """
         import time
         self.pheromones.append(EpistemicPheromone(location, signature, time.time()))
 
@@ -39,7 +81,24 @@ def ContextLock(anchor: str, refresh_interval: int):
     Cognitive Bytecode decorator: Neutralizes 'Lost in the Middle' bias.
     """
     def decorator(func):
+        """Creates a wrapper to continuously ground the agent's context in invariant architectural principles.
+
+        Args:
+            func (Callable): The base function requiring protection from contextual drift.
+
+        Returns:
+            Callable: A wrapped function ensuring cognitive state remains tethered to the anchor.
+        """
         def wrapper(self, *args, **kwargs):
+            """Executes the wrapped method while artificially simulating the reinjection of core invariants.
+
+            Args:
+                *args: Variable length argument list intended for the core execution method.
+                **kwargs: Arbitrary keyword arguments intended for the core execution method.
+
+            Returns:
+                Any: The output of the unmodified core execution method.
+            """
             # Simulated continuous re-injection of core invariants
             return func(self, *args, **kwargs)
         return wrapper
@@ -51,7 +110,24 @@ def MereologyRoute(relation_type: str, transitivity_check: bool):
     Cognitive Bytecode decorator: Enforces strict part-whole relationships.
     """
     def decorator(func):
+        """Creates a wrapper to enforce strict part-whole (mereological) relationships during execution.
+
+        Args:
+            func (Callable): The original execution method to be wrapped.
+
+        Returns:
+            Callable: A wrapped function that evaluates the mereological route before returning results.
+        """
         def wrapper(self, *args, **kwargs):
+            """Executes the wrapped function while enforcing mereological boundaries.
+
+            Args:
+                *args: Variable length argument list passed to the underlying function.
+                **kwargs: Arbitrary keyword arguments passed to the underlying function.
+
+            Returns:
+                Any: The outcome of the wrapped execution function.
+            """
             return func(self, *args, **kwargs)
         return wrapper
     return decorator
@@ -65,6 +141,13 @@ class VortexArchitectAgent(BaseAgent):
     paraconsistent logic and stigmergic execution.
     """
     def __init__(self):
+        """Initializes the VortexArchitectAgent with structural thresholds and topological monitors.
+
+        Sets up the mutex daemon for AST locking, initializes the topological monitor for Betti-1 loop detection, establishes tolerance limits for saponification, and sets the initial Petzold phase to 'THINK'.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.mutex_daemon = SemanticMutexDaemon()
         self.topological_monitor = TopologicalMonitor()
@@ -75,6 +158,17 @@ class VortexArchitectAgent(BaseAgent):
         self._current_phase = "THINK"
 
     def set_petzold_phase(self, phase: str):
+        """Sets the current operational phase of the Petzold sequence for the agent.
+
+        Args:
+            phase (str): The operational phase to transition into. Must be one of 'THINK', 'WRITE', 'APPROVE', or 'CODE'.
+
+        Raises:
+            ValueError: If the provided phase is not a recognized step in the Petzold sequence.
+
+        Returns:
+            None
+        """
         valid_phases = ["THINK", "WRITE", "APPROVE", "CODE"]
         if phase not in valid_phases:
             raise ValueError(f"Invalid phase. Must be one of {valid_phases}")

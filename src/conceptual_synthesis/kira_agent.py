@@ -11,6 +11,11 @@ class KiraAgent(BaseAgent):
     """
 
     def __init__(self):
+        """Initializes the KiraAgent for distributed conceptual alignment and knowledge management.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.scar_registry = {
             "SCAR-001": "tenant_access_token expires in 7200s",

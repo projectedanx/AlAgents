@@ -22,6 +22,13 @@ class TactileDialecticianAgent(BaseAgent):
     """
 
     def __init__(self):
+        """Initializes the TactileDialecticianAgent to mediate Mycelial Nexus governance.
+
+        Prepares the agent to execute the Hickam-OODA loop, initializing the Geometric Density Score calculator and configuring the failure ledger for recording ontological drifts.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "TactileDialecticianAgent"
         self.context_lock_anchor = "PARACONSISTENT_TENSION"

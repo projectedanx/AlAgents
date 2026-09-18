@@ -7,6 +7,13 @@ class AEWCognitiveContractSimulator:
     Executes the Chain-of-Code Enactment to mathematically validate paraconsistent hypotheses.
     """
     def __init__(self):
+        """Initializes the AEWCognitiveContractSimulator to enforce the Pluriversal Cognitive Coding Contract.
+
+        Prepares the underlying physics simulator to evaluate Paraconsistent Synthesis capabilities, loading necessary structural constraints such as topological novelty and structural conservation boundaries.
+
+        Returns:
+            None
+        """
         self.agent = PluriversalFeatureDiscoveryAgent()
         # Set agent baseline per the protocol
         self.agent.beta_1 = 0.75  # Topological Novelty

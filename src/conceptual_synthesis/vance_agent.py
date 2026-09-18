@@ -15,6 +15,13 @@ class VanceAgent(BaseAgent):
     """
 
     def __init__(self):
+        """Initializes the VanceAgent as a Topological Language Server Protocol (LSP) Architect.
+
+        Configures the four critical enforcement layers: Incremental Parse Engine, Semantic Graph connections, Nitinol Failure Ledger, and the Draft-Conditioned Constrained Decoder (DCCD).
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "VANCE"
         self.designation = "Topological LSP Architect & Semantic Indexer"

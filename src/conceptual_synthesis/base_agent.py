@@ -10,6 +10,10 @@ from dataclasses import dataclass
 
 @dataclass
 class SynthesisPayload:
+    """Encapsulates the resulting artifacts, structural metrics, and dialectical context of an agent's reasoning cycle.
+
+    This payload serves as the standard transport mechanism between the Mixture of Engineers, carrying the processed ast, Justified Uncertainty Reports, or validated topological nodes.
+    """
     text: str
     principal: float
     rate: float

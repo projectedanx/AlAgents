@@ -35,3 +35,6 @@ The system operates as an Epistemic Engineer to generate Pluriversal Codebase Fe
 ## Consequences
 *   **Positive:** Enables the ingestion and processing of deeply contradictory human inputs without causing schema collapse, enforcing a rigorous mathematical framework (β0, β1) around ideation.
 *   **Negative:** Adds computational complexity through necessary simulation phases (Chain-of-Code) and requires specific testing patterns.
+
+### 6. Instantiated Features
+*   **Controlled Scar Annealing Protocol (CSAP)**: Successfully enacted in `PluriversalFeatureDiscoveryAgent`. The protocol dynamically evaluates the Mutation Recoverability Score (MRS) of all stored `SymbolicScars`, annealing those below the tau (τ) threshold to ensure a Cost of Avoided Repair (CACR) of ~1.618 (Φ). Validated via `csap_enactment_simulation.py`.

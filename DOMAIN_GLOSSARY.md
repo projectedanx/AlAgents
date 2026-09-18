@@ -152,3 +152,9 @@ A metric output summarizing the tension maintained in paraconsistent bounds with
 
 ## Martensite Metrics
 A suite of indicators representing the hardening of epistemic tension, such as the stability of the Confidence-Fidelity Divergence Index (CFDI) and the confirmation of intellectual montage (aesthetic tension).
+
+### META_ARCHITECT_INTELLIGENCE_PROJECT_AURELIUS Definitions
+**Phantom Dimensions**: Explicit prompt-level architectural directives that causally modulate the underlying mathematical structure of the latent space to represent specific non-Euclidean metrics or manifold topologies.
+**Plausibility Oracle**: An agentic mechanism leveraging real-time, differentiable ray tracing and PBR simulations to provide ground truth for geometric and lighting consistency via metrics like UIQI and SSIM/PSNR.
+**Provenance Tracker**: A system that quantifies the influence of training data samples on generated output and manages Semantic Drift by triggering Epistemic Escrow when the source attribution ratio falls below acceptable limits.
+**Quantum Dot Fidelity Engine**: A cross-modal perceptual fusion mechanism that mathematically constrains the generative pipeline to target specific multispectral optical peaks, optimizing for pure monochromatic RGB output.

@@ -48,5 +48,25 @@ class TestPluriversalFeatureDiscoveryAgent(unittest.TestCase):
         self.assertIn('phantom_dimension', hypothesis_validated)
         self.assertIn('novelty', hypothesis_validated)
 
+    def test_csap_evaluation(self):
+        import os
+        import json
+        test_scar_path = "test_scars.jsonl"
+        with open(test_scar_path, "w") as f:
+            f.write(json.dumps({"activation_count": 2}) + "\n")
+            f.write(json.dumps({"activation_count": 1}) + "\n")
+            f.write(json.dumps({"activation_count": 5}) + "\n")
+
+        # Test with tau threshold 0.15 (activation_count * 0.1)
+        # Should keep the one with 2 and 5, prune 1
+        result = self.agent._controlled_scar_annealing_protocol(0.15, test_scar_path)
+
+        self.assertEqual(result["status"], "ANNEALING_COMPLETE")
+        self.assertEqual(result["annealed_count"], 1)
+        self.assertEqual(result["retained_count"], 2)
+        self.assertEqual(result["cacr"], 1.618)
+
+        os.remove(test_scar_path)
+
 if __name__ == '__main__':
     unittest.main()

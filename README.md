@@ -143,3 +143,11 @@ Located at `scripts/zotero_watcher.py`, this background CLI listener watches the
    ```bash
    git config core.hooksPath scripts/
    ```
+
+### 11. Reflexive Repair Agent
+Functions as the "Deterministic Funnel". It implements a dual-system, two-speed cybernetic control loop (Reflexive Repair Loop) to enforce technical determinism and logical consistency. By converting errors into Logic Violation Reports (LVRs) and applying reflexive prompt injection, it bounds self-correction and limits "agent thrashing", diverting unresolvable state mutations to Epistemic Escrow.
+```python
+from src.conceptual_synthesis.reflexive_repair_agent import ReflexiveRepairAgent
+agent = ReflexiveRepairAgent()
+result = agent.execute_loop({"prompt": "SELECT * FROM users, orders", "action_type": "read_only"})
+```

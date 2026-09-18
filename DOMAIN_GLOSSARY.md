@@ -167,3 +167,15 @@ An architectural anti-pattern where an intermediate boundary (such as a BFF) byp
 
 ## Gateway Sinkhole
 A critical failure scenario occurring when a central API Gateway lacks Circuit Breaker and Bulkhead isolation. A failing downstream dependency exhausts the gateway's thread pool, degrading unrelated routes and establishing the gateway as a single point of failure.
+
+## Reflexive Repair Loop
+A formal, self-correcting cognitive architecture designed to enforce technical determinism, logical consistency, and semantic alignment by acting as a two-speed cybernetic control loop between probabilistic generation (System 1) and deterministic verification (System 2).
+
+## Logic Violation Report (LVR)
+A structured report generated when a System 2 deterministic verifier detects a Semantic Integrity Constraint (SIC) violation. It isolates the failure context and is used for Reflexive Prompt Injection.
+
+## Epistemic Escrow
+A safety state triggered when an agent fails to resolve an invariant violation within bounded iteration (e.g., 3 attempts), or when the Confidence-Fidelity Divergence (CFD) index exceeds a dynamic threshold. Execution halts and is escalated to a human operator.
+
+## Generative Ratchet
+A mechanism utilizing a strict target compiler (e.g., TypeScript or Rust) as a non-negotiable fitness function. It parses diagnostic errors into LVRs and applies targeted AST mutations to repair logical failures without regressing previously validated structure.

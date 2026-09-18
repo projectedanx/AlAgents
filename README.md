@@ -151,3 +151,12 @@ from src.conceptual_synthesis.reflexive_repair_agent import ReflexiveRepairAgent
 agent = ReflexiveRepairAgent()
 result = agent.execute_loop({"prompt": "SELECT * FROM users, orders", "action_type": "read_only"})
 ```
+
+### 12. Rheological Controller
+The `RheologicalController` acts as a Layer-1 meta-architectural component for cognitive viscosity regulation. Utilizing Variable Viscosity Prompting (VVP), it dynamically computes `dP/dT` to transition the engine between deterministic "Crystal Mode" and high-entropy "Cloud Mode", ensuring execution bounds are maintained and tracking the Confidence-Fidelity Divergence Index (CFDI) via Epistemic Escrow.
+```python
+from src.conceptual_synthesis.rheological_controller import RheologicalController
+controller = RheologicalController()
+viscosity = controller.calculate_viscosity(constraint_density=1.2, token_budget=1024, latent_heat=0.5, context_volume=2048)
+active_mode = controller.switch_mode(viscosity)
+```

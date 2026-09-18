@@ -179,3 +179,24 @@ A safety state triggered when an agent fails to resolve an invariant violation w
 
 ## Generative Ratchet
 A mechanism utilizing a strict target compiler (e.g., TypeScript or Rust) as a non-negotiable fitness function. It parses diagnostic errors into LVRs and applies targeted AST mutations to repair logical failures without regressing previously validated structure.
+
+## Rheological Controller
+A Layer-1 meta-architectural component that regulates cognitive viscosity within the latent space, implementing Variable Viscosity Prompting (VVP) to govern thermodynamic probability mass and prevent Semantic Saponification over long horizons.
+
+## Rheological Mode Switcher
+The operational core of the Rheological Controller that computes the semantic acceleration gradient `dP/dT`. It transitions the system between deterministic Crystal Mode and high-entropy Cloud Mode based on real-time execution telemetry.
+
+## Variable Viscosity Prompting (VVP)
+The mechanism of actively modulating the model's decoding strategy, parameter space, and prompt constraints based on the specific topological requirements of the task.
+
+## Crystal Mode
+A low-entropy, high-viscosity execution state ($T \approx 0$) deployed for deterministic execution. It utilizes Salted Sequence Tags and logit masking to force strict output schemas and suppress the Sycophantic Attractor.
+
+## Cloud Mode
+A high-entropy, low-viscosity execution state ($T > 0.7$) deployed for divergent ideation and creative synthesis, utilizing structured redundancy as navigational ballast against semantic drift.
+
+## Epistemic Escrow Manager
+A safety subset of the Rheological Controller that physically segregates untrusted external user inputs. It acts as a cognitive circuit breaker, halting execution if the Confidence-Fidelity Divergence Index (CFDI) spikes.
+
+## Epistemic Composting
+The structural decay and reallocation of resource-heavy social and emotive latents (persona vectors) within the KV cache, freeing up attention head bandwidth for pure mathematical and causal inference during deterministic phases.

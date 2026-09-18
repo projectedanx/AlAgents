@@ -15,6 +15,17 @@ class CipherAgent(BaseAgent):
     """
 
     def __init__(self, scar_log_path: str = "SymbolicScar.jsonl", gate_mode: str = "HARD_GATE"):
+        """Initializes the CipherAgent to serve as a strict, autonomous CI/CD security sentinel.
+
+        Configures the threat modeling parameters, assigns the path for recording adversarial patterns, and initializes the state needed to enforce zero-trust epistemic thresholds.
+
+        Args:
+            scar_log_path (str): The file path dedicated to logging identified adversarial or structural failures.
+            gate_mode (str): The strictness level or mode in which the security gate operates (e.g., 'strict', 'permissive').
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "CIPHER"
         self.designation = "The Zero-Trust Epistemic Sentinel"

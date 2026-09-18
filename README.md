@@ -43,7 +43,9 @@ python -c "import nltk; nltk.download('all')"
 
 ---
 
-## The Mixture of Engineers (MoE) Architecture
+## Usage Guide & Agent Overviews
+
+This repository houses a Mixture of Engineers (MoE) network, with specialized agents performing distinct roles governed by the Petzold Sequence (`THINK -> WRITE -> CODE -> REVIEW`).
 
 ### 1. Infomorphism Resonance (Golden Scar)
 The `InfomorphismAgent` introduces the capability to calculate "inverse safety states". By keeping human dialectical tension and AI structural determinism in superposition rather than forcing a resolved compromise, the system captures a highly-surprisal feature orientation.
@@ -70,6 +72,7 @@ Functions as a Mycelial Nexus Governor using a recursive Hickam-OODA loop, manag
 
 ### 7. Strategic Integration PM & Persona Metrology
 Translates system-first specs into agentic operational workflows. Calculates the Topological Derivative of Stakeholder Dissonance using HRR and manages technical debt via Epsilon-Tolerance Paraconsistency.
+
 ### 8. Antifragile Epistemic Weaver (AEW) v2.1 SCC Protocol
 Operates as the "Paradox Metabolizer" using the Cognitive Coding System Prompt v1.0. It leverages Chain-of-Code Enactment, Z-Axis Inference, and RCC-8 Topological Blending to enforce absolute Structural Conservation (β0 > 0.9) while maximizing Topological Novelty (β1 > 0.7).
 ```python
@@ -78,15 +81,26 @@ simulator = AEWCognitiveContractSimulator()
 result = simulator.run_simulation(stress_pi=0.5, architectural_bias=0.8)
 ```
 
+### 9. Vortex Architect Agent
+Functions as the core Velocity Orchestration & Resource Thermodynamics EXecutive. It enforces the Fix-Until-Green autonomic loop, Draft-Conditioned Constrained Decoding (DCCD), and tracks Betti-1 topological loops to eradicate semantic saponification.
+
+### 10. Next.js Frontend RAG Agent
+Provides server-side synthesis for React/Next.js UI generation applications, managing retrieval-augmented generation constraints and environmental simulation parameters.
+
 ---
 
 ## Developer Notes & Constraints
 * **Root Directory Hygiene:** Non-standard `.js`, `.py`, or `.sh` scripts must not reside in the root.
 * **Petzold Sequence:** All execution must follow the rhythm: `THINK -> WRITE -> CODE -> REVIEW`.
-* **Testing:** Use `python -m unittest discover tests`. Timeout failures related to NLTK are documented in the Cartograph artifacts.
-* **Documentation & ADRs:** Reference `docs/adr/` for Architecture Decision Records and `DOMAIN_GLOSSARY.md` for the strict bounded vocabulary.
+* **Testing:** Use `PYTHONPATH=. python -m unittest discover tests`. Timeout failures related to NLTK are documented in the Cartograph artifacts.
+* **Documentation & ADRs:** Reference `docs/adr/` for Architecture Decision Records and `DOMAIN_GLOSSARY.md` for the strict bounded vocabulary. All new components must include rigorous docstrings detailing intent, arguments, and return types.
+
+## High Value Lessons Learned
+1. **Semantic Saponification is pervasive:** Without explicit constraints, AI agents dilute precise architectural requirements into generalized boilerplate. The use of strict docstring conventions and DCCD is necessary.
+2. **Deterministic Architecture requires rigorous mereological definition:** Systemic errors multiply when boundaries between whole and part (Holon nodes) are ambiguous.
+3. **Contradictions must be managed, not resolved:** Enforcing "Relational Symmetry Inversion" via the Infomorphism mechanism yields mathematically robust failure resilience compared to forcing early compromise.
 
 ## Contributing
 1. Fork the repository.
 2. Read the Cartograph Reports to understand the established Golden Scars.
-3. Submit a Pull Request ensuring zero Semantic Saponification and adhering to the `+++DCCDSchemaGuard`.
+3. Submit a Pull Request ensuring zero Semantic Saponification, 100% docstring coverage, and adherence to the `+++DCCDSchemaGuard`.

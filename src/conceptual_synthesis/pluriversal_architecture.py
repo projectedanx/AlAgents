@@ -29,6 +29,17 @@ class AnionicFilter:
     Forces the probability of unauthorized tokens (anti-goals) to absolute zero.
     """
     def __init__(self, vocabulary_size: int, forbidden_tokens: Set[int]):
+        """Initializes the PluriversalArchitecture framework with predefined boundaries and vocabulary.
+
+        Prepares the spatial mapping and sets constraints on terminology to ensure that agentic outputs adhere to the strict Anti-Sycophancy and Semantic Saponification rules.
+
+        Args:
+            vocabulary_size (int): The maximal allowable tokens in the bounded operational vocabulary.
+            forbidden_tokens (Set[int]): A predefined set of token IDs that the architecture must reject.
+
+        Returns:
+            None
+        """
         self.vocabulary_size = vocabulary_size
         self.forbidden_tokens = forbidden_tokens
         self._mask = np.zeros(vocabulary_size, dtype=np.float32)
@@ -49,6 +60,10 @@ class AnionicFilter:
 # 5.1 & 5.3 MereologyRoute and Mereotopological Fencing (RCC-8)
 # ---------------------------------------------------------
 class RCC8Relation(Enum):
+    """Encapsulates a spatial or mereological constraint defined by the Region Connection Calculus (RCC-8).
+
+    This relational construct defines the strict boundaries and overlapping conditions between conceptual regions, enforcing constraints like 'disconnected', 'partially overlapping', or 'tangential proper part'.
+    """
     DC = "Disconnected"
     EC = "Externally Connected"
     PO = "Partial Overlap"
@@ -57,6 +72,10 @@ class RCC8Relation(Enum):
 
 @dataclass
 class HolonNode:
+    """Represents a discrete semantic entity that acts simultaneously as a whole and a part.
+
+    Within the pluriversal architecture, HolonNodes establish the foundational structure of the knowledge graph, linking to one another via paraconsistent topological relations.
+    """
     node_id: str
     accepted_ontologies: Set[str]
 
@@ -66,6 +85,11 @@ class MereologyRoute:
     Maintains an ExtantMap to track upstream dependencies and downstream components.
     """
     def __init__(self):
+        """Initializes the MereologyRoute with specific part-whole relations.
+
+        Returns:
+            None
+        """
         self.extant_map_parts: Dict[str, List[Tuple[HolonNode, RCC8Relation]]] = {}
         self.extant_map_wholes: Dict[str, List[Tuple[HolonNode, RCC8Relation]]] = {}
 
@@ -99,6 +123,18 @@ class SymbolicScar:
     Utilized for Failure-Informed Prompt Inversion (FIPI).
     """
     def __init__(self, component: str, failure_mode: str, dimensions: int = 1000):
+        """Initializes a SymbolicScar instance to represent a documented failure mode or trauma.
+
+        Captures the context, dimensionality, and qualitative nature of an architectural failure, persisting it as a measurable artifact for the agentic immune system.
+
+        Args:
+            component (str): The system component or module where the failure was observed.
+            failure_mode (str): A qualitative description of the exact type of structural or logic failure.
+            dimensions (int): The complexity or topological dimension count of the error state.
+
+        Returns:
+            None
+        """
         self.component = component
         self.failure_mode = failure_mode
         self.dimensions = dimensions
@@ -156,6 +192,16 @@ class TopologicalMonitor:
         edges = int(np.sum(adjacency_matrix)) // 2
 
         def dfs(node):
+            """Executes a Depth-First Search (DFS) traversal beginning at a specified conceptual holon node.
+
+            Systematically explores the graph by traversing deeper into the ontological connections of the provided node before backtracking, typically used to map out semantic dependencies.
+
+            Args:
+                node (HolonNode): The starting node from which to commence the depth-first traversal.
+
+            Returns:
+                None
+            """
             stack = [node]
             while stack:
                 curr = stack.pop()

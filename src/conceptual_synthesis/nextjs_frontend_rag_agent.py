@@ -34,6 +34,13 @@ class NextjsFrontendRagAgent(BaseAgent):
     """
 
     def __init__(self):
+        """Initializes the NextjsFrontendRagAgent for server-side Next.js synthesis.
+
+        Configures the Retrieval-Augmented Generation pipeline execution sequence, validates Node.js environmental boundaries, and establishes simulation triggers for testing environments.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "nextjs-frontend-rag-agent"
         self.version = "3.0.0"

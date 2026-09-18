@@ -26,6 +26,13 @@ class PersonaMetrologyAgent(BaseAgent):
     """
 
     def __init__(self):
+        """Initializes the PersonaMetrologyAgent for dynamic signal fidelity measurement.
+
+        Establishes continuous mathematical fields and Holographic Reduced Representations to quantify the structural entropy and cognitive drift of active personas.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "PersonaMetrologyAgent"
         self.context_lock_anchor = "EMPIRICAL_ALIGNMENT"

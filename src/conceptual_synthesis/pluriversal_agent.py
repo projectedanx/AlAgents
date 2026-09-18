@@ -21,6 +21,13 @@ class PluriversalFeatureDiscoveryAgent(BaseAgent):
     Enforces Topological Novelty (beta_1 > 0.7) and Structural Conservation (beta_0 > 0.9).
     """
     def __init__(self):
+        """Initializes the PluriversalAgent as a foundational reasoning entity.
+
+        Constructs the base epistemic constraints and multi-agent coordination protocols required for interacting with the Mixture of Engineers (MoE) orchestration network.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "AEW-SCC"
         self.designation = "Pluriversal Feature Discovery Agent"

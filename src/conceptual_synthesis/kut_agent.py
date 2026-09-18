@@ -14,6 +14,10 @@ from datetime import datetime, timezone
 
 @dataclass
 class AudioSpecConfig:
+    """Defines the rigorous constraints and target metrics for audio mastering outputs.
+
+    Encapsulates acceptable boundaries for loudness and dynamics, ensuring that synthesized audio artifacts adhere strictly to Deliverable Class B standards.
+    """
     creator_name: str
     session: int
     nle: str
@@ -34,6 +38,13 @@ class KutAgent(BaseAgent):
     """
 
     def __init__(self):
+        """Initializes the KutAgent to enforce rigorous technical audio metrics.
+
+        Prepares the agent to generate and validate Audio Mastering Specification Sheets, configuring thresholds for LUFS, True Peak, and other master-level acoustic constraints.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.agent_name = "The Retention Architect"
         self.codename = "Kut"

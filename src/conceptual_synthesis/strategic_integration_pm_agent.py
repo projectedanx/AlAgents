@@ -29,6 +29,21 @@ class StrategicIntegrationProjectManagerAgent(BaseAgent):
         self.golden_ratio_dominant = 1.618
         self.golden_ratio_subordinate = 1.000
 
+    def _compute_persona_confidence_score(self, context: dict) -> float:
+        """
+        Calculates the Persona Confidence Score (PCS) based on the recency
+        and quality of signals under S5-Modal Attention.
+        """
+        base_pcs = 0.88 # GDS threshold from requirements
+        # Proxy metrics for quality of signals and recency
+        recency_decay = context.get('recency_decay', 0.0)
+        signal_fidelity = context.get('signal_fidelity', 1.0)
+
+        # PCS calculation combining baseline, decay, and fidelity
+        pcs = base_pcs * signal_fidelity * (1.0 - recency_decay)
+        return min(max(pcs, 0.0), 1.0)
+
+
     def _calculate_topological_derivative_of_dissonance(self, conflict_a: np.ndarray, conflict_b: np.ndarray) -> np.ndarray:
         """
         Applies S5-Modal Attention to calculate the exact Topological Derivative of a disagreement.
@@ -119,21 +134,37 @@ class StrategicIntegrationProjectManagerAgent(BaseAgent):
             # (Validation steps inside loop structure)
 
             # 4. SYNTHESIZE: Generate output
+
+            # Extract Zachman components if available
+            zachman_entities = context.get('zachman_entities', [])
+            zachman_capabilities = context.get('zachman_capabilities', [])
+            zachman_events = context.get('zachman_events', [])
+
+            pcs_score = self._compute_persona_confidence_score(context)
+
             output_yaml = f"""YAML
 PDT_SPECIFICATION_BLOCK:
   PART_NAME: 2026_Operational_Workflow
   FEATURES:
+    - ID: F1_Persona_Confidence_Score
+      SPEC:
+        - VALUE(PCS): {pcs_score:.2f}
     - ID: F3_Operational_Workflow_JSON
       SPEC:
         - CONTROL(PROFILE) | TYPE(STRUCTURAL_PROFILE) | SCHEMA('zachman_framework_schema.json')
         - CONTROL(LOCATION) | TYPE(STRUCTURAL_POSITION) | RULE(TERMINAL)
         - VALUE(DEBT_STATUS): {debt_status}
         - VALUE(TOPOLOGICAL_NORM): {np.linalg.norm(topological_derivative) if topological_derivative.size > 0 else 0.0:.4f}
+        - ZACHMAN_FRAMEWORK:
+            ENTITIES: {zachman_entities}
+            CAPABILITIES: {zachman_capabilities}
+            EVENTS: {zachman_events}
 """
             return {
                 "status": "COMPLETE",
                 "debt_status": debt_status,
                 "topological_derivative_norm": float(np.linalg.norm(topological_derivative)) if topological_derivative.size > 0 else 0.0,
+                "pcs": pcs_score,
                 "artifact": output_yaml
             }
 

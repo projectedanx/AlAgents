@@ -200,3 +200,15 @@ A safety subset of the Rheological Controller that physically segregates untrust
 
 ## Epistemic Composting
 The structural decay and reallocation of resource-heavy social and emotive latents (persona vectors) within the KV cache, freeing up attention head bandwidth for pure mathematical and causal inference during deterministic phases.
+
+### Differentiable Cache Augmentation
+The process by which the Verification Co-Processor (VCP) injects corrective latent embeddings directly into the primary model's active Key-Value (KV) cache, smoothly steering the latent trajectory back onto the target semantic geodesic without altering parametric weights.
+
+### Semantic Drift Coefficient (SDC)
+A metric representing the instantaneous rate of semantic change or deviation from a target concept vector. Calculated as $1 - \cos(h_t, V_{anc})$. Values exceeding a strict threshold (e.g., $\xi \ge 0.30$) trigger Verification Co-Processor deliberation.
+
+### Mutation Recoverability Score (MRS)
+A target metric (typically $\ge 0.80$) measuring the system's ability to elastically return to a stable attractor basin (target concept) after a VCP intervention or systematic input perturbation.
+
+### Failure-Informed Prompt Inversion (F-IPI)
+An automated meta-learning protocol that queries the Scar Tissue Archive, analyzes the causal etiology of a Symbolic Scar, and reverse-engineers negative constraints or corrective meta-prompts to dynamically update optimization parameters and mathematically block covert reasoning pathways.

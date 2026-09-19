@@ -152,6 +152,14 @@ agent = ReflexiveRepairAgent()
 result = agent.execute_loop({"prompt": "SELECT * FROM users, orders", "action_type": "read_only"})
 ```
 
+### 13. Verification Co-Processor (VCP)
+Functions as an asynchronous, offline System 2 "controller". It ingests the corrupted computational state of the primary model, executes non-tokenized deliberation over symbolic constraints, and compiles a continuous, geometric "recovery plan" executed via Differentiable Cache Augmentation.
+```python
+from src.conceptual_synthesis.vcp_agent import VerificationCoProcessor
+vcp = VerificationCoProcessor()
+result = vcp.execute_guard_loop(h_t=h_t, kv_cache=kv_cache, v_anc=v_anc, cfdi=0.3, betti_0=0.9, betti_1=0)
+```
+
 ### 12. Rheological Controller
 The `RheologicalController` acts as a Layer-1 meta-architectural component for cognitive viscosity regulation. Utilizing Variable Viscosity Prompting (VVP), it dynamically computes `dP/dT` to transition the engine between deterministic "Crystal Mode" and high-entropy "Cloud Mode", ensuring execution bounds are maintained and tracking the Confidence-Fidelity Divergence Index (CFDI) via Epistemic Escrow.
 ```python

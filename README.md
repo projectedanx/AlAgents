@@ -55,6 +55,9 @@ agent = InfomorphismAgent()
 result = agent.execute_infomorphism_loop({"human_tension": "raw intent", "ai_determinism": "rigid lattice"})
 ```
 
+### JIT Swarm Orchestrator
+Implements the SCOS v6.0-STRICT architecture by decoupling high-entropy semantic planning (Manifold Alpha) from zero-entropy syntactic realization (Manifold Beta). It instantiates Ephemeral JIT Micro-Agents for state-mutating transactions and uses a Verification Co-Processor (VCP) with CFDI sensing to enforce runtime alignment.
+
 ### 2. Hybrid Synthesis System
 The `hybrid_system.py` module acts as a facade exposing the core functional logic derived from `BaseAgent`. It leverages topological structures like Triangles (deductive logic), Squares (state preservation), and Hexagons (parallel synthesis).
 

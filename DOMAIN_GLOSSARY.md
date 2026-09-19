@@ -212,3 +212,15 @@ A target metric (typically $\ge 0.80$) measuring the system's ability to elastic
 
 ### Failure-Informed Prompt Inversion (F-IPI)
 An automated meta-learning protocol that queries the Scar Tissue Archive, analyzes the causal etiology of a Symbolic Scar, and reverse-engineers negative constraints or corrective meta-prompts to dynamically update optimization parameters and mathematically block covert reasoning pathways.
+
+### Staged Advantage Estimation (SAE)
+A hierarchical convex optimization algorithm used in preference-aligned reinforcement learning for multistep reasoning. It projects raw empirical rewards onto a closed, convex set to enforce tree-consistency constraints, mitigating gradient variance when batching heterogeneous, off-policy prefixes of varying lengths.
+
+### Spectral Information Discrepancy (Psi)
+A metric representing the divergence between the empirical prefix-conditioned expectation and unconstrained policy rewards, calculated as the spectral radius of the parent-child adjacency degree matrix multiplied by the KL divergence between student and teacher policies.
+
+### Semantic Saponification
+A state-space trap in preference alignment where advantage variance collapses, destroying a policy's ability to execute non-separable multi-step intercepts. Detected when the correlation between advantage magnitude and the mixed partial derivative of the action value approaches zero.
+
+### Entropy-Weighted Advantage Recovery (EWAR)
+A mitigation mechanism for Semantic Saponification that overrides standard normalization, forces unit variance, and scales advantages by the inverse log-probability of the parent prefix to restore structural contrast.

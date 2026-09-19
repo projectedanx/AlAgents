@@ -148,3 +148,13 @@ print(result["status"]) # COMPLETE
 
 ## Epistemic Architecture
 - **TactileDialecticianAgent (The Mycelial Nexus Governor):** Implements the recursive Hickam-OODA loop. It manages overlapping, contradictory operational drivers without resolving them, using the Golden Scar Protocol to lock irreconcilable paths into a weighted superposition (1.618 dominant / 1.000 subordinate). Generates Pluriversal Knowledge Capsules rather than flat artifacts.
+
+## 5. JIT Swarm Orchestrator (SCOS v6.0-STRICT)
+
+The JIT Swarm Orchestrator implements a Verifiable Cognition Stack (VCS) to enforce absolute alignment at runtime through decoupling cognitive workloads.
+
+*   **Hollow-Core Semantic Planning (Manifold Alpha):** Highly compacted context stripped of passive tool definitions. Strategic reasoning is executed freely at elevated temperatures.
+*   **Ephemeral JIT Micro-Agents (Manifold Beta):** Dynamically instantiated, short-lived agents for state-mutating transactions (e.g., codebase edits). Employs ultra-low latency and minimal memory footprints, returning compressed structured JSON.
+*   **Draft-Conditioned Constrained Decoding (DCCD):** Eliminates the Projection Tax by projecting unconstrained semantic drafts onto rigid Abstract Syntax Tree (AST) schemas via token-level grammar rules.
+*   **Verification Co-Processing (VCP) & CFDI:** Continuously monitors token-level probabilities against schema adherence to calculate the Confidence-Fidelity Divergence Index (CFDI). Breaches (e.g., $\ge 0.15$) trigger Differentiable Cache Augmentation via injected soft tokens to steer attention maps.
+*   **Failure Metabolism (STA & F-IPI):** Serializes failed trajectories as Symbolic Scars in the Scar Tissue Archive (STA). Uses Failure-Informed Prompt Inversion (F-IPI) to mutate master constraints and immunize the swarm.

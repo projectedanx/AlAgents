@@ -109,6 +109,7 @@ Provides server-side synthesis for React/Next.js UI generation applications, man
 * **Documentation & ADRs:** Reference `docs/adr/` for Architecture Decision Records and `DOMAIN_GLOSSARY.md` for the strict bounded vocabulary. All new components must include rigorous docstrings detailing intent, arguments, and return types.
 
 ## High Value Lessons Learned
+5. **Test-Driven Development (TDD) as the Programmatic Oracle:** Enforcing a strict Red/Green/Refactor cycle within an isolated multi-agent state machine is essential to preventing "Sycophantic Mocking" and ensuring semantic alignment over pure execution velocity.
 1. **Semantic Saponification is pervasive:** Without explicit constraints, AI agents dilute precise architectural requirements into generalized boilerplate. The use of strict docstring conventions and DCCD is necessary.
 2. **Deterministic Architecture requires rigorous mereological definition:** Systemic errors multiply when boundaries between whole and part (Holon nodes) are ambiguous.
 3. **Contradictions must be managed, not resolved:** Enforcing "Relational Symmetry Inversion" via the Infomorphism mechanism yields mathematically robust failure resilience compared to forcing early compromise.
@@ -205,4 +206,12 @@ from src.conceptual_synthesis.actplane_harness import BPFLSMSimulator, PolicyDom
 simulator = BPFLSMSimulator()
 domain = PolicyDomain(domain_id=1, parent_domain_id=0, inherited_rules=1, inherited_labels=0, local_rules=0, active_labels=0)
 simulator.register_domain(domain)
+```
+
+### 16. TDD Orchestrator (Zero-Trust TDD Isolation)
+Implements an Isomorphic Multi-Agent State Machine that strictly enforces a Red/Green/Refactor Test-Driven Development (TDD) cycle. This component uses distinct, non-overlapping agent containers (`TestArchitectAgent` and `ImplementerAgent`) alongside structured state schemas to prevent sycophantic mocking and sandbox escapes, mitigating the "Lazy Implementer" trap and truncating high-cost token "Doom Loops."
+```python
+from src.conceptual_synthesis.tdd_orchestrator import TDDOrchestrator
+orchestrator = TDDOrchestrator()
+final_state = orchestrator.execute_loop("Implement a fast sorting algorithm")
 ```

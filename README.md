@@ -186,3 +186,14 @@ This repository includes advanced systems-grade implementations for multi-agent 
 - **Adaptive SAE Harness**: Dynamically interpolates between $O(N)$ expectation heuristics and SLSQP projections using Spectral Information Discrepancy.
 - **Asynchronous ADMM Projector**: A lock-free, multi-threaded C++/NumPy constraint solver executing L2-ball and zero-mean projections in under 20ms.
 - **EWAR Diagnostic Harness**: Detects and mitigates "Semantic Saponification" by restoring advantage variance across heterogeneous trajectory trees.
+
+### 14. ActPlane Hierarchical Policy Domain
+The `actplane_harness.py` module formalizes the Sovereignty-Enforcement Split. It establishes a fundamental division of control where security boundaries are nested within the process tree and enforced directly by simulated eBPF-LSM hooks.
+
+By modeling constraints as in-kernel bitmasks (Information-Flow Control labels), the harness guarantees that no downstream sub-agent or generated script can ever weaken, disable, or bypass parent-imposed invariants, providing zero-trust execution.
+```python
+from src.conceptual_synthesis.actplane_harness import BPFLSMSimulator, PolicyDomain
+simulator = BPFLSMSimulator()
+domain = PolicyDomain(domain_id=1, parent_domain_id=0, inherited_rules=1, inherited_labels=0, local_rules=0, active_labels=0)
+simulator.register_domain(domain)
+```

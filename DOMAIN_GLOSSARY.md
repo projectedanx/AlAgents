@@ -224,3 +224,15 @@ A state-space trap in preference alignment where advantage variance collapses, d
 
 ### Entropy-Weighted Advantage Recovery (EWAR)
 A mitigation mechanism for Semantic Saponification that overrides standard normalization, forces unit variance, and scales advantages by the inverse log-probability of the parent prefix to restore structural contrast.
+
+## ActPlane Harness
+The operating system-level enforcement environment that converts non-deterministic probabilistic reasoning into verifiable system behavior by natively restricting agent capabilities through hierarchical policy domains.
+
+## Sovereignty-Enforcement Split
+The architectural division between the intelligence generation capabilities of the agent (the "brain") and the restrictive, non-negotiable security bounds maintained by the runtime harness (the "framework").
+
+## Hierarchical Policy Domains
+Nested security boundaries within the process tree where child agents monotonically inherit immutable parent constraints. This prevents prompt injections or shell escapes from overriding root invariants.
+
+## Authority Checker
+An in-kernel validator that intercepts runtime delta submissions from child domains, ensuring no delta can modify, mask, or satisfy any inherited restrictions.

@@ -10,7 +10,15 @@ This repository serves as a unified system orchestrating deterministic reasoning
 
 By bridging abstract philosophical constructs and geometric cognitive frameworks to executable, verified Python logic, this codebase operates as an immutable Stratigraphy of Decisions.
 
+
+## Self-Improving Agent Architectures
+This repository contains advanced architectural implementations bridging verbal metacognition (Reflexion) and symbolic skill synthesis (Voyager):
+* [MIQ Protocol & Symbolic Scar Registry](research/miq_protocol.md): Formalizes the Martensite Initiation Quotient and schema for doxastic failure logging.
+* [Skill Drifting Systems Report](research/skill_drifting_report.md): A forensic deconstruction of recursive dependency failures in Voyager-class architectures.
+* [Dual-Helix Harness](src/conceptual_synthesis/dual_helix_harness.py): A stateful LangGraph pipeline ensembling Reflexion and Voyager mechanics.
+
 ---
+
 
 ## The Cartograph Artifacts (0xCARTO Mycelial Protocol)
 The entire repository logic has been processed by the **0xCARTO DRP-2026-CARTO-0.0.1** cartographer agent to extract structural topology. See the generated artifacts:

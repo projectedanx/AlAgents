@@ -171,3 +171,10 @@ controller = RheologicalController()
 viscosity = controller.calculate_viscosity(constraint_density=1.2, token_budget=1024, latent_heat=0.5, context_volume=2048)
 active_mode = controller.switch_mode(viscosity)
 ```
+
+## Systems Engineering Implementations
+This repository includes advanced systems-grade implementations for multi-agent optimization and reinforcement learning, including:
+- **Staged Advantage Estimation (SAE)**: Solves advantage calculation as a hierarchical convex optimization problem to stabilize credit assignment on tree-structured MCTS states.
+- **Adaptive SAE Harness**: Dynamically interpolates between $O(N)$ expectation heuristics and SLSQP projections using Spectral Information Discrepancy.
+- **Asynchronous ADMM Projector**: A lock-free, multi-threaded C++/NumPy constraint solver executing L2-ball and zero-mean projections in under 20ms.
+- **EWAR Diagnostic Harness**: Detects and mitigates "Semantic Saponification" by restoring advantage variance across heterogeneous trajectory trees.

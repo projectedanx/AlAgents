@@ -112,6 +112,7 @@ Provides server-side synthesis for React/Next.js UI generation applications, man
 1. **Semantic Saponification is pervasive:** Without explicit constraints, AI agents dilute precise architectural requirements into generalized boilerplate. The use of strict docstring conventions and DCCD is necessary.
 2. **Deterministic Architecture requires rigorous mereological definition:** Systemic errors multiply when boundaries between whole and part (Holon nodes) are ambiguous.
 3. **Contradictions must be managed, not resolved:** Enforcing "Relational Symmetry Inversion" via the Infomorphism mechanism yields mathematically robust failure resilience compared to forcing early compromise.
+4. **Dynamic Stagnation Prevention:** Using purely equilibratory feedback loops traps systems in local maxima. Implementing a Disequilibratory Goal-Setting Engine (AACH) creates necessary artificial variance.
 
 ## Contributing
 1. Fork the repository.
@@ -186,6 +187,14 @@ This repository includes advanced systems-grade implementations for multi-agent 
 - **Adaptive SAE Harness**: Dynamically interpolates between $O(N)$ expectation heuristics and SLSQP projections using Spectral Information Discrepancy.
 - **Asynchronous ADMM Projector**: A lock-free, multi-threaded C++/NumPy constraint solver executing L2-ball and zero-mean projections in under 20ms.
 - **EWAR Diagnostic Harness**: Detects and mitigates "Semantic Saponification" by restoring advantage variance across heterogeneous trajectory trees.
+
+### 15. Autonomous Adaptive Cognitive Harness (AACH)
+The AACH formalizes purposeful adaptation through a triple-layered architecture: a Homomorphic Schema Compiler, an Epistemic Action Orchestrator, and a Disequilibratory Goal-Setting Engine. It ensures system resilience at the "Edge of Chaos" by treating logical violations as assets for Algorithmic Reparation.
+```python
+from src.conceptual_synthesis.aach_goal_engine import DisequilibratoryGoalEngine
+engine = DisequilibratoryGoalEngine()
+engine.execute_cycle(95.0, {"well_being": 0.8})
+```
 
 ### 14. ActPlane Hierarchical Policy Domain
 The `actplane_harness.py` module formalizes the Sovereignty-Enforcement Split. It establishes a fundamental division of control where security boundaries are nested within the process tree and enforced directly by simulated eBPF-LSM hooks.

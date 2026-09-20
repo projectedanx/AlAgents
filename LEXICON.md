@@ -262,3 +262,17 @@ A strict epistemic scaffolding technique for large language models that partitio
 * **Justified Uncertainty Report (JUR)**: A structured report generated when the Epistemic Escrow Circuit Breaker halts execution due to a CFDI spike or PFI decay, documenting the cause of the uncertainty.
 * **Mutation Recoverability Score (MRS)**: A metric quantifying post-traumatic growth in a socio-technical system, proving that a chaos-engineered team becomes progressively more resilient over successive trials.
 * **Affective Latent Space Homeostasis (ALSH)**: The optimal "Goldilocks Zone" where user-led co-creation (agency) and machine-enforced constraints (rules) are perfectly balanced, allowing exploration of the possibility space while remaining anchored to a stable, verifiable core of truth.
+
+### PAT-023 · Parsimonious Architecture Protocol (PAP)
+**Type**: Epistemic Gatekeeper | **AT Score**: 0.95
+**Definition**: An automated verification harness that programmatically enforces Occam's Razor by explicitly penalizing model complexity. It calculates an Occam Loss Score to prevent models from maximum likelihood over-fitting (epicyclic behavior).
+**Mechanism**: Utilizes an Ontological Commitment schema to compute structural joint probability ($P(T) = \prod P(A_i)$). Models adding free parameters are rejected unless they achieve a $\ge 3\sigma$ decrease in prediction error via Pareto Optimization.
+**Measurement**: Occam Loss = Prediction Error + Parameter Penalty - $\ln(P(T))$.
+**PDL Activators**: `+++OccamLoss(sigma_threshold=3.0, penalize_free_parameters=true)`
+**Boundary Condition**: Greedy Reductionism if parameter penalty is too aggressive, resulting in extreme idealization and loss of predictive accuracy.
+
+### PAT-024 · Ontological Commitment
+**Type**: Schema Declaration | **AT Score**: 0.88
+**Definition**: A formalized structure where an AI theory or hypothesis explicitly declares its variables, free parameters, and underlying axiomatic assumptions. This exposes the "hidden cost" of model complexity.
+**Mechanism**: Acts as the required structural input for the Occam Loss Compiler. Every assumption is assigned a validity probability $P(A_i) < 1$.
+**PDL Activators**: `+++OntologicalCommitment(require_explicit_assumptions=true)`

@@ -241,3 +241,6 @@ analogical reasoning across orthogonal semantic fields with JSD < 0.20 post-bind
 * **Variable Viscosity Prompting (VVP)**: The modulation of cognitive probability mass. Crystal Mode (high viscosity) enforces strict, logical serialization (System 2). Cloud Mode (low viscosity) allows divergent, creative pathways (System 1).
 * **Least-to-Most (LTM) Architecture**: A cognitive scaffolding technique isomorphic to Vygotskian Scaffolding. It dynamically expands the model's active Zone of Proximal Development (ZPD) by decomposing complex tasks into verifiable sub-problems.
 * **Failure-Informed Prompt Inversion (FIPI)**: The architectural method of mapping the model's failure surface via negative space exploration, isolating linguistic triggers (ablation audit), and inverting them into explicit invariants to build highly stable positive scaffolds.
+
+### Action-Alignment Loss
+A formal regret-minimization objective ($\mathcal{L}_{\text{Align}}$) designed to bridge the "thought-action gap" in cognitive agents. It causally binds the agent's expected utility based on its predictions of an opponent (Literal Theory of Mind) to its executed policy (Functional Theory of Mind), preventing collapse into unexploitative Nash equilibria.

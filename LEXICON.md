@@ -244,3 +244,9 @@ analogical reasoning across orthogonal semantic fields with JSD < 0.20 post-bind
 
 ### Action-Alignment Loss
 A formal regret-minimization objective ($\mathcal{L}_{\text{Align}}$) designed to bridge the "thought-action gap" in cognitive agents. It causally binds the agent's expected utility based on its predictions of an opponent (Literal Theory of Mind) to its executed policy (Functional Theory of Mind), preventing collapse into unexploitative Nash equilibria.
+
+### Recursive Context-Aware Planning (ReCAP)
+A dynamic context tree management framework designed to prevent "context drift" in long-horizon environments. Instead of relying on a flat linear context window which causes the agent to lose its strategic intent over time, ReCAP represents tasks as nodes (containing descriptions, subtasks, child nodes, observations, and reasoning traces). It leverages downward plan-ahead decomposition and upward backtracking-driven refinement to isolate failures, prune invalid subtrees, and reinject strategic goals into the active shared context, successfully breaking execution deadlocks (such as the Sussman Anomaly).
+
+### Belief-Desire-Intention (BDI) Symbolic Verification
+A strict epistemic scaffolding technique for large language models that partitions in-context reasoning into distinct BDI components (`#Beliefs`, `#Desires`, and `#Intentions`). This architecture bridges the "thought-action gap" by passing proposed intentions to a non-LLM symbolic verifier (e.g., Answer Set Programming or Dynamic Epistemic Logic logic layer) before execution. The verifier checks for logical consistency, cyclic loops, and safety violations—vetoing invalid actions and forcing the model to explicitly refine its intentions, thus preventing mental state decoupling and unexploitative Nash equilibrium collapse.

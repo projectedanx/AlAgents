@@ -250,3 +250,15 @@ A dynamic context tree management framework designed to prevent "context drift" 
 
 ### Belief-Desire-Intention (BDI) Symbolic Verification
 A strict epistemic scaffolding technique for large language models that partitions in-context reasoning into distinct BDI components (`#Beliefs`, `#Desires`, and `#Intentions`). This architecture bridges the "thought-action gap" by passing proposed intentions to a non-LLM symbolic verifier (e.g., Answer Set Programming or Dynamic Epistemic Logic logic layer) before execution. The verifier checks for logical consistency, cyclic loops, and safety violations—vetoing invalid actions and forcing the model to explicitly refine its intentions, thus preventing mental state decoupling and unexploitative Nash equilibrium collapse.
+
+### Chaos-Engineered Falsification and the IKEA Effect
+
+* **IKEA Effect**: A cognitive and psychological phenomenon where individuals place a significantly higher value on products, workflows, or systems they actively participated in constructing. Counteracts Intent Drift and the usability gaps born from top-down architectural abstraction.
+* **Context-to-Execution Pipeline (CxEP)**: A formalized compiler pipeline that translates a visual sketch on a digital canvas into an executable contract.
+* **Executable Cognitive Contract**: A Product-Requirements Prompt (PRP) where a visual layout is bound to programmatic verification tests guaranteeing that what is visually assembled is mathematically and logically sound.
+* **Positive Friction**: An intentional "epistemic speed bump" introduced when the system's CFDI crosses a critical threshold. It makes the interface abrasive (e.g., deliberate delays, forcing type confirmations) to jolt the user out of System 1 autopilot behavior into System 2 scrutiny, resolving Automation Bias / Agency Laundering.
+* **Uncertainty Accelerator**: An automated mechanism in the Chaos Engine that introduces controlled failures or anomalous inputs (epistemic pathogens) to stress-test the SMM.
+* **Purpose Fidelity Index (PFI)**: A metric defining the alignment of an agent's executed actions with the original human goal vector.
+* **Justified Uncertainty Report (JUR)**: A structured report generated when the Epistemic Escrow Circuit Breaker halts execution due to a CFDI spike or PFI decay, documenting the cause of the uncertainty.
+* **Mutation Recoverability Score (MRS)**: A metric quantifying post-traumatic growth in a socio-technical system, proving that a chaos-engineered team becomes progressively more resilient over successive trials.
+* **Affective Latent Space Homeostasis (ALSH)**: The optimal "Goldilocks Zone" where user-led co-creation (agency) and machine-enforced constraints (rules) are perfectly balanced, allowing exploration of the possibility space while remaining anchored to a stable, verifiable core of truth.

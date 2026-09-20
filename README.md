@@ -215,3 +215,20 @@ from src.conceptual_synthesis.tdd_orchestrator import TDDOrchestrator
 orchestrator = TDDOrchestrator()
 final_state = orchestrator.execute_loop("Implement a fast sorting algorithm")
 ```
+
+### 17. Chaos-Engineered Falsification Engine
+A socio-technical control system (`ChaosFalsificationEngine`) that uses Chaos Engineering principles to systematically falsify, stress-test, and strengthen the Shared Mental Model (SMM) of a human-agent team during complex tasks. It monitors CFDI and Purpose Fidelity Index (PFI) while utilizing an Uncertainty Accelerator to inject controlled epistemic pathogens (Concept Drift, Instrumental Convergence, Semantic Ambiguity).
+```python
+from src.conceptual_synthesis.chaos_falsification_engine import ChaosFalsificationEngine
+engine = ChaosFalsificationEngine()
+result = engine.run_simulation_cycle({"task_description": "Standard processing"}, "A")
+```
+
+### 18. Visual Context-to-Execution Pipeline (CxEP) Compiler
+A compiler pipeline (`VisualCxEPCompiler`) designed to counteract Intent Drift and leverage the IKEA Effect. It translates co-created visual workflow schemas (such as RACI maps or state machines) into executable, typed Product-Requirements Prompts (PRPs), utilizing a Speculative Abstract Interpretation Engine (SAIE) to mathematically guarantee that the generated code satisfies all structural and security constraints.
+```python
+from src.conceptual_synthesis.visual_cxep_compiler import VisualCxEPCompiler
+compiler = VisualCxEPCompiler()
+schema = {"nodes": [{"id": "n1", "label": "Start", "type": "Trigger"}], "edges": []}
+result = compiler.compile_schema(schema, global_properties=["no_direct_db_writes"])
+```

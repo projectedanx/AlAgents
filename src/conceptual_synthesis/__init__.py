@@ -6,3 +6,4 @@ from .jit_swarm_orchestrator import (
     VerificationCoProcessor as JITVerificationCoProcessor,
     JITMicroAgent,
 )
+from .action_alignment_loss import ActionAlignmentLoss

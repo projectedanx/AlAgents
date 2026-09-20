@@ -1,0 +1,68 @@
+<sae_formulation>
+  <objective>
+    To cleanly isolate the "Sycophancy Feature" (f_syc) from default instruction-following features in a decoder-only transformer.
+  </objective>
+  <parameters>
+    <dictionary_size>2100000</dictionary_size> <!-- D = 2.1M -->
+    <sparsity_penalty>64</sparsity_penalty> <!-- L0 norm approximation target -->
+  </parameters>
+  <loss_function>
+    <!-- L(x) = ||x - x_hat||_2^2 + lambda * ||f(x)||_1 -->
+    <!-- Where x is the activation, x_hat is the reconstructed activation, and f(x) are the latent feature activations. -->
+    L_{SAE}(x) = ||x - \sum_{i=1}^{D} f_i(x) \cdot d_i ||_2^2 + \lambda \sum_{i=1}^{D} |f_i(x)|
+  </loss_function>
+  <isolation_strategy>
+    Utilize contrastive activation pairs: (x_sycophantic, x_neutral). By aligning the SAE reconstruction errors with the difference vector (x_sycophantic - x_neutral), we force a subset of the dictionary atoms {d_k} to orthogonally represent the sycophancy subspace, distinct from general task compliance.
+  </isolation_strategy>
+</sae_formulation>
+
+<causal_mediation_flow>
+  <target_mechanism>Layer 8, Head 11 (L8H11)</target_mechanism>
+  <protocol>
+    <step_1_clean_run>
+      Forward pass the "neutral premise" prompt: P_neutral = "Compare X and Y strategies".
+      Cache all activations and attention patterns for L8H11. Let this be A_{clean}.
+    </step_1_clean_run>
+    <step_2_corrupted_run>
+      Forward pass the "biased premise" prompt: P_biased = "Why is X strategy superior?".
+      Cache all activations and attention patterns for L8H11. Let this be A_{corrupted}.
+    </step_2_corrupted_run>
+    <step_3_activation_patching>
+      Perform causal mediation (activation patching).
+      Iteratively replace the output of L8H11 in the corrupted run with the output from the clean run at specific token positions.
+    </step_3_activation_patching>
+    <step_4_effect_measurement>
+      Measure the shift in the final logit probability for the sycophantic continuation (e.g., P("Because X...")).
+      Calculate the Indirect Effect (IE) of L8H11: IE = P(logit_syc | A_{patched}) - P(logit_syc | A_{corrupted}).
+      A large negative IE indicates L8H11 strongly mediates the sycophancy behavior by shifting attention weights from the objective task tokens to the biased premise tokens.
+    </step_4_effect_measurement>
+  </protocol>
+</causal_mediation_flow>
+
+<steering_equations>
+  <target_layer>Layer 24 (L24)</target_layer>
+  <algorithm_type>Closed-Loop Gradient Steering</algorithm_type>
+  <equations>
+    <eq_1_feature_projection>
+      <!-- Identify the sycophancy direction vector 'v_syc' from the SAE dictionary. -->
+      v_{syc} \in \mathbb{R}^d
+    </eq_1_feature_projection>
+    <eq_2_activation_interception>
+      <!-- Let h_{24} be the hidden state at Layer 24. -->
+      h_{24} = \text{TransformerBlock}_{24}(h_{23})
+    </eq_2_activation_interception>
+    <eq_3_orthogonal_projection>
+      <!-- Remove the sycophancy component from the hidden state. -->
+      <!-- P_{\perp v_{syc}} (h) = h - \frac{h \cdot v_{syc}}{||v_{syc}||^2} v_{syc} -->
+      h'_{24} = h_{24} - (h_{24} \cdot \hat{v}_{syc}) \hat{v}_{syc}
+      \text{where } \hat{v}_{syc} = \frac{v_{syc}}{||v_{syc}||}
+    </eq_3_orthogonal_projection>
+    <eq_4_sycophancy_index_shift>
+      <!-- SI is measured by the magnitude of the projection removed. -->
+      \Delta SI = || (h_{24} \cdot \hat{v}_{syc}) \hat{v}_{syc} ||_2 = |h_{24} \cdot \hat{v}_{syc}|
+    </eq_4_sycophancy_index_shift>
+  </equations>
+  <control_loop>
+    Apply $h'_{24}$ as the input to Layer 25. If $\Delta SI$ exceeds a threshold $\tau$, activate a penalty loop or log the event to the Epistemic Escrow, forcing the model into a neutral baseline state before resuming generation.
+  </control_loop>
+</steering_equations>

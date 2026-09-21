@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Chrono-Topological Narrative Auditing integrating Topological Data Analysis (TDA) for detecting Circular Reasoning via Betti-1 loops.
+- `n2e_ced_simulation.py` to model Asymmetric Multi-Agent Dialogue and induce Semantic Pathogens.
+- `mobius_constitutional_verifier.py` to simulate recursive refactoring loops and monitor Semantic Drift.
+- Generated research artifacts: `chrono_topological_diagnostic_report.md`, `metacognitive_audit_log.json`, and `algorithmic_trauma_visualization_prompt.txt`.
 - Added `HomomorphicSchemaCompiler` to execute relational data exchange via the Chase Procedure.
 - Added `EpistemicActionOrchestrator` to simulate Extended Mind offloading and present-at-hand Algorithmic Reparation.
 - Added `DisequilibratoryGoalEngine` to implement feed-forward dynamic goal tuning.

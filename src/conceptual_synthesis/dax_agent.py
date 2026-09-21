@@ -69,15 +69,22 @@ class DaxAgent(BaseAgent):
     def _log_symbolic_scar(self, component: str, reason: str, metrics: dict, scar_id: str = None) -> str:
         """Logs a Symbolic Scar detailing the developer friction point."""
         if scar_id is None:
-            scar_id = f"DAX_SC_{datetime.now().strftime('%Y_%m%d')}_FRICT_{uuid.uuid4().hex[:4].upper()}"
+            domain = component.strip('/').split('/')[0].upper() if component and '/' in component else "CORE"
+            scar_id = f"VSA_HV_{datetime.now().strftime('%Y')}_{datetime.now().strftime('%m%d')}_{domain}_{uuid.uuid4().hex[:3].upper()}"
 
         scar_entry = {
             "scar_id": scar_id,
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "component": component,
-            "failure_mode": reason,
-            "metrics": metrics,
-            "status": "OPEN"
+            "endpoint_affected": component,
+            "mental_model_gap_vector": [0.1, 0.2, 0.3, 0.4], # simulated float array
+            "error_code": metrics.get("error_pattern", "unknown"),
+            "root_cause_classification": "ARCHITECTURAL_FLAW",
+            "reproduction_steps": ["Step 1", "Step 2", "Step 3"],
+            "fix_applied": "Code block fix",
+            "cfdi_score": metrics.get("cfdi", 0.0),
+            "frequency_48h": 1,
+            "status": "OPEN",
+            "debridement_eligible": False,
+            "fipi_repulsion_active": True
         }
         try:
             with open(self.scar_log_path, "a") as f:
@@ -92,6 +99,14 @@ class DaxAgent(BaseAgent):
         Phase 1: OBSERVE. Ingests community signal.
         """
         cfdi = context.get("cfdi", 0.0)
+        signal = context.get("community_signal", "").lower()
+        ssi_threshold = self.ssi_threshold
+
+        # Novice detection routing
+        novice_linguistics = ["what does", "how to", "help"]
+        if any(phrase in signal for phrase in novice_linguistics):
+            ssi_threshold = 0.70 # Permit more explanatory prose
+
         return {
             "community_signal": context.get("community_signal", ""),
             "artifact_type": context.get("artifact_type", "TriageResponse"),
@@ -99,6 +114,7 @@ class DaxAgent(BaseAgent):
             "endpoint": context.get("endpoint", "unknown"),
             "error_pattern": context.get("error_pattern", "unknown"),
             "ssi": context.get("ssi", 1.0),
+            "ssi_threshold": ssi_threshold,
             "reproduction_environment": context.get("reproduction_environment", {})
         }
 
@@ -146,9 +162,10 @@ class DaxAgent(BaseAgent):
             raise ValueError(f"DCCDSchemaGuard Failure: Invalid artifact type {artifact_type}.")
 
         # Check SSI
-        if draft.get("ssi", 1.0) < self.ssi_threshold:
+        target_ssi = draft.get("ssi_threshold", self.ssi_threshold)
+        if draft.get("ssi", 1.0) < target_ssi:
             # Token budget manipulation / AdjectivalBound truncation would happen here
-            raise ValueError(f"SSI {draft.get('ssi')} is below target threshold {self.ssi_threshold}.")
+            raise ValueError(f"SSI {draft.get('ssi')} is below target threshold {target_ssi}.")
 
         # Draft validated
         draft["schema_validation"] = "PASS"
@@ -164,19 +181,36 @@ class DaxAgent(BaseAgent):
         artifact_type = validated_draft.get("artifact_type")
         if artifact_type == "Quickstart":
             artifact = (
-                "## Quickstart: API in 3 Steps\n"
-                "### Step 1: Install\n```bash\npip install sdk\n```\n"
-                "### Step 2: Authenticate\n```python\nauth()\n```\n"
-                "### Step 3: First Call\n```python\ncall()\n```\n"
-                "Expected output:\n```json\n{}\n```\n"
-                "> Why this works: conceptual sentence."
+                "## Quickstart: [API Name] in 3 Steps\n\n"
+                "### Step 1: Install\n"
+                "```bash\n"
+                "pip install your-sdk==2.1.0\n"
+                "```\n"
+                "### Step 2: Authenticate\n"
+                "from your_sdk import Client\n"
+                "client = Client(api_key=\"YOUR_KEY_HERE\")\n"
+                "### Step 3: First Call\n"
+                "response = client.resources.get(resource_id=\"example-001\")\n"
+                "print(response.status)\n"
+                "Expected output:\n\n"
+                "{\"status\": \"active\", \"id\": \"example-001\", \"created_at\": \"2026-03-29T05:27:00Z\"}\n"
+                "Why this works: The Client object handles token refresh automatically; resources.get() is a synchronous HTTP GET against /api/v2/resources/{id}."
             )
         elif artifact_type == "FrictionReport":
             artifact = json.dumps({
+                "@context": "https://schema.dax-01.internal/FrictionReport/v2",
                 "@type": "FrictionTopographyReport",
+                "report_window_hours": 48,
+                "total_friction_events": 1,
                 "critical_nodes": [{
                     "endpoint": validated_draft["endpoint"],
-                    "cfdi_score": validated_draft["cfdi"]
+                    "cfdi_score": validated_draft["cfdi"],
+                    "frequency": 42,
+                    "root_cause": "CHANGELOG_INVISIBILITY",
+                    "ttfc_impact_minutes": 4.2,
+                    "recommendation": "...",
+                    "scar_id": "VSA_HV_2026_0329_AUTH_001",
+                    "priority": "P0"
                 }]
             })
         else:
@@ -201,7 +235,7 @@ class DaxAgent(BaseAgent):
         scar_id = self._log_symbolic_scar(
             component=output_result.get("endpoint", "unknown"),
             reason=output_result.get("root_cause", "unknown error"),
-            metrics={"cfdi": output_result.get("cfdi")}
+            metrics={"cfdi": output_result.get("cfdi"), "error_pattern": output_result.get("error_pattern")}
         )
 
         output_result["scar_id"] = scar_id
@@ -215,6 +249,39 @@ class DaxAgent(BaseAgent):
             "artifact": output_result["final_artifact"],
             "scar_id": scar_id
         }
+
+    def run_debridement_cycle(self) -> None:
+        """
+        Executes the +++SagaRecovery protocol.
+        Prunes/updates scars in self.scar_log_path that are debridement_eligible.
+        """
+        import os
+        if not os.path.exists(self.scar_log_path):
+            return
+
+        scars = []
+        try:
+            with open(self.scar_log_path, "r") as f:
+                for line in f:
+                    if line.strip():
+                        scars.append(json.loads(line))
+        except Exception as e:
+            logging.error(f"Failed to read scars for debridement: {e}")
+            return
+
+        updated = False
+        for scar in scars:
+            if scar.get("debridement_eligible", False) and scar.get("status") != "CLOSED":
+                scar["status"] = "CLOSED"
+                updated = True
+
+        if updated:
+            try:
+                with open(self.scar_log_path, "w") as f:
+                    for scar in scars:
+                        f.write(json.dumps(scar) + "\n")
+            except Exception as e:
+                logging.error(f"Failed to write updated scars during debridement: {e}")
 
     def execute_petzold_loop(self, context: dict) -> dict:
         """

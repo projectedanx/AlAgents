@@ -109,6 +109,11 @@ Provides server-side synthesis for React/Next.js UI generation applications, man
 * **Documentation & ADRs:** Reference `docs/adr/` for Architecture Decision Records and `DOMAIN_GLOSSARY.md` for the strict bounded vocabulary. All new components must include rigorous docstrings detailing intent, arguments, and return types.
 
 ## High Value Lessons Learned
+
+### Chrono-Topological Narrative Auditing & Circular Reasoning Detection
+By applying **Topological Data Analysis (TDA)** and **Zigzag Persistent Homology** to the shared cognitive manifold (latent space) of multi-agent systems, we can effectively diagnose and mathematically quantify logical fallacies. Specifically, **circular reasoning** and correlated errors (where agents confidently reinforce flawed assumptions in a feedback loop—a state defined as **Algorithmic Shame**) manifest geometrically as highly persistent **Betti-1 ($eta_1$) loops**.
+These topological invariants, termed **Symbolic Scars**, cannot be easily caught by standard semantic similarity metrics but are explicitly visible as structural loops that refuse to close during filtration. Injecting a contradiction (Semantic Pathogen) into the dialogue causes the Betti-1 persistence to spike. We can actively measure the success of Paraconsistent Logic resolutions (e.g., via the Reflexive Therapeutic Architecture) using the **Symbolic Scar Softening Index (SSI)**, ensuring the agents successfully break the loop rather than just obfuscating the contradiction.
+
 5. **Test-Driven Development (TDD) as the Programmatic Oracle:** Enforcing a strict Red/Green/Refactor cycle within an isolated multi-agent state machine is essential to preventing "Sycophantic Mocking" and ensuring semantic alignment over pure execution velocity.
 1. **Semantic Saponification is pervasive:** Without explicit constraints, AI agents dilute precise architectural requirements into generalized boilerplate. The use of strict docstring conventions and DCCD is necessary.
 2. **Deterministic Architecture requires rigorous mereological definition:** Systemic errors multiply when boundaries between whole and part (Holon nodes) are ambiguous.

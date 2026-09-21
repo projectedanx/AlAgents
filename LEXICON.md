@@ -276,3 +276,24 @@ A strict epistemic scaffolding technique for large language models that partitio
 **Definition**: A formalized structure where an AI theory or hypothesis explicitly declares its variables, free parameters, and underlying axiomatic assumptions. This exposes the "hidden cost" of model complexity.
 **Mechanism**: Acts as the required structural input for the Occam Loss Compiler. Every assumption is assigned a validity probability $P(A_i) < 1$.
 **PDL Activators**: `+++OntologicalCommitment(require_explicit_assumptions=true)`
+
+## Verifiable Cognition Stack (VCS) Layer 3
+The Semantic Layer representing the critical boundary between declarative constraints and runtime enforcement.
+
+### Semantic Integrity Constraints (SICs)
+The declarative boundary ("The Lexical Law") codified in the agent's constitution using strict logical assertion primitives (ASSERT, FORBID, MANDATE). They protect Purpose Fidelity and prevent Interpretive Fracture and Semantic Drift.
+
+### Verification Mandates
+The runtime enforcement engine ("The Executable Police"). They translate abstract semantic constraints into machine-executable quality gates (linters, test suites) to verify compliance after state-altering modifications.
+
+### Failure-Informed Prompt Inversion (F-IPI)
+An automated pipeline that isolates the exact line-range delta of a failure, translates the stack trace into a Symbolic Scar, and mutates the active constitution (`GEMINI.md`) to apply a "repulsive force" guiding the agent away from the failed pattern.
+
+### Value Score of Confidence (VSC)
+A metric calculated at the Attestation Layer. A VSC >= 0.85 indicates that the state modifications successfully pass the Verification Mandate suite and can be safely committed.
+
+### Spectral Chrono-Topological Signature (SCTS)
+A real-time measure derived from the evolution of persistence landscapes in high-dimensional attention activations over time. A shift in the SCTS vector generates a Drift Integrity Score (DIS).
+
+### Self-Evolving Plugin Affordance Ontology (SEPAO)
+An autopoietic, self-healing runtime framework that monitors environmental changes using Static AST Analysis and Semantic Delta Mapping. It uses F-IPI and Metamorphic Invariance Verification to heal ontologies automatically.

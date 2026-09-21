@@ -236,3 +236,18 @@ Nested security boundaries within the process tree where child agents monotonica
 
 ## Authority Checker
 An in-kernel validator that intercepts runtime delta submissions from child domains, ensuring no delta can modify, mask, or satisfy any inherited restrictions.
+
+### Verifiable Cognition Stack (VCS) Layer 3
+The multi-layered policy-enforcement framework mapping declarative Semantic Integrity Constraints (SICs) to executable Verification Mandates to govern AI workflows securely.
+
+### Semantic Integrity Constraints (SICs)
+Strict non-negotiable state-space rules (`ASSERT`, `FORBID`, `MANDATE`) in the agent constitution that defend system Purpose Fidelity against Semantic Drift.
+
+### Verification Mandates
+Executable quality gates (e.g., `npm run lint`, `pytest`) corresponding to SICs that run immediately following an agent modification.
+
+### Failure-Informed Prompt Inversion (F-IPI)
+A process that converts a system failure (e.g., compiler error) into a Symbolic Scar, and mutates the active prompt context to instruct the agent to avoid the specific anti-pattern.
+
+### Self-Evolving Plugin Affordance Ontology (SEPAO)
+A framework employing environment scanners and AST parsers to calculate Semantic Drift Deltas, keeping the agent's knowledge graph synchronized with runtime environmental changes.

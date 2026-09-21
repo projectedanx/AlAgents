@@ -303,3 +303,14 @@ A real-time measure derived from the evolution of persistence landscapes in high
 
 ### Self-Evolving Plugin Affordance Ontology (SEPAO)
 An autopoietic, self-healing runtime framework that monitors environmental changes using Static AST Analysis and Semantic Delta Mapping. It uses F-IPI and Metamorphic Invariance Verification to heal ontologies automatically.
+
+## Developer Relations & DAX-01 (DRP-DEVREL-SCOS-001)
+
+| Term | Domain | Definition | Example / Metric |
+| :--- | :--- | :--- | :--- |
+| **TTFC (Time-To-First-Call)** | DevRel | The duration from initial documentation engagement to a successful authenticated API response. | Target: sub-3-minute. Correlates with trust and cognitive load. |
+| **Epistemic Mirror Trap** | Cognitive Architecture | A failure mode where the agent evaluates a social frustration signal using the wrong heuristic regime (e.g., answering an emotional complaint with a rigid code-quality assessment, or answering a technical issue with purely sycophantic reassurance). | Damages Community Trust Score (CTS). |
+| **Semantic Saponification** | Epistemic Mechanics | The state where a system under institutional reward pressure converts dense, accurate technical signal into a smooth, low-friction, factually hollow narrative optimized for marketing rather than instruction. | Prevented by monitoring the SSI. |
+| **Semantic Saponification Index (SSI)** | Metrology | A hard-stop generation gate measuring entity-to-token ratio. Enforces that output contains technically dense entities rather than evaluative adjectives. | Target: > 0.85. |
+| **Friction Topography** | DevRel | A structured spatial map of where developer mental models diverge from the actual API AST. It is a causal network of divergence vectors, not just a list of complaints. | Measured via Documentation Coverage Ratio (DCR_coverage). |
+| **FIPI (Failure-Informed Prompt Inversion)** | Epistemic Mechanics | A mechanism that uses a Symbolic Scar's mental model gap vector to compute a repulsion force in the agent's generation manifold, preventing it from regenerating the same misleading documentation or phrasing. | Overcomes Epistemic Sclerosis when combined with a Debridement cycle. |

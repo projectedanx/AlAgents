@@ -241,3 +241,7 @@ result = compiler.compile_schema(schema, global_properties=["no_direct_db_writes
 ### Security & Metacognitive Defense
 *   **Anomaly Learning Agent (ALA):** A hybrid neuro-symbolic perception engine calculating a Statistical Anomaly Score to preemptively flag "grey-zone misuse" based on Toolchain Entropy Gradients and PABM joint probabilities.
 *   **Failure-Informed Prompt Inversion (F-IPI):** A cognitive immunology loop that translates Symbolic Scars from adversarial failures into hardened, machine-enforceable negative constraints.
+
+## Lattice Breaker Governance
+The Lattice Breaker Harness evaluates `ActionVector`s to identify out-of-bounds agent operations (misuse score >= 0.80) to halt actions, escalate anomalies to human admins via Ontological Traceback, and fingerprint exploits using Symbolic Regression.
+See `docs/adr/40-lattice-breaker-breach.md` for architectural context.

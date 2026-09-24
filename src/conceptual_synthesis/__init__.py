@@ -7,3 +7,4 @@ from .jit_swarm_orchestrator import (
     JITMicroAgent,
 )
 from .action_alignment_loss import ActionAlignmentLoss
+from .ala_agent import AnomalyLearningAgent

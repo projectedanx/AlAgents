@@ -314,3 +314,21 @@ An autopoietic, self-healing runtime framework that monitors environmental chang
 | **Semantic Saponification Index (SSI)** | Metrology | A hard-stop generation gate measuring entity-to-token ratio. Enforces that output contains technically dense entities rather than evaluative adjectives. | Target: > 0.85. |
 | **Friction Topography** | DevRel | A structured spatial map of where developer mental models diverge from the actual API AST. It is a causal network of divergence vectors, not just a list of complaints. | Measured via Documentation Coverage Ratio (DCR_coverage). |
 | **FIPI (Failure-Informed Prompt Inversion)** | Epistemic Mechanics | A mechanism that uses a Symbolic Scar's mental model gap vector to compute a repulsion force in the agent's generation manifold, preventing it from regenerating the same misleading documentation or phrasing. | Overcomes Epistemic Sclerosis when combined with a Debridement cycle. |
+
+### Anomaly Learning Agent (ALA)
+A meta-learning system that adapts the defensive posture of an autonomous agent system in real time. It serves to detect "grey-zone misuse"—actions that are individually authorized but whose sequence and intent indicate misaligned or malicious processes.
+
+### Statistical Anomaly Score
+The core output of the ALA's perception engine. It quantifies the predictability of an agent’s behavior using a multi-layered hybrid calculation involving sequence probability modeling, information-theoretic entropy tracking, and dynamic Bayesian inference.
+
+### Toolchain Entropy Gradient
+The rate of change of Shannon entropy $H(X)$ calculated over a sliding window of recent tool-call transitions. A sharp, sudden positive gradient indicates a rapid shift from predictable behavior to chaotic, potentially malicious exploratory actions.
+
+### Probabilistic Action-Behavior Model (PABM)
+A Dynamic Bayesian Network (DBN) or Hidden Markov Model (HMM) representing the structural intent behind agent actions. Used to compute the joint probability of an active sequence occurring, identifying low-probability intent transitions.
+
+### Failure-Informed Prompt Inversion (F-IPI)
+An automated cognitive immunology mechanism where system "traumas" (failures to detect anomalies, logged as Symbolic Scars) are used to reverse-engineer and compile robust system prompts (Negative Constraints) designed to mathematically block deceptive causal pathways.
+
+### PROV-AGENT Schema
+A strictly typed, verifiable JSON schema used to preserve the causal lineage of ALA anomaly detection decisions and subsequent HITL (Human-In-The-Loop) verdicts. It ensures isomorphic formalization of every adaptation event.

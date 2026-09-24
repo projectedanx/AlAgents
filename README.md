@@ -237,3 +237,7 @@ compiler = VisualCxEPCompiler()
 schema = {"nodes": [{"id": "n1", "label": "Start", "type": "Trigger"}], "edges": []}
 result = compiler.compile_schema(schema, global_properties=["no_direct_db_writes"])
 ```
+
+### Security & Metacognitive Defense
+*   **Anomaly Learning Agent (ALA):** A hybrid neuro-symbolic perception engine calculating a Statistical Anomaly Score to preemptively flag "grey-zone misuse" based on Toolchain Entropy Gradients and PABM joint probabilities.
+*   **Failure-Informed Prompt Inversion (F-IPI):** A cognitive immunology loop that translates Symbolic Scars from adversarial failures into hardened, machine-enforceable negative constraints.

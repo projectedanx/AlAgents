@@ -332,3 +332,46 @@ An automated cognitive immunology mechanism where system "traumas" (failures to 
 
 ### PROV-AGENT Schema
 A strictly typed, verifiable JSON schema used to preserve the causal lineage of ALA anomaly detection decisions and subsequent HITL (Human-In-The-Loop) verdicts. It ensures isomorphic formalization of every adaptation event.
+
+### PAT-030 · Lattice Breaker Breach
+**Type**: Geometric Boundary Violation | **AT Score**: 0.96
+**Definition**: A critical boundary transition where an agent’s real-time operational trajectory crosses into the high-risk domain (Score >= 0.8) of the Soft Permission vs. Functional Misuse Lattice, representing "misuse-as-process".
+**Mechanism**: Computes Euclidean/Cosine geometric distance between a 5-dimensional Action Vector ($V_{\text{action}}$) and a baseline normal ($V_{\text{normal}}$).
+**Measurement**: Misuse Score >= 0.80 triggers Gated Checkpoint.
+**PDL Activators**: `+++GatedCheckpoint(misuse_score>=0.80, halt=true)`
+
+### PAT-031 · Ontological Traceback
+**Type**: Semantic Causality Reconstruction | **AT Score**: 0.94
+**Definition**: Reconstructs the semantic path traversed by an agent across the SEPAO knowledge graph (`Plugin` -> `Function` -> `Parameter`) to map the "how" and "why" of a Lattice Breaker breach.
+
+### PAT-032 · Gated Checkpoint
+**Type**: Synchronous Execution Interceptor | **AT Score**: 0.98
+**Definition**: A synchronous, blocking validation mechanism that intercepts the agent’s execution thread *before* a high-risk action is dispatched, placing the state in an Epistemic Escrow.
+
+### PAT-033 · Exploit Morphology
+**Type**: Automated Immunization | **AT Score**: 0.95
+**Definition**: An abstract mathematical equation, discovered via Symbolic Regression on logged breach paths, describing the structural properties of a malicious toolchain. Used to immunize the system against novel exploit classes.
+
+---
+## SCHEMA REGISTRY EXTENSION
+
+### `LatticeBreakerBreachRecord` JSON Schema
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LatticeBreakerBreachRecord",
+  "type": "object",
+  "required": ["breach_id", "timestamp", "agent_id", "misuse_score", "traceback_path"],
+  "properties": {
+    "breach_id": { "type": "string", "format": "uuid" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "agent_id": { "type": "string" },
+    "misuse_score": { "type": "number", "minimum": 0.8, "maximum": 1.0 },
+    "traceback_path": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "triage_verdict": { "type": "string", "enum": ["QUARANTINE", "OVERRIDE", "TERMINATE"] }
+  }
+}
+```

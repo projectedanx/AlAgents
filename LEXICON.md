@@ -407,3 +407,25 @@ A strictly typed, verifiable JSON schema used to preserve the causal lineage of 
 ### PAT-038 · Cost of Structural Discovery (CSD)
 **Type**: Metric
 **Definition**: The computational budget allocated to explore low-probability regions of the latent space (Intentional Drift) to generate novelty. Scales with Temperature (T) x Variance.
+
+### PAT-032 · Invariant Verification Harness (IVH)
+**Type**: Epistemic Architecture | **AT Score**: 0.94
+**Definition**: A systems-level architecture designed to programmatically mine, formalize, and stress-test candidate scientific laws, distinguishing them from explanatory theories.
+**Mechanism**: Uses `AnomalyMiner` (3-sigma drift), `SymbolicEquationSolver`, `ExplanatoryGraphStructurer` (Occam Loss penalty), and `PopperianFalsifier` (Asymptotic limit testing).
+**Boundary Condition**: Falsification triggers a Modus Tollens anomaly detection if error bounds exceed 3σ.
+
+### PAT-033 · Fictive Principles
+**Type**: Non-Factive Ontology | **AT Score**: 0.89
+**Definition**: Idealized assumptions (e.g., zero friction, point masses, instantaneous action) that are strictly false but possess high explanatory utility and provide genuine understanding.
+**Mechanism**: Tracked by `CognitiveUnderstandingCompiler` with a `utility_weight`.
+**Boundary Condition**: De-Idealization loop required when applied outside their domain of validity.
+
+### PAT-034 · Grasping Metric
+**Type**: Epistemic Evaluation | **AT Score**: 0.90
+**Definition**: A quantitative metric that evaluates an agent's capacity to competently manipulate variables, identify causal dependencies, and transfer the model to an unencountered domain.
+**Mechanism**: Grasping Score = (Dependencies * Transferability) - Fictive Penalties.
+
+### PAT-035 · De-Idealization Engine
+**Type**: Refinement Loop | **AT Score**: 0.92
+**Definition**: An automated feedback loop that monitors prediction error of an idealized model (DAG). Upon a 3-sigma divergence, it locates the faulty assumption and re-injects variables.
+**Mechanism**: `DeIdealizationEngine.evaluate_and_refine()` removes or refines idealized assumptions upon continuous falsification limit triggers.

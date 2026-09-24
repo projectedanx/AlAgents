@@ -8,3 +8,9 @@ from .jit_swarm_orchestrator import (
 )
 from .action_alignment_loss import ActionAlignmentLoss
 from .ala_agent import AnomalyLearningAgent
+from .temporal_blending_engine import (
+    DiscreteState,
+    CausalAction,
+    Trace,
+    SystemAssuranceAgent
+)

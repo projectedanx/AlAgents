@@ -429,3 +429,23 @@ A strictly typed, verifiable JSON schema used to preserve the causal lineage of 
 **Type**: Refinement Loop | **AT Score**: 0.92
 **Definition**: An automated feedback loop that monitors prediction error of an idealized model (DAG). Upon a 3-sigma divergence, it locates the faulty assumption and re-injects variables.
 **Mechanism**: `DeIdealizationEngine.evaluate_and_refine()` removes or refines idealized assumptions upon continuous falsification limit triggers.
+
+### PAT-045 · Co-Mind Triad
+**Type**: Architectural Framework | **AT Score**: 0.94
+**Definition**: An adversarial execution team composed of the Planner, Linguist, and Crone agents, designed to construct, steer, and hygiene-check objective outputs (L5).
+**Mechanism**: Planner aligns objectives and defines process topology; Linguist steers syntax and semiotic translation; Crone enforces existential hygiene, psychodynamics, and identity refusal.
+**Boundary Condition**: Fails if structural bounds are decoupled or hygiene thresholds breach OASF limits.
+
+### PAT-046 · Sovereign Nexus
+**Type**: Routing Orchestration | **AT Score**: 0.90
+**Definition**: A dynamic swarm orchestration system that coordinates multi-agent routing (L7) and monitors value flow geometry (L9.5).
+**Mechanism**: Utilizes Dialectical Resonance (Montage Synthesis, L7.5) to resolve conflicts and Cognitive Parallax across agent perspectives.
+**Measurement**: Efficacy of perspective integration and stability of value flow topological maps.
+
+### PAT-047 · Semiotic Umwelt
+**Type**: Informational Translation | **AT Score**: 0.88
+**Definition**: The systematic process of converting raw physical/environmental stimuli into symbolic, structured forms of representation (L2.5).
+
+### PAT-048 · Anionic Architecture
+**Type**: Void Topology | **AT Score**: 0.91
+**Definition**: The study of negative space topology and omission handling, utilizing the Anionic Cipher to formally structure redaction semantics (L2.9).

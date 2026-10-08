@@ -187,6 +187,27 @@ viscosity = controller.calculate_viscosity(constraint_density=1.2, token_budget=
 active_mode = controller.switch_mode(viscosity)
 ```
 
+### 19. Co-Mind Triad (L5 Orchestration)
+The Co-Mind Triad is an adversarial execution team composed of three core agents:
+- **Planner (L0 / L4.5):** Handles Objective Alignment and Workflow Topology (e.g., Chain of Thought).
+- **Linguist (L2 / L2.5 / L2.9):** Manages Strategic Word Architecture (SWA), Semiotic Umwelt, and Anionic Architecture.
+- **Crone (L0.5 / L4 / L4.2):** Enforces Existential Hygiene, OASF identity refusal mechanisms, and Psychodynamics (shadow integration).
+
+```python
+from src.conceptual_synthesis.co_mind_triad import CoMindTriad
+triad = CoMindTriad()
+result = triad.execute({"objective": "Synthesize a robust execution plan"})
+```
+
+### 20. Sovereign Nexus Router (L7 / L7.5 / L9.5)
+The `SovereignNexusRouter` manages Swarm Dynamics and value flow geometry across agent interactions. It resolves Cognitive Parallax via Dialectical Resonance (Montage Synthesis), ensuring cohesive output resolution from diverse agent perspectives.
+
+```python
+from src.conceptual_synthesis.sovereign_nexus import SovereignNexusRouter
+nexus = SovereignNexusRouter()
+resolved = nexus.resolve_conflict({"perspectives": ["A", "B", "C"]})
+```
+
 ## Systems Engineering Implementations
 This repository includes advanced systems-grade implementations for multi-agent optimization and reinforcement learning, including:
 - **Staged Advantage Estimation (SAE)**: Solves advantage calculation as a hierarchical convex optimization problem to stabilize credit assignment on tree-structured MCTS states.
